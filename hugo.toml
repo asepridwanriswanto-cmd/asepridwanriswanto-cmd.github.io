@@ -40,3 +40,5 @@ weight = 60
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+[security]
+  allowContent = ['text/html', 'text/markdown']
