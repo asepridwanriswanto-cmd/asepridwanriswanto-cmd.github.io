@@ -1,0 +1,38 @@
+baseURL = "https://asepridwanriswanto-cmd.github.io/"
+languageCode = "id"
+title = "SahabatMuslim"
+theme = "papermod"
+enableRobotsTXT = true
+
+[params]
+author = "SahabatMuslim"
+description = "Sahabat harian Muslim Indonesia: berita Islam, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowShareButtons = true
+
+[menu]
+[[menu.main]]
+name = "Beranda"
+url = "/"
+weight = 10
+[[menu.main]]
+name = "Zakat"
+url = "/zakat/"
+weight = 20
+[[menu.main]]
+name = "Waris"
+url = "/waris/"
+weight = 30
+[[menu.main]]
+name = "Hadits"
+url = "/hadits/"
+weight = 40
+[[menu.main]]
+name = "Doa"
+url = "/doa/"
+weight = 50
+[[menu.main]]
+name = "Jadwal Sholat"
+url = "/jadwal-sholat/"
+weight = 60
