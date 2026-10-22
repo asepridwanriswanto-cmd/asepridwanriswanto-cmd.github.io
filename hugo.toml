@@ -36,3 +36,7 @@ weight = 50
 name = "Jadwal Sholat"
 url = "/jadwal-sholat/"
 weight = 60
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
