@@ -1,0 +1,196 @@
+---
+title: "Kalkulator Waris (Faraidh)"
+description: "Hitung pembagian harta warisan sesuai syariat Islam (Faraidh) secara otomatis. Berdasarkan Al-Qur'an dan Sunnah."
+date: 2026-10-22
+draft: false
+---
+
+<p>Kalkulator ini membantu Anda menghitung pembagian harta warisan (Faraidh) berdasarkan hukum Islam untuk ahli waris utama. <strong>Catatan:</strong> Hasil ini bersifat edukatif. Untuk keputusan hukum yang mengikat, tetap konsultasikan dengan ahli Faraidh atau Pengadilan Agama.</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 30px;">
+  <h3 style="margin-top:0;">1. Masukkan Total Harta</h3>
+  
+  <label>Total Harta Warisan (Rp):</label>
+  <input type="number" id="harta" placeholder="Contoh: 500000000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Utang & Biaya Pemakaman (Rp):</label>
+  <input type="number" id="utang" value="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Wasiat (Maksimal 1/3 dari Harta) (Rp):</label>
+  <input type="number" id="wasiat" value="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+
+  <hr style="margin: 20px 0; border: 0; border-top: 1px solid #ddd;">
+
+  <h3>2. Pilih Ahli Waris yang Masih Hidup</h3>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+    <div><input type="checkbox" id="suami"> <label for="suami">Suami</label></div>
+    <div><input type="checkbox" id="istri"> <label for="istri">Istri</label></div>
+    <div><input type="checkbox" id="ayah"> <label for="ayah">Ayah Kandung</label></div>
+    <div><input type="checkbox" id="ibu"> <label for="ibu">Ibu Kandung</label></div>
+  </div>
+
+  <label>Jumlah Anak Laki-laki:</label>
+  <input type="number" id="anakL" value="0" min="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Jumlah Anak Perempuan:</label>
+  <input type="number" id="anakP" value="0" min="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungWaris()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px;">Hitung Pembagian Waris</button>
+</div>
+
+<div id="hasil-waris" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Pembagian Warisan</h3>
+  <p>Harta Bersih yang Dibagikan: <strong id="harta-bersih"></strong></p>
+  <ul id="list-hasil" style="list-style-type: none; padding-left: 0; font-size: 1.1em; line-height: 2;"></ul>
+</div>
+
+<script>
+function hitungWaris() {
+  let harta = parseFloat(document.getElementById('harta').value) || 0;
+  let utang = parseFloat(document.getElementById('utang').value) || 0;
+  let wasiat = parseFloat(document.getElementById('wasiat').value) || 0;
+
+  if (harta <= 0) {
+    alert("Masukkan total harta warisan yang valid.");
+    return;
+  }
+
+  // 1. Cek Wasiat (Maksimal 1/3)
+  let maxWasiat = harta / 3;
+  if (wasiat > maxWasiat) {
+    alert("Wasiat tidak boleh melebihi 1/3 dari total harta. Wasiat akan disesuaikan ke batas maksimal (1/3).");
+    wasiat = maxWasiat;
+  }
+
+  let hartaBersih = harta - utang - wasiat;
+  if (hartaBersih <= 0) {
+    alert("Harta tidak cukup untuk membayar utang dan wasiat.");
+    return;
+  }
+
+  // 2. Ambil data ahli waris
+  let adaSuami = document.getElementById('suami').checked;
+  let adaIstri = document.getElementById('istri').checked;
+  let adaAyah = document.getElementById('ayah').checked;
+  let adaIbu = document.getElementById('ibu').checked;
+  let jmlAnakL = parseInt(document.getElementById('anakL').value) || 0;
+  let jmlAnakP = parseInt(document.getElementById('anakP').value) || 0;
+
+  let adaAnak = (jmlAnakL + jmlAnakP) > 0;
+
+  let hasil = {};
+  let sisa = hartaBersih; // Sisa harta setelah diambil oleh Zawil Furudh
+
+  // 3. Pembagian Zawil Furudh (Pecahan)
+  
+  // Suami (1/2 jika tidak ada anak, 1/4 jika ada anak)
+  if (adaSuami) {
+    let bagian = adaAnak ? hartaBersih * (1/4) : hartaBersih * (1/2);
+    hasil['Suami'] = bagian;
+    sisa -= bagian;
+  }
+
+  // Istri (1/4 jika tidak ada anak, 1/8 jika ada anak)
+  if (adaIstri) {
+    let bagian = adaAnak ? hartaBersih * (1/8) : hartaBersih * (1/4);
+    hasil['Istri'] = bagian;
+    sisa -= bagian;
+  }
+
+  // Ibu (1/6 jika ada anak, 1/3 jika tidak ada anak)
+  if (adaIbu) {
+    let bagian = adaAnak ? hartaBersih * (1/6) : hartaBersih * (1/3);
+    hasil['Ibu'] = bagian;
+    sisa -= bagian;
+  }
+
+  // Ayah (1/6 jika ada anak, Ashabah jika tidak ada anak)
+  if (adaAyah) {
+    if (adaAnak) {
+      let bagian = hartaBersih * (1/6);
+      hasil['Ayah'] = bagian;
+      sisa -= bagian;
+    } else {
+      // Ayah sebagai Ashabah (mengambil sisa)
+      hasil['Ayah'] = sisa;
+      sisa = 0;
+    }
+  }
+
+  // 4. Pembagian Ashabah (Anak-anak)
+  if (adaAnak && sisa > 0) {
+    if (jmlAnakL > 0) {
+      // Anak laki-laki dan perempuan bersama-sama (Laki-laki 2x Perempuan)
+      let totalPorsi = (jmlAnakL * 2) + jmlAnakP;
+      let hartaPerPorsi = sisa / totalPorsi;
+
+      if (jmlAnakL > 0) hasil['Anak Laki-laki'] = (hartaPerPorsi * 2) * jmlAnakL;
+      if (jmlAnakP > 0) hasil['Anak Perempuan'] = hartaPerPorsi * jmlAnakP;
+      
+    } else if (jmlAnakP > 0) {
+      // Hanya anak perempuan
+      let bagianAnakP = 0;
+      if (jmlAnakP === 1) {
+        bagianAnakP = hartaBersih * (1/2);
+      } else {
+        bagianAnakP = hartaBersih * (2/3);
+      }
+      
+      // Jika bagian anak perempuan melebihi sisa, ambil sisa saja
+      if (bagianAnakP > sisa) bagianAnakP = sisa;
+      hasil['Anak Perempuan'] = bagianAnakP;
+      sisa -= bagianAnakP;
+    }
+  }
+
+  // 5. Tampilkan Hasil
+  document.getElementById('harta-bersih').innerHTML = "Rp " + hartaBersih.toLocaleString('id-ID');
+  
+  let htmlHasil = "";
+  let totalDibagikan = 0;
+  
+  for (let key in hasil) {
+    if (hasil[key] > 0) {
+      htmlHasil += `<li style="border-bottom: 1px solid #ccc; padding: 10px 0;">${key}: <strong style="float:right;">Rp ${hasil[key].toLocaleString('id-ID', {maximumFractionDigits:0})}</strong></li>`;
+      totalDibagikan += hasil[key];
+    }
+  }
+
+  // Jika ada sisa (misal karena tidak ada ashabah), kembalikan ke ahli waris (Radd sederhana)
+  // Untuk penyederhanaan, kita abaikan Radd kompleks dan tampilkan sisanya
+  if (totalDibagikan < hartaBersih - 100) { // toleransi pembulatan
+    let sisaAkhir = hartaBersih - totalDibagikan;
+    htmlHasil += `<li style="padding: 10px 0; color: #d32f2f;">Sisa Harta (Belum terbagi): <strong>Rp ${sisaAkhir.toLocaleString('id-ID', {maximumFractionDigits:0})}</strong></li>`;
+  }
+
+  document.getElementById('list-hasil').innerHTML = htmlHasil;
+  document.getElementById('hasil-waris').style.display = 'block';
+}
+</script>
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h3 style="color: #0E7A5F;">Ketentuan dan Syarat Pembagian Harta Waris (Faraidh)</h3>
+<p>Ilmu Faraidh adalah ilmu pembagian harta warisan dalam Islam yang telah diatur secara rinci dalam Al-Qur'an (Surah An-Nisa) dan Sunnah. Berikut adalah beberapa ketentuan penting yang perlu diketahui:</p>
+
+<h4>1. Hak-Hak Sebelum Harta Dibagikan</h4>
+<p>Harta warisan tidak serta-merta langsung dibagikan kepada ahli waris. Ada beberapa hak yang harus ditunaikan terlebih dahulu:</p>
+<ul>
+  <li><strong>Biaya pemakaman</strong> jenazah.</li>
+  <li><strong>Pelunasan utang</strong> jenazah (baik utang kepada manusia maupun kepada Allah seperti zakat).</li>
+  <li><strong>Pelaksanaan wasiat</strong>, dengan syarat wasiat tersebut tidak lebih dari 1/3 (sepertiga) dari total harta dan bukan wasiat kepada ahli waris.</li>
+</ul>
+
+<h4>2. Syarat Terjadinya Warisan</h4>
+<p>Harta bisa diwariskan apabila memenuhi tiga syarat utama:</p>
+<ul>
+  <li>Pewaris (orang yang meninggal) benar-benar telah meninggal dunia (secara hakiki atau secara hukum).</li>
+  <li>Ahli waris hidup pada saat pewaris meninggal (meskipun hanya sebentar).</li>
+  <li>Tidak ada penghalang (māni' al-irts) seperti perbedaan agama, membunuh pewaris, atau status perbudakan.</li>
+</ul>
+
+<h4>3. Prinsip 2:1 untuk Laki-laki dan Perempuan</h4>
+<p>Dalam Islam, secara umum anak laki-laki menerima bagian dua kali lipat dari anak perempuan. Hal ini bukanlah bentuk diskriminasi, melainkan karena dalam syariat Islam, laki-laki memiliki kewajiban untuk menanggung nafkah keluarga (istri, anak, dan orang tua), sedangkan harta perempuan sepenuhnya menjadi miliknya tanpa ada kewajiban menafkahi.</p>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Hasil perhitungan kalkulator ini adalah estimasi berdasarkan kaidah dasar Faraidh untuk kasus umum. Kasus-kasus khusus seperti pembagian sisa (Radd), penyesuaian (Aul), dan penghalang waris (Hijab) sangat kompleks. Untuk keputusan hukum yang sah dan mengikat, silakan konsultasikan kepada ahli Faraidh (Ustadz/Dosen Faraidh) atau Pengadilan Agama setempat.
+</div>
