@@ -1,0 +1,163 @@
+---
+title: "Kalender Islam (Hijriah)"
+description: "Kalender Islam online yang menampilkan tanggal Masehi dan Hijriah secara berdampingan. Dilengkapi penanda hari besar Islam."
+date: 2026-10-22
+draft: false
+---
+
+<p>Kalender ini menampilkan tanggal Masehi dan tanggal Hijriah (Islam) secara berdampingan. Anda juga dapat melihat penanda hari-hari besar Islam.</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 30px; text-align: center;">
+  <h3 id="judul-bulan" style="margin-top:0; color:#0E7A5F;">Memuat Kalender...</h3>
+  <p id="info-hijriah" style="font-weight: bold; color: #C9A24B; font-size: 1.2em;"></p>
+  
+  <div style="display: flex; justify-content: center; gap: 10px; margin-top: 15px;">
+    <button onclick="gantiBulan(-1)" style="background: #0E7A5F; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">&laquo; Bulan Lalu</button>
+    <button onclick="gantiBulan(0)" style="background: #C9A24B; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Bulan Ini</button>
+    <button onclick="gantiBulan(1)" style="background: #0E7A5F; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer;">Bulan Depan &raquo;</button>
+  </div>
+</div>
+
+<!-- Wadah Tabel Kalender -->
+<div style="overflow-x: auto;">
+  <table id="tabel-kalender" style="width: 100%; border-collapse: collapse; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden;">
+    <thead style="background: #0E7A5F; color: white;">
+      <tr>
+        <th style="padding: 12px;">Ahad</th>
+        <th style="padding: 12px;">Senin</th>
+        <th style="padding: 12px;">Selasa</th>
+        <th style="padding: 12px;">Rabu</th>
+        <th style="padding: 12px;">Kamis</th>
+        <th style="padding: 12px;">Jumat</th>
+        <th style="padding: 12px;">Sabtu</th>
+      </tr>
+    </thead>
+    <tbody id="body-kalender">
+      <!-- Tanggal akan diisi oleh JavaScript -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+let tanggalSekarang = new Date();
+let bulanAktif = tanggalSekarang.getMonth();
+let tahunAktif = tanggalSekarang.getFullYear();
+
+const namaBulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+const namaHari = ["Ahad", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+
+// Fungsi untuk mengonversi Masehi ke Hijriah menggunakan API bawaan Browser (Intl)
+function konversiHijriah(date) {
+  try {
+    return new Intl.DateTimeFormat('id-ID-u-ca-islamic', { 
+      day: 'numeric', 
+      month: 'long', 
+      year: 'numeric' 
+    }).format(date);
+  } catch (e) {
+    return "-";
+  }
+}
+
+// Daftar hari besar Islam (Perkiraan tanggal Masehi untuk tahun 2026)
+const hariBesarIslam = {
+  "2026-01-16": "Isra Mi'raj",
+  "2026-03-20": "Awal Ramadhan",
+  "2026-04-10": "Nuzulul Quran",
+  "2026-04-19": "Idul Fitri",
+  "2026-05-27": "Idul Adha",
+  "2026-06-17": "Tahun Baru Islam",
+  "2026-08-25": "Maulid Nabi"
+};
+
+function buatKalender(bulan, tahun) {
+  const bodyKalender = document.getElementById("body-kalender");
+  const judulBulan = document.getElementById("judul-bulan");
+  const infoHijriah = document.getElementById("info-hijriah");
+  
+  bodyKalender.innerHTML = "";
+  judulBulan.innerHTML = namaBulan[bulan] + " " + tahun;
+
+  // Mencari tanggal 1 dan hari apa tanggal 1 itu jatuh
+  const hariPertama = new Date(tahun, bulan, 1).getDay();
+  const totalHari = new Date(tahun, bulan + 1, 0).getDate();
+
+  // Menampilkan info Hijriah untuk tanggal 1 di bulan ini
+  const tgl1 = new Date(tahun, bulan, 1);
+  infoHijriah.innerHTML = "Bulan Hijriah: " + konversiHijriah(tgl1).split(' ').slice(1).join(' ');
+
+  let baris = document.createElement("tr");
+  let selCount = 0;
+
+  // Isi sel kosong sebelum tanggal 1
+  for (let i = 0; i < hariPertama; i++) {
+    let td = document.createElement("td");
+    td.style.padding = "15px";
+    baris.appendChild(td);
+    selCount++;
+  }
+
+  // Isi tanggal 1 sampai akhir bulan
+  for (let tanggal = 1; tanggal <= totalHari; tanggal++) {
+    let td = document.createElement("td");
+    td.style.padding = "15px 10px";
+    td.style.borderBottom = "1px solid #eee";
+    
+    let dateObj = new Date(tahun, bulan, tanggal);
+    let formatYMD = dateObj.toISOString().split('T')[0];
+    
+    let isHariIni = (tanggal === tanggalSekarang.getDate() && bulan === tanggalSekarang.getMonth() && tahun === tanggalSekarang.getFullYear());
+    
+    if (isHariIni) {
+      td.style.background = "#e8f5e9";
+      td.style.border = "2px solid #0E7A5F";
+    }
+
+    let hijri = konversiHijriah(dateObj).split(' ')[0];
+    let eventHariBesar = hariBesarIslam[formatYMD] ? `<br><span style="font-size:0.75em; color:#d32f2f; font-weight:bold;">${hariBesarIslam[formatYMD]}</span>` : "";
+
+    td.innerHTML = `
+      <div style="font-size: 1.2em; font-weight: bold; color: #333;">${tanggal}</div>
+      <div style="font-size: 0.85em; color: #0E7A5F; margin-top: 3px;">${hijri}</div>
+      ${eventHariBesar}
+    `;
+    
+    baris.appendChild(td);
+    selCount++;
+
+    // Jika sudah 7 kolom (minggu selesai), buat baris baru
+    if (selCount === 7) {
+      bodyKalender.appendChild(baris);
+      baris = document.createElement("tr");
+      selCount = 0;
+    }
+  }
+
+  // Sisa sel kosong di akhir bulan
+  if (selCount > 0) {
+    for (let i = selCount; i < 7; i++) {
+      let td = document.createElement("td");
+      td.style.padding = "15px";
+      baris.appendChild(td);
+    }
+    bodyKalender.appendChild(baris);
+  }
+}
+
+function gantiBulan(offset) {
+  if (offset === 0) {
+    bulanAktif = tanggalSekarang.getMonth();
+    tahunAktif = tanggalSekarang.getFullYear();
+  } else {
+    bulanAktif += offset;
+    if (bulanAktif > 11) { bulanAktif = 0; tahunAktif++; }
+    if (bulanAktif < 0) { bulanAktif = 11; tahunAktif--; }
+  }
+  buatKalender(bulanAktif, tahunAktif);
+}
+
+// Jalankan saat halaman dimuat
+window.onload = function() {
+  buatKalender(bulanAktif, tahunAktif);
+};
+</script>
