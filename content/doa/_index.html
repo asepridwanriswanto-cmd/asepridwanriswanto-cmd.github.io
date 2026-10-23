@@ -49,27 +49,28 @@ draft: false
 <p id="tidak-ditemukan" style="display:none; color: #d32f2f; font-weight: bold; text-align: center;">Doa tidak ditemukan. Coba kata kunci lain.</p>
 
 <script>
-function filterDoa() {
-  var input = document.getElementById("cariDoa").value.toLowerCase();
-  var kartuDoa = document.getElementsByClassName("kartu-doa");
+function filterdoa() {
+  var input = document.getElementById('Cari Doa').value.tolowerCase();
+  var kartuDoa = document.getElementByClassName('kartu doa');
   var adaHasil = false;
 
-  for (var i = 0; i < kartuDoa.length; i++) {
-    var teksDoa = kartuDoa[i].innerText.toLowerCase();
-    if (teksDoa.indexOf(input) !== -1) {
-      kartuDoa[i].style.display = "";
-      adaHasil = true;
-    } else {
-      kartuDoa[i].style.display = "none";
-    }
-  }
+  for (var i = 0; < kartuDoa.length; i++) {
+   var teksDoa = kartuDoa[i].innerText.tolowerCase();
+   if (teksDoa.indexof(input) !== -1) {
+     kartuDoa[i].style.display = '';
+     adaHasil = true;
+   } else {
+     kartuDoa[i].style.display = 'none';
+   }
+}
 
-  var pesanTidakAda = document.getElementById("tidak-ditemukan");
-  if (adaHasil) {
-    pesanTidakAda.style.display = "none";
-  } else {
-    pesanTidakAda.style.display = "block";
-  }
+var pesanTidakAda = document.getElementById('tidak ditemukan');
+if (adaHasil) {
+  pesanTidakAda.style.display = 'none';
+} else {
+  pesanTidakAda.style.display = 'block';
+}
 }
 </script>
+
 <!-- Versi Bersih -->
