@@ -46,3 +46,11 @@ weight = 60
       unsafe = true
 [security]
   allowContent = ['text/html', 'text/markdown']
+[[menu.main]]
+  name = "Kiblat"
+  url = "/kiblat/"
+  weight = 70
+[[menu.main]]
+  name = "Kalender Islam"
+  url = "/kalender-islam/"
+  weight = 80
