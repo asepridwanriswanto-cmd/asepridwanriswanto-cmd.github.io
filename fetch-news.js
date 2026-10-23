@@ -7,6 +7,9 @@ const feeds = [
   "https://rumaysho.com/feed"
 ];
 
+// Gambar SVG (Base64) yang pasti muncul. Berupa kotak hijau dengan tulisan SahabatMuslim.
+const gambarFallback = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23e8f5e9'/%3E%3Ctext x='50%25' y='50%25' font-size='30' text-anchor='middle' fill='%230E7A5F' font-family='sans-serif' font-weight='bold'%3ESahabatMuslim%3C/text%3E%3C/svg%3E";
+
 async function ambilSemuaBerita() {
   let semuaBerita = [];
 
@@ -19,11 +22,11 @@ async function ambilSemuaBerita() {
         const berita = data.entries.map(item => {
           let imgUrl = "";
 
-          // 1. Coba ambil gambar dari enclosure (biasanya ada di Republika)
+          // 1. Coba ambil gambar dari enclosure
           if (item.enclosure && item.enclosure.url) {
             imgUrl = item.enclosure.url;
           } 
-          // 2. Coba ambil gambar dari dalam konten (tag <img>)
+          // 2. Coba ambil gambar dari dalam konten
           else {
             const content = item.content || item.description || "";
             const match = content.match(/<img[^>]+src=["']([^"']+)["']/i);
@@ -32,9 +35,9 @@ async function ambilSemuaBerita() {
             }
           }
 
-          // 3. Jika tetap tidak ada gambar, gunakan gambar default (Masjid)
-          if (!imgUrl) {
-            imgUrl = "https://images.unsplash.com/photo-1584285400325-2323c7fc6970?q=80&w=600&auto=format&fit=crop";
+          // 3. Jika tidak ada gambar, pakai SVG lokal
+          if (!imgUrl || imgUrl.includes('feedburner') || imgUrl.includes('gravatar')) {
+            imgUrl = gambarFallback;
           }
 
           return {
