@@ -38,6 +38,13 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Fetch News Data
+        run: |
+          mkdir -p static/data
+          curl -s "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.republika.co.id%2Frss%2Fkhazanah" > r1.json
+          curl -s "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fmuslim.or.id%2Ffeed" > r2.json
+          curl -s "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Frumaysho.com%2Ffeed" > r3.json
+          jq -s 'map(select(.status == "ok") | .items) | add' r1.json r2.json r3.json > static/data/berita.json || echo "[]" > static/data/berita.json
 
       - name: Build with Hugo
         env:

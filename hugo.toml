@@ -13,6 +13,10 @@ ShowShareButtons = true
 
 [menu]
 [[menu.main]]
+  name = "Berita"
+  url = "/berita/"
+  weight = 15
+[[menu.main]]
 name = "Beranda"
 url = "/"
 weight = 10
