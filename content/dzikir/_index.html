@@ -164,3 +164,40 @@ function filterDzikir() {
 
 tampilkanDzikir(databaseDzikir);
 </script>
+
+<!-- BAGIAN TOMBOL SHARE START -->
+<div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd;">
+  <h4 style="margin-bottom: 15px; font-size: 1.1em; color: #333;">Bagikan Halaman Ini:</h4>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;" id="share-buttons-container">
+    <!-- Tombol akan dibuat otomatis oleh JavaScript -->
+  </div>
+</div>
+<script>
+  (function() {
+    var pageTitle = encodeURIComponent(document.title);
+    var pageUrl = encodeURIComponent(window.location.href);
+    
+    var links = [
+      { name: "WhatsApp", color: "#25D366", icon: "💬", url: "https://wa.me/?text=" + pageTitle + "%20" + pageUrl },
+      { name: "Facebook", color: "#1877F2", icon: "🔵", url: "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl },
+      { name: "X", color: "#000000", icon: "𝕏", url: "https://twitter.com/intent/tweet?text=" + pageTitle + "&url=" + pageUrl },
+      { name: "Threads", color: "#000000", icon: "🧵", url: "https://threads.net/intent/post?text=" + pageTitle + "%20" + pageUrl },
+      { name: "Telegram", color: "#0088cc", icon: "✈️", url: "https://t.me/share/url?url=" + pageUrl + "&text=" + pageTitle },
+      { name: "LinkedIn", color: "#0A66C2", icon: "💼", url: "https://www.linkedin.com/sharing/share-offsite/?url=" + pageUrl }
+    ];
+
+    var container = document.getElementById('share-buttons-container');
+    links.forEach(function(link) {
+      var a = document.createElement('a');
+      a.href = link.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.style.cssText = "display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 15px; background-color: " + link.color + "; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9em; transition: opacity 0.3s;";
+      a.onmouseover = function() { this.style.opacity = '0.8'; };
+      a.onmouseout = function() { this.style.opacity = '1'; };
+      a.innerHTML = "<span>" + link.icon + "</span> " + link.name;
+      container.appendChild(a);
+    });
+  })();
+</script>
+<!-- BAGIAN TOMBOL SHARE END -->

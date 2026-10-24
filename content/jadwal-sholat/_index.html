@@ -1,0 +1,105 @@
+---
+title: "Jadwal Sholat Seluruh Indonesia"
+description: "Jadwal waktu sholat lima waktu hari ini untuk seluruh kota di Indonesia. Akurat berdasarkan metode Kementerian Agama RI (Kemenag)."
+---
+
+<p>Jadwal sholat di bawah ini dihitung secara otomatis menggunakan metode <strong>Kementerian Agama Republik Indonesia (Kemenag)</strong>. Silakan ketik nama kota Anda (contoh: Jakarta, Bandung, Surabaya, Medan).</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 30px;">
+  <h3 style="margin-top:0;">Cari Jadwal Sholat</h3>
+  <label for="kota">Ketik Nama Kota/Kabupaten:</label><br>
+  <input type="text" id="kota" placeholder="Contoh: Jakarta" value="Jakarta" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  <button onclick="cariJadwal()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Cari Jadwal Sholat</button>
+</div>
+
+<div id="hasil-sholat" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 id="judul-kota" style="margin-top:0; color:#0E7A5F; text-transform: uppercase;"></h3>
+  <p id="tanggal-sholat" style="font-size: 0.9em; color: #555;"></p>
+  <ul id="list-sholat" style="list-style-type: none; padding-left: 0; font-size: 1.1em; line-height: 2;"></ul>
+  <p id="error-msg" style="color: #d32f2f; display: none; font-weight: bold;">Kota tidak ditemukan. Pastikan ejaan nama kota benar (Gunakan bahasa Indonesia).</p>
+</div>
+
+<script>
+async function cariJadwal() {
+  var kota = document.getElementById("kota").value;
+  if (!kota) { alert("Masukkan nama kota terlebih dahulu!"); return; }
+
+  var hasilDiv = document.getElementById("hasil-sholat");
+  var listSholat = document.getElementById("list-sholat");
+  var judulKota = document.getElementById("judul-kota");
+  var tanggalSholat = document.getElementById("tanggal-sholat");
+  var errorMsg = document.getElementById("error-msg");
+
+  listSholat.innerHTML = "Memuat data...";
+  hasilDiv.style.display = "block";
+  errorMsg.style.display = "none";
+
+  try {
+    var response = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${kota}&country=Indonesia&method=20`);
+    var data = await response.json();
+
+    if (data.code === 200) {
+      var timings = data.data.timings;
+      var date = data.data.date.readable;
+      
+      judulKota.innerHTML = "Jadwal Sholat " + kota;
+      tanggalSholat.innerHTML = date;
+      
+      listSholat.innerHTML = `
+        <li><strong>Imsak:</strong> ${timings.Imsak}</li>
+        <li><strong>Subuh:</strong> ${timings.Fajr}</li>
+        <li><strong>Terbit:</strong> ${timings.Sunrise}</li>
+        <li><strong>Dzuhur:</strong> ${timings.Dhuhr}</li>
+        <li><strong>Ashar:</strong> ${timings.Asr}</li>
+        <li><strong>Maghrib:</strong> ${timings.Maghrib}</li>
+        <li><strong>Isya:</strong> ${timings.Isha}</li>
+      `;
+    } else {
+      throw new Error("Kota tidak ditemukan");
+    }
+  } catch (error) {
+    listSholat.innerHTML = "";
+    tanggalSholat.innerHTML = "";
+    errorMsg.style.display = "block";
+  }
+}
+
+window.onload = function() { cariJadwal(); };
+</script>
+
+<!-- BAGIAN TOMBOL SHARE START -->
+<div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd;">
+  <h4 style="margin-bottom: 15px; font-size: 1.1em; color: #333;">Bagikan Jadwal Sholat Ini:</h4>
+  <div style="display: flex; flex-wrap: wrap; gap: 10px;" id="share-buttons-container">
+    <!-- Tombol akan dibuat otomatis oleh JavaScript -->
+  </div>
+</div>
+<script>
+  (function() {
+    var pageTitle = encodeURIComponent(document.title);
+    var pageUrl = encodeURIComponent(window.location.href);
+    
+    var links = [
+      { name: "WhatsApp", color: "#25D366", icon: "💬", url: "https://wa.me/?text=" + pageTitle + "%20" + pageUrl },
+      { name: "Facebook", color: "#1877F2", icon: "🔵", url: "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl },
+      { name: "X", color: "#000000", icon: "𝕏", url: "https://twitter.com/intent/tweet?text=" + pageTitle + "&url=" + pageUrl },
+      { name: "Threads", color: "#000000", icon: "🧵", url: "https://threads.net/intent/post?text=" + pageTitle + "%20" + pageUrl },
+      { name: "Telegram", color: "#0088cc", icon: "✈️", url: "https://t.me/share/url?url=" + pageUrl + "&text=" + pageTitle },
+      { name: "LinkedIn", color: "#0A66C2", icon: "💼", url: "https://www.linkedin.com/sharing/share-offsite/?url=" + pageUrl }
+    ];
+
+    var container = document.getElementById('share-buttons-container');
+    links.forEach(function(link) {
+      var a = document.createElement('a');
+      a.href = link.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.style.cssText = "display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 15px; background-color: " + link.color + "; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9em; transition: opacity 0.3s;";
+      a.onmouseover = function() { this.style.opacity = '0.8'; };
+      a.onmouseout = function() { this.style.opacity = '1'; };
+      a.innerHTML = "<span>" + link.icon + "</span> " + link.name;
+      container.appendChild(a);
+    });
+  })();
+</script>
+<!-- BAGIAN TOMBOL SHARE END -->
