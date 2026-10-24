@@ -3,10 +3,10 @@ title: "Kumpulan Dzikir Sesuai Sunnah"
 description: "Kumpulan dzikir shahih sesuai sunnah Nabi Muhammad SAW. Lengkap dengan dzikir setelah shalat fardhu, dzikir pagi dan petang, beserta teks Arab, latin, dan terjemahannya."
 ---
 
-<p>Dzikir adalah benteng seorang Muslim. Halaman ini memuat kumpulan dzikir yang bersumber dari Al-Qur'an dan Hadits shahih, mulai dari dzikir setelah shalat fardhu hingga dzikir pagi dan petang.</p>
+<p>Dzikir adalah benteng seorang Muslim. Halaman ini memuat kumpulan dzikir yang bersumber dari Al-Qur'an dan Hadits shahih, disusun secara berurutan sesuai tuntunan Rasulullah SAW.</p>
 
 <div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 30px;">
-  <h3 style="margin-top:0;">Cari Dzikir</h3>
+  <h3 style="margin-top:0;">Cari Kategori Dzikir</h3>
   <input type="text" id="cariDzikir" onkeyup="filterDzikir()" placeholder="Ketik kata kunci (contoh: setelah shalat, pagi, petang...)" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
 </div>
 
@@ -18,67 +18,86 @@ description: "Kumpulan dzikir shahih sesuai sunnah Nabi Muhammad SAW. Lengkap de
 
 <script>
 // ==========================================
-// DATABASE DZIKIR (Bisa Anda tambah/edit di sini)
+// DATABASE DZIKIR TERKELOMPOK
 // ==========================================
 const databaseDzikir = [
-  // --- DZIKIR SETELAH SHALAT ---
   {
-    judul: "1. Dzikir Setelah Shalat: Istighfar & Doa Keselamatan",
-    arab: "أَسْتَغْفِرُ اللَّهَ (3x) اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
-    latin: "Astaghfirullah (3x). Allahumma antas-salaam wa minkas-salaam, tabaarakta yaa dzal jalaali wal ikraam.",
-    arti: "Aku memohon ampun kepada Allah (3x). Ya Allah, Engkaulah Maha Sejahtera dan dari-Mu-lah kesejahteraan. Maha Suci Engkau, wahai Pemilik Keagungan dan Kemuliaan.",
-    sumber: "HR. Muslim no. 591"
+    kategori: "Dzikir Setelah Shalat Fardhu",
+    deskripsi: "Bacaan dzikir yang disunnahkan untuk dibaca secara berurutan setelah menyelesaikan shalat fardhu.",
+    items: [
+      {
+        arab: "أَسْتَغْفِرُ اللَّهَ (3x) اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",
+        latin: "Astaghfirullah (3x). Allahumma antas-salaam wa minkas-salaam, tabaarakta yaa dzal jalaali wal ikraam.",
+        arti: "Aku memohon ampun kepada Allah (3x). Ya Allah, Engkaulah Maha Sejahtera dan dari-Mu-lah kesejahteraan. Maha Suci Engkau, wahai Pemilik Keagungan dan Kemuliaan.",
+        sumber: "HR. Muslim no. 591"
+      },
+      {
+        arab: "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ... (sampai akhir ayat kursi)",
+        latin: "Allahu laa ilaaha illaa huwal hayyul qayyuum... (Ayat Kursi)",
+        arti: "Allah, tidak ada Tuhan (yang berhak disembah) melainkan Dia Yang Hidup kekal lagi terus menerus mengurus (makhluk-Nya)...",
+        sumber: "QS. Al-Baqarah: 255 | HR. An-Nasa'i"
+      },
+      {
+        arab: "سُبْحَانَ اللَّهِ (33x) الْحَمْدُ لِلَّهِ (33x) اللَّهُ أَكْبَرُ (33x)",
+        latin: "Subhanallah (33x), Alhamdulillah (33x), Allahu Akbar (33x).",
+        arti: "Maha Suci Allah, Segala puji bagi Allah, Allah Maha Besar. (Masing-masing dibaca 33 kali)",
+        sumber: "HR. Muslim no. 597"
+      },
+      {
+        arab: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+        latin: "Laa ilaaha illallah wahdahu laa syariika lah, lahul mulku wa lahul hamdu wa huwa 'alaa kulli syai-in qadiir.",
+        arti: "Tiada Tuhan selain Allah Yang Maha Tunggal, tiada sekutu bagi-Nya. Bagi-Nya kerajaan dan segala pujian, dan Dia Maha Kuasa atas segala sesuatu. (Dibaca 1x setelah tasbih)",
+        sumber: "HR. Muslim no. 597"
+      }
+    ]
   },
   {
-    judul: "2. Dzikir Setelah Shalat: Tasbih, Tahmid, Takbir",
-    arab: "سُبْحَانَ اللَّهِ (33x) الْحَمْدُ لِلَّهِ (33x) اللَّهُ أَكْبَرُ (33x) لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
-    latin: "Subhanallah (33x), Alhamdulillah (33x), Allahu Akbar (33x). Laa ilaaha illallah wahdahu laa syariika lah, lahul mulku wa lahul hamdu wa huwa 'alaa kulli syai-in qadiir.",
-    arti: "Maha Suci Allah (33x), Segala puji bagi Allah (33x), Allah Maha Besar (33x). Tiada Tuhan selain Allah Yang Maha Tunggal, tiada sekutu bagi-Nya. Bagi-Nya kerajaan dan segala pujian, dan Dia Maha Kuasa atas segala sesuatu.",
-    sumber: "HR. Muslim no. 597"
+    kategori: "Dzikir Pagi",
+    deskripsi: "Dzikir yang dibaca pada waktu pagi hari (setelah Subuh hingga terbit matahari).",
+    items: [
+      {
+        arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ... (Sayyidul Istighfar)",
+        latin: "Allahumma anta rabbii laa ilaaha illaa anta, khalaqtanii wa anaa 'abduka...",
+        arti: "Ya Allah, Engkau adalah Tuhanku, tidak ada Tuhan selain Engkau. Engkau menciptakanku dan aku adalah hamba-Mu... Aku mengakui dosaku, maka ampunilah aku.",
+        sumber: "HR. Bukhari no. 6306 (Dibaca 1x)"
+      },
+      {
+        arab: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+        latin: "Bismillahilladzi laa yadhurru ma'asmihi syai'un fil ardhi wa laa fis samaa'i wa huwas samii'ul 'aliim.",
+        arti: "Dengan nama Allah yang bila disebut, segala sesuatu di bumi dan langit tidak akan berbahaya, Dialah Yang Maha Mendengar lagi Maha Mengetahui.",
+        sumber: "HR. Abu Dawud no. 5088 (Dibaca 3x)"
+      },
+      {
+        arab: "رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا",
+        latin: "Radhiitu billaahi rabbaa, wa bil islaami diinaa, wa bi Muhammadin shallallahu 'alaihi wa sallama nabiyyaa.",
+        arti: "Aku rela Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad SAW sebagai Nabiku.",
+        sumber: "HR. Abu Dawud no. 5072 (Dibaca 3x)"
+      }
+    ]
   },
   {
-    judul: "3. Dzikir Setelah Shalat: Ayat Kursi",
-    arab: "اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ... (sampai akhir ayat)",
-    latin: "Allahu laa ilaaha illaa huwal hayyul qayyuum...",
-    arti: "Allah, tidak ada Tuhan (yang berhak disembah) melainkan Dia Yang Hidup kekal lagi terus menerus mengurus (makhluk-Nya)...",
-    sumber: "QS. Al-Baqarah: 255 | HR. An-Nasa'i"
-  },
-
-  // --- DZIKIR PAGI & PETANG ---
-  {
-    judul: "4. Dzikir Pagi & Petang: Sayyidul Istighfar",
-    arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ لَكَ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
-    latin: "Allahumma anta rabbii laa ilaaha illaa anta, khalaqtanii wa anaa 'abduka, wa anaa 'alaa 'ahdika wa wa'dika mastatha'tu, a'uudzu bika min syarri maa shana'tu, abuu-u laka bini'matika 'alayya, wa abuu-u laka bidzanbii faghfir lii fa innahu laa yaghfirudz dzunuuba illaa anta.",
-    arti: "Ya Allah, Engkau adalah Tuhanku, tidak ada Tuhan selain Engkau. Engkau menciptakanku dan aku adalah hamba-Mu. Aku berusaha menepati perjanjian dan janjiku kepada-Mu sekuat tenaga. Aku berlindung kepada-Mu dari keburukan yang kuperbuat. Aku mengakui segala nikmat-Mu kepadaku dan aku mengakui dosaku, maka ampunilah aku. Sesungguhnya tidak ada yang dapat mengampuni dosa selain Engkau.",
-    sumber: "HR. Bukhari no. 6306 (Dibaca pagi & petang)"
-  },
-  {
-    judul: "5. Dzikir Pagi & Petang: Perlindungan dari Segala Bahaya",
-    arab: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
-    latin: "Bismillahilladzi laa yadhurru ma'asmihi syai'un fil ardhi wa laa fis samaa'i wa huwas samii'ul 'aliim.",
-    arti: "Dengan nama Allah yang bila disebut, segala sesuatu di bumi dan langit tidak akan berbahaya, Dialah Yang Maha Mendengar lagi Maha Mengetahui.",
-    sumber: "HR. Abu Dawud no. 5088 (Dibaca 3x pagi & petang)"
-  },
-  {
-    judul: "6. Dzikir Pagi & Petang: Ridha kepada Allah",
-    arab: "رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا",
-    latin: "Radhiitu billaahi rabbaa, wa bil islaami diinaa, wa bi Muhammadin shallallahu 'alaihi wa sallama nabiyyaa.",
-    arti: "Aku rela Allah sebagai Tuhanku, Islam sebagai agamaku, dan Muhammad SAW sebagai Nabiku.",
-    sumber: "HR. Abu Dawud no. 5072 (Dibaca 3x pagi & petang)"
-  },
-  {
-    judul: "7. Dzikir Pagi & Petang: Kalimat Tauhid",
-    arab: "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
-    latin: "Laa ilaaha illallah wahdahu laa syariika lah, lahul mulku wa lahul hamdu wa huwa 'alaa kulli syai-in qadiir.",
-    arti: "Tiada Tuhan selain Allah Yang Maha Tunggal, tiada sekutu bagi-Nya. Bagi-Nya kerajaan dan segala pujian, dan Dia Maha Kuasa atas segala sesuatu.",
-    sumber: "HR. Bukhari dan Muslim (Dibaca 10x atau 100x)"
-  },
-  {
-    judul: "8. Dzikir Pagi & Petang: Memohon Afiyah (Kesehatan/Keselamatan)",
-    arab: "اللَّهُمَّ عَافِنِي فِي بَدَنِي، اللَّهُمَّ عَافِنِي فِي سَمْعِي، اللَّهُمَّ عَافِنِي فِي بَصَرِي، لَا إِلَهَ إِلَّا أَنْتَ",
-    latin: "Allahumma 'aafinii fii badanii, Allahumma 'aafinii fii sam'ii, Allahumma 'aafinii fii basharii, laa ilaaha illaa anta.",
-    arti: "Ya Allah, sehatkanlah badanku. Ya Allah, sehatkanlah pendengaranku. Ya Allah, sehatkanlah penglihatanku. Tiada Tuhan selain Engkau.",
-    sumber: "HR. Abu Dawud no. 5090 (Dibaca 3x pagi & petang)"
+    kategori: "Dzikir Petang",
+    deskripsi: "Dzikir yang dibaca pada waktu petang (setelah Ashar hingga terbenam matahari).",
+    items: [
+      {
+        arab: "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ... (Sayyidul Istighfar)",
+        latin: "Allahumma anta rabbii laa ilaaha illaa anta, khalaqtanii wa anaa 'abduka...",
+        arti: "Ya Allah, Engkau adalah Tuhanku, tidak ada Tuhan selain Engkau. Engkau menciptakanku dan aku adalah hamba-Mu... Aku mengakui dosaku, maka ampunilah aku.",
+        sumber: "HR. Bukhari no. 6306 (Dibaca 1x)"
+      },
+      {
+        arab: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+        latin: "Bismillahilladzi laa yadhurru ma'asmihi syai'un fil ardhi wa laa fis samaa'i wa huwas samii'ul 'aliim.",
+        arti: "Dengan nama Allah yang bila disebut, segala sesuatu di bumi dan langit tidak akan berbahaya, Dialah Yang Maha Mendengar lagi Maha Mengetahui.",
+        sumber: "HR. Abu Dawud no. 5088 (Dibaca 3x)"
+      },
+      {
+        arab: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+        latin: "A'uudzu bikalimaatillaahit taammaati min syarri maa khalaq.",
+        arti: "Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan makhluk-Nya.",
+        sumber: "HR. Muslim no. 2708 (Dibaca 3x)"
+      }
+    ]
   }
 ];
 
@@ -89,19 +108,32 @@ const wadahDzikir = document.getElementById("daftar-dzikir");
 
 function tampilkanDzikir(daftar) {
   wadahDzikir.innerHTML = "";
-  daftar.forEach(dzikir => {
+  
+  daftar.forEach(grup => {
+    // Buat Kartu Kategori
     const card = document.createElement("div");
     card.className = "kartu-dzikir";
-    card.style.cssText = "background:#fff; padding: 25px; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);";
+    card.style.cssText = "background:#fff; padding: 25px; border-radius: 8px; border: 1px solid #e0e0e0; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);";
     
-    card.innerHTML = `
-      <h3 style="color:#0E7A5F; margin-top:0;">${dzikir.judul}</h3>
-      <p style="font-family: 'Traditional Arabic', 'Scheherazade New', 'Amiri', serif; font-size: 1.8em; text-align: right; line-height: 1.8; margin: 20px 0; direction: rtl;">${dzikir.arab}</p>
-      <p style="font-style: italic; color: #555; margin-bottom: 10px;">${dzikir.latin}</p>
-      <p style="margin-bottom: 10px;"><strong>Artinya:</strong> "${dzikir.arti}"</p>
-      <p style="font-size: 0.9em; color: #888;"><strong>Sumber:</strong> ${dzikir.sumber}</p>
+    let htmlKonten = `
+      <h2 style="color:#0E7A5F; margin-top:0; border-bottom: 2px solid #0E7A5F; padding-bottom: 10px;">${grup.kategori}</h2>
+      <p style="color: #666; margin-bottom: 20px;">${grup.deskripsi}</p>
     `;
-    
+
+    // Looping isi dzikir di dalam kategori
+    grup.items.forEach((item, index) => {
+      htmlKonten += `
+        <div style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px dashed #ddd;">
+          <span style="background: #0E7A5F; color: white; padding: 3px 10px; border-radius: 15px; font-size: 0.8em; font-weight: bold; display: inline-block; margin-bottom: 15px;">Bacaan ${index + 1}</span>
+          <p style="font-family: 'Traditional Arabic', 'Scheherazade New', 'Amiri', serif; font-size: 1.8em; text-align: right; line-height: 1.8; margin: 15px 0; direction: rtl;">${item.arab}</p>
+          <p style="font-style: italic; color: #555; margin-bottom: 10px;">${item.latin}</p>
+          <p style="margin-bottom: 10px;"><strong>Artinya:</strong> "${item.arti}"</p>
+          <p style="font-size: 0.9em; color: #888;"><strong>Sumber:</strong> ${item.sumber}</p>
+        </div>
+      `;
+    });
+
+    card.innerHTML = htmlKonten;
     wadahDzikir.appendChild(card);
   });
 }
