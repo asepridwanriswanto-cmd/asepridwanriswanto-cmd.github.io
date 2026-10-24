@@ -1,48 +1,21 @@
-/* 1. Menyembunyikan Ikon Bawaan Tema (Bulan Sabit) */
-.theme-toggle svg, #theme-toggle svg {
+/* 1. Menghilangkan Total Tombol Ikon (Bulan/Matahari) */
+#theme-toggle, .theme-toggle {
     display: none !important;
 }
 
-/* 2. Mengganti dengan Ikon Emoji Pilihan Anda */
-.theme-toggle::before, #theme-toggle::before {
-    font-size: 1.3rem;
-    cursor: pointer;
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-/* Ikon saat Mode Terang (Light Mode) */
-:root:not([data-theme="dark"]) .theme-toggle::before,
-:root:not([data-theme="dark"]) #theme-toggle::before {
-    content: "🪔"; 
-}
-
-/* Ikon saat Mode Gelap (Dark Mode) */
-[data-theme="dark"] .theme-toggle::before,
-[data-theme="dark"] #theme-toggle::before {
-    content: "✨"; 
-}
-
-/* Efek saat mouse diarahkan ke ikon */
-.theme-toggle:hover::before, #theme-toggle:hover::before {
-    transform: scale(1.2) rotate(15deg);
-}
-
-/* 3. Merapatkan Jarak Judul dengan Ikon */
+/* 2. Merapikan Header dan Membuat Teks Lebih Elegan */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px !important;
+    padding: 15px 20px !important;
 }
 
 .logo a {
-    margin-right: 0 !important;
-    font-size: 1.6rem !important;
-}
-
-#theme-toggle, .theme-toggle {
-    margin-left: 10px !important; 
-    margin-right: auto !important; 
-    padding: 0 !important;
+    font-size: 1.8rem !important; /* Ukuran font sedikit lebih besar */
+    font-weight: 800 !important; /* Membuat teks lebih tebal */
+    letter-spacing: -0.5px;      /* Merapatkan sedikit jarak antar huruf */
+    color: #0E7A5F !important;   /* Warna hijau khas SahabatMuslim */
+    text-decoration: none;
+    margin: 0 !important;
 }
