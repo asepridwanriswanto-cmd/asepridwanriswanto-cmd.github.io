@@ -10,6 +10,9 @@ description = "Sahabat harian Muslim Indonesia: berita Islam, kalkulator zakat &
 defaultTheme = "auto"
 ShowReadingTime = true
 ShowShareButtons = true
+  mainWidth = "1000px"
+  label = "SahabatMuslim"
+  logo = "logo.png"
 
 [menu]
 [[menu.main]]
