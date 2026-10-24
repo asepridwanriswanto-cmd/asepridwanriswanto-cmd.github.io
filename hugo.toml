@@ -13,94 +13,107 @@ ShowShareButtons = true
 mainWidth = "1000px"
 
 [menu]
-[[menu.main]]
-  name = "Berita"
-  url = "/berita/"
-  weight = 15
-[[menu.main]]
-name = "Beranda"
-url = "/"
-weight = 10
-[[menu.main]]
-  name = "Zakat"
-  url = "/zakat/"
-  weight = 30
+  [[menu.main]]
+    name = "Beranda"
+    url = "/"
+    weight = 10
+
+  [[menu.main]]
+    name = "Berita"
+    url = "/berita/"
+    weight = 20
+
+  [[menu.main]]
+    name = "Zakat"
+    url = "/zakat/"
+    weight = 30
+
   [[menu.main]]
     name = "Zakat Fitrah"
     url = "/zakat/fitrah/"
     parent = "Zakat"
     weight = 1
+
   [[menu.main]]
     name = "Zakat Emas"
     url = "/zakat/emas/"
     parent = "Zakat"
     weight = 2
+
   [[menu.main]]
     name = "Zakat Perak"
     url = "/zakat/perak/"
     parent = "Zakat"
     weight = 3
+
   [[menu.main]]
     name = "Zakat Uang & Tabungan"
     url = "/zakat/uang/"
     parent = "Zakat"
     weight = 4
+
   [[menu.main]]
     name = "Zakat Penghasilan"
     url = "/zakat/penghasilan/"
     parent = "Zakat"
     weight = 5
+
   [[menu.main]]
     name = "Zakat Perdagangan"
     url = "/zakat/perdagangan/"
     parent = "Zakat"
     weight = 6
+
   [[menu.main]]
     name = "Zakat Pertanian"
     url = "/zakat/pertanian/"
     parent = "Zakat"
     weight = 7
+
   [[menu.main]]
     name = "Zakat Peternakan"
     url = "/zakat/peternakan/"
     parent = "Zakat"
     weight = 8
+
   [[menu.main]]
     name = "Zakat Saham & Reksadana"
     url = "/zakat/saham/"
     parent = "Zakat"
     weight = 9
+
   [[menu.main]]
     name = "Zakat Rikaz (Temuan)"
     url = "/zakat/rikaz/"
     parent = "Zakat"
-    weight = 10[[menu.main]]
-name = "Waris"
-url = "/waris/"
-weight = 30
-[[menu.main]]
-name = "Hadits"
-url = "/hadits/"
-weight = 40
-[[menu.main]]
-name = "Doa"
-url = "/doa/"
-weight = 50
-[[menu.main]]
-name = "Jadwal Sholat"
-url = "/jadwal-sholat/"
-weight = 60
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-[security]
-  allowContent = ['text/html', 'text/markdown']
-[[menu.main]]
-  name = "Kiblat"
-  url = "/kiblat/"
-  weight = 70
-[[menu.main]]
-  name = "Kalender Islam"
-  url = "/kalender-islam/"
-  weight = 80
+    weight = 10
+
+  [[menu.main]]
+    name = "Waris"
+    url = "/waris/"
+    weight = 40
+
+  [[menu.main]]
+    name = "Hadits"
+    url = "/hadits/"
+    weight = 50
+
+  [[menu.main]]
+    name = "Doa"
+    url = "/doa/"
+    weight = 60
+
+  [[menu.main]]
+    name = "Jadwal Sholat"
+    url = "/jadwal-sholat/"
+    weight = 70
+
+  [[menu.main]]
+    name = "Kiblat"
+    url = "/kiblat/"
+    weight = 80
+
+  [[menu.main]]
+    name = "Kalender Islam"
+    url = "/kalender-islam/"
+    weight = 90
