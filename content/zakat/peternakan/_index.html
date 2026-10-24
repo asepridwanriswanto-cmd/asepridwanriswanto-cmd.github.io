@@ -1,24 +1,159 @@
---- 
-title: "Kalkulator Zakat peternakan" 
---- 
-<p>Halaman kalkulator untuk Zakat peternakan sedang dalam proses pengembangan.</p> 
-<div style="margin: 30px 0; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc; text-align: center; color: #777;"> 
-  <h3>Kalkulator Zakat peternakan</h3> 
-  <p>Fitur kalkulator akan segera hadir di sini.</p> 
-</div> 
-<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;"> 
-  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Jelajahi Zakat Lainnya:</h3> 
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;"> 
-    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a> 
-    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a> 
-    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a> 
-    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a> 
-    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a> 
-    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a> 
-    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a> 
-    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a> 
-    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a> 
-    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a> 
-    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a> 
-  </div> 
-</div> 
+---
+title: "Kalkulator Zakat Peternakan"
+description: "Hitung zakat hewan ternak (kambing, sapi, kerbau) Anda. Pelajari nisab dan jumlah hewan yang wajib dikeluarkan sesuai syariat Islam."
+---
+
+<p>Zakat peternakan (An'am) adalah zakat yang dikenakan pada hewan ternak tertentu (unta, sapi/kerbau, dan kambing/domba) yang telah mencapai nisab, telah digembalakan (saimah), dan telah dimiliki selama satu tahun (haul).</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin: 30px 0;">
+  <h3 style="margin-top:0;">Hitung Zakat Peternakan Anda</h3>
+  
+  <label>Pilih Jenis Ternak:</label>
+  <select id="jenisTernak" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+    <option value="kambing">Kambing / Domba</option>
+    <option value="sapi">Sapi / Kerbau</option>
+  </select>
+
+  <label>Jumlah Ternak (Ekor):</label>
+  <input type="number" id="jumlahTernak" placeholder="Contoh: 50" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungZakatTernak()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Hitung Zakat Ternak</button>
+</div>
+
+<div id="hasil-ternak" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Perhitungan</h3>
+  <p>Status Nisab: <strong id="status-nisab"></strong></p>
+  <h2 id="hasil-teks" style="color: #d32f2f; margin-bottom: 0;"></h2>
+</div>
+
+<script>
+function hitungZakatTernak() {
+  var jenis = document.getElementById('jenisTernak').value;
+  var jumlah = parseInt(document.getElementById('jumlahTernak').value) || 0;
+  
+  if (jumlah <= 0) {
+    alert("Mohon masukkan jumlah ternak yang valid.");
+    return;
+  }
+  
+  var hasil = "";
+  
+  if (jenis === 'kambing') {
+    if (jumlah < 40) {
+      document.getElementById('status-nisab').innerHTML = "<span style='color: orange;'>Belum mencapai nisab (40 ekor)</span>";
+      hasil = "Zakat: 0 ekor";
+    } else {
+      document.getElementById('status-nisab').innerHTML = "<span style='color: green;'>Wajib Zakat</span>";
+      if (jumlah <= 120) {
+        hasil = "1 ekor kambing/domba (umur 1 tahun).";
+      } else if (jumlah <= 200) {
+        hasil = "2 ekor kambing/domba (umur 1 tahun).";
+      } else if (jumlah <= 300) {
+        hasil = "3 ekor kambing/domba (umur 1 tahun).";
+      } else {
+        var tambahan = Math.floor((jumlah - 300) / 100);
+        var total = 3 + tambahan;
+        hasil = total + " ekor kambing/domba (umur 1 tahun).";
+      }
+    }
+  } else if (jenis === 'sapi') {
+    if (jumlah < 30) {
+      document.getElementById('status-nisab').innerHTML = "<span style='color: orange;'>Belum mencapai nisab (30 ekor)</span>";
+      hasil = "Zakat: 0 ekor";
+    } else {
+      document.getElementById('status-nisab').innerHTML = "<span style='color: green;'>Wajib Zakat</span>";
+      if (jumlah <= 39) {
+        hasil = "1 ekor Tabi' (sapi umur 1 tahun).";
+      } else if (jumlah <= 59) {
+        hasil = "1 ekor Musinnah (sapi umur 2 tahun).";
+      } else if (jumlah <= 69) {
+        hasil = "2 ekor Tabi' (sapi umur 1 tahun).";
+      } else if (jumlah <= 79) {
+        hasil = "1 ekor Musinnah (umur 2 tahun) + 1 ekor Tabi' (umur 1 tahun).";
+      } else if (jumlah <= 89) {
+        hasil = "2 ekor Musinnah (sapi umur 2 tahun).";
+      } else if (jumlah <= 99) {
+        hasil = "3 ekor Tabi' (sapi umur 1 tahun).";
+      } else {
+        // Perhitungan untuk 100 ekor ke atas (kombinasi 30 dan 40)
+        var tabi = 0; var musinnah = 0;
+        for (var x = 0; x <= 20; x++) {
+          for (var y = 0; y <= 20; y++) {
+            if ((30 * x) + (40 * y) === jumlah) {
+              tabi = x; musinnah = y; break;
+            }
+          }
+          if ((30 * x) + (40 * y) === jumlah) break;
+        }
+        if (tabi > 0 || musinnah > 0) {
+          hasil = "";
+          if (musinnah > 0) hasil += musinnah + " ekor Musinnah (umur 2 tahun)";
+          if (tabi > 0) hasil += (hasil ? " + " : "") + tabi + " ekor Tabi' (umur 1 tahun)";
+          hasil += ".";
+        } else {
+          hasil = "Jumlah belum sesuai rumus zakat (kelipatan 30/40). Mohon konsultasi ke amil zakat.";
+        }
+      }
+    }
+  }
+  
+  document.getElementById('hasil-teks').innerHTML = hasil;
+  document.getElementById('hasil-ternak').style.display = 'block';
+}
+</script>
+
+<!-- NAVIGASI ZAKAT DI BAWAH KALKULATOR -->
+<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Selesai Menghitung? Jelajahi Zakat Lainnya:</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a>
+    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a>
+    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a>
+    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a>
+    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a>
+    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a>
+    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a>
+    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a>
+    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #0E7A5F; color: #0E7A5F; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">Zakat Peternakan</a>
+    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a>
+    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a>
+  </div>
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2 style="color: #0E7A5F;">Dalil dan Ketentuan Zakat Peternakan</h2>
+<p>Zakat hewan ternak memiliki aturan yang sangat detail yang telah dijelaskan oleh Rasulullah SAW. Para ulama merinci hal ini dalam kitab-kitab fikih, khususnya mengenai hewan yang digembalakan (saimah).</p>
+
+<h3>1. Dalil Hadits</h3>
+<p>Rasulullah SAW bersabda: <em>"Tidak ada zakat pada hewan ternak yang kurang dari 5 ekor unta... (dan beliau menyebutkan secara rinci nisab untuk kambing, sapi, dan unta)."</em> (HR. Bukhari).</p>
+
+<h3>2. Syarat Wajib Zakat Peternakan</h3>
+<ul>
+  <li><strong>Saimah:</strong> Hewan tersebut digembalakan di padang rumput yang mubah (tidak dimiliki perorangan) sebagian besar waktu dalam setahun. Jika hewan tersebut dikandangkan dan diberi makan beli setiap hari, maka tidak ada kewajiban zakat ternak (hanya dizakati sebagai zakat perdagangan jika diniatkan untuk jual beli).</li>
+  <li><strong>Nisab:</strong> Jumlah hewan telah mencapai batas minimal yang ditentukan syariat.</li>
+  <li><strong>Haul:</strong> Telah dimiliki selama 1 tahun Hijriah.</li>
+</ul>
+
+<h3>3. Tabel Nisab Zakat Kambing/Domba</h3>
+<ul>
+  <li><strong>40 - 120 ekor:</strong> Zakatnya 1 ekor kambing/domba (umur 1 tahun).</li>
+  <li><strong>121 - 200 ekor:</strong> Zakatnya 2 ekor kambing/domba.</li>
+  <li><strong>201 - 300 ekor:</strong> Zakatnya 3 ekor kambing/domba.</li>
+  <li><strong>Lebih dari 300 ekor:</strong> Setiap kelipatan 100 ekor, zakatnya bertambah 1 ekor kambing.</li>
+</ul>
+
+<h3>4. Tabel Nisab Zakat Sapi/Kerbau</h3>
+<ul>
+  <li><strong>30 - 39 ekor:</strong> Zakatnya 1 ekor Tabi' (sapi umur 1 tahun).</li>
+  <li><strong>40 - 59 ekor:</strong> Zakatnya 1 ekor Musinnah (sapi umur 2 tahun).</li>
+  <li><strong>60 - 69 ekor:</strong> Zakatnya 2 ekor Tabi'.</li>
+  <li><strong>70 - 79 ekor:</strong> Zakatnya 1 ekor Musinnah + 1 ekor Tabi'.</li>
+  <li><strong>80 - 89 ekor:</strong> Zakatnya 2 ekor Musinnah.</li>
+  <li><strong>90 - 99 ekor:</strong> Zakatnya 3 ekor Tabi'.</li>
+  <li><strong>100 ekor ke atas:</strong> Setiap 30 ekor = 1 Tabi', setiap 40 ekor = 1 Musinnah.</li>
+</ul>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Hasil kalkulator ini mengasumsikan hewan ternak Anda memenuhi syarat Saimah (digembalakan) dan telah dimiliki 1 tahun (haul). Jika hewan dikandangkan dan dibeli pakannya, maka ketentuan zakatnya merujuk pada zakat perdagangan/uang.
+</div>
