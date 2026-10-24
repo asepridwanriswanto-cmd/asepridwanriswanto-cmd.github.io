@@ -35,6 +35,11 @@
       document.getElementById("share-x").href = "https://twitter.com/intent/tweet?text=" + pTitle + "&url=" + pUrl;
       document.getElementById("share-tg").href = "https://t.me/share/url?url=" + pUrl + "&text=" + pTitle;
       document.getElementById("share-th").href = "https://threads.net/intent/post?text=" + pTitle + "%20" + pUrl;
-    }
+          // Memindahkan posisi tombol share ke atas footer
+                 const footer = document.querySelector(".footer");
+                 if (footer && container) {
+                 footer.parentNode.insertBefore(container, footer);
+                 }
+     }
   });
 </script>
