@@ -94,9 +94,9 @@ function hitungKiblat() {
 </script>
 
 <!-- BAGIAN TOMBOL SHARE START -->
-<div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd;">
-  <h4 style="margin-bottom: 15px; font-size: 1.1em; color: #333;">Bagikan Halaman Ini:</h4>
-  <div style="display: flex; flex-wrap: wrap; gap: 10px;" id="share-buttons-container">
+<div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
+  <p style="font-size: 0.9em; color: #666; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Halaman Ini:</p>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;" id="share-buttons-container">
     <!-- Tombol akan dibuat otomatis oleh JavaScript -->
   </div>
 </div>
@@ -105,13 +105,13 @@ function hitungKiblat() {
     var pageTitle = encodeURIComponent(document.title);
     var pageUrl = encodeURIComponent(window.location.href);
     
+    // Desain tombol minimalis
     var links = [
-      { name: "WhatsApp", color: "#25D366", icon: "💬", url: "https://wa.me/?text=" + pageTitle + "%20" + pageUrl },
-      { name: "Facebook", color: "#1877F2", icon: "🔵", url: "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl },
-      { name: "X", color: "#000000", icon: "𝕏", url: "https://twitter.com/intent/tweet?text=" + pageTitle + "&url=" + pageUrl },
-      { name: "Threads", color: "#000000", icon: "🧵", url: "https://threads.net/intent/post?text=" + pageTitle + "%20" + pageUrl },
-      { name: "Telegram", color: "#0088cc", icon: "✈️", url: "https://t.me/share/url?url=" + pageUrl + "&text=" + pageTitle },
-      { name: "LinkedIn", color: "#0A66C2", icon: "💼", url: "https://www.linkedin.com/sharing/share-offsite/?url=" + pageUrl }
+      { name: "WhatsApp", icon: "💬", url: "https://wa.me/?text=" + pageTitle + "%20" + pageUrl },
+      { name: "Facebook", icon: "🔵", url: "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl },
+      { name: "X / Twitter", icon: "𝕏", url: "https://twitter.com/intent/tweet?text=" + pageTitle + "&url=" + pageUrl },
+      { name: "Telegram", icon: "✈️", url: "https://t.me/share/url?url=" + pageUrl + "&text=" + pageTitle },
+      { name: "Threads", icon: "🧵", url: "https://threads.net/intent/post?text=" + pageTitle + "%20" + pageUrl }
     ];
 
     var container = document.getElementById('share-buttons-container');
@@ -120,10 +120,24 @@ function hitungKiblat() {
       a.href = link.url;
       a.target = "_blank";
       a.rel = "noopener noreferrer";
-      a.style.cssText = "display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 15px; background-color: " + link.color + "; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9em; transition: opacity 0.3s;";
-      a.onmouseover = function() { this.style.opacity = '0.8'; };
-      a.onmouseout = function() { this.style.opacity = '1'; };
-      a.innerHTML = "<span>" + link.icon + "</span> " + link.name;
+      
+      // CSS untuk tampilan tombol yang elegan (putih dengan border abu-abu, membesar saat di-hover)
+      a.style.cssText = "display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02);";
+      
+      a.onmouseover = function() { 
+        this.style.transform = 'translateY(-2px)'; 
+        this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)'; 
+        this.style.borderColor = '#0E7A5F';
+        this.style.color = '#0E7A5F';
+      };
+      a.onmouseout = function() { 
+        this.style.transform = 'translateY(0)'; 
+        this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.02)';
+        this.style.borderColor = '#dddddd';
+        this.style.color = '#555555';
+      };
+      
+      a.innerHTML = "<span style='font-size: 1.1em;'>" + link.icon + "</span> " + link.name;
       container.appendChild(a);
     });
   })();
