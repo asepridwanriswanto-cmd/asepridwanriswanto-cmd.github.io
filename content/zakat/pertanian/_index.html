@@ -1,24 +1,112 @@
---- 
-title: "Kalkulator Zakat pertanian" 
---- 
-<p>Halaman kalkulator untuk Zakat pertanian sedang dalam proses pengembangan.</p> 
-<div style="margin: 30px 0; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc; text-align: center; color: #777;"> 
-  <h3>Kalkulator Zakat pertanian</h3> 
-  <p>Fitur kalkulator akan segera hadir di sini.</p> 
-</div> 
-<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;"> 
-  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Jelajahi Zakat Lainnya:</h3> 
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;"> 
-    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a> 
-    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a> 
-    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a> 
-    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a> 
-    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a> 
-    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a> 
-    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a> 
-    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a> 
-    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a> 
-    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a> 
-    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a> 
-  </div> 
-</div> 
+---
+title: "Kalkulator Zakat Pertanian"
+description: "Hitung zakat hasil pertanian (padi, jagung, dll) Anda. Pelajari nisab 653 kg gabah, perbedaan kadar zakat 5% dan 10%, serta dalilnya."
+---
+
+<p>Zakat pertanian adalah zakat yang dikeluarkan dari hasil bumi (tanaman) yang menjadi makanan pokok dan telah mencapai nisab. Berbeda dengan zakat mal, zakat pertanian <strong>tidak disyaratkan haul (tunggu 1 tahun)</strong>, melainkan wajib dikeluarkan setiap kali panen.</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin: 30px 0;">
+  <h3 style="margin-top:0;">Hitung Zakat Pertanian Anda</h3>
+  
+  <label>Total Hasil Panen (kg gabah/beras):</label>
+  <input type="number" id="hasilPanen" placeholder="Contoh: 1000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Sistem Pengairan:</label>
+  <select id="pengairan" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+    <option value="0.1">Tadah Hujan / Tanpa Biaya (Zakat 10%)</option>
+    <option value="0.05">Irigasi / Dengan Biaya (Zakat 5%)</option>
+  </select>
+
+  <label>Harga Jual Hasil Panen (Rp/kg) - Opsional:</label>
+  <input type="number" id="hargaPanen" value="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungZakatPertanian()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Hitung Zakat Pertanian</button>
+</div>
+
+<div id="hasil-pertanian" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Perhitungan</h3>
+  <p>Batas Nisab (653 kg): <strong id="status-nisab"></strong></p>
+  <h2 id="zakat-kg" style="color: #d32f2f; margin-bottom: 0;"></h2>
+  <h3 id="zakat-rp" style="color: #0E7A5F; margin-top: 5px;"></h3>
+</div>
+
+<script>
+function hitungZakatPertanian() {
+  var hasilPanen = parseFloat(document.getElementById('hasilPanen').value) || 0;
+  var kadarZakat = parseFloat(document.getElementById('pengairan').value);
+  var hargaPanen = parseFloat(document.getElementById('hargaPanen').value) || 0;
+  
+  if (hasilPanen <= 0) {
+    alert("Mohon masukkan total hasil panen yang valid.");
+    return;
+  }
+  
+  var nisabKg = 653; // Nisab zakat pertanian (5 wasaq = 653 kg gabah)
+  
+  if (hasilPanen >= nisabKg) {
+    document.getElementById('status-nisab').innerHTML = "<span style='color: green;'>Mencapai Nisab</span>";
+    
+    var zakatKg = hasilPanen * kadarZakat;
+    document.getElementById('zakat-kg').innerHTML = "Zakat yang harus dikeluarkan: " + zakatKg.toLocaleString('id-ID', {maximumFractionDigits:1}) + " kg";
+    
+    if (hargaPanen > 0) {
+      var zakatRp = zakatKg * hargaPanen;
+      document.getElementById('zakat-rp').innerHTML = "Atau setara dengan: Rp " + zakatRp.toLocaleString('id-ID', {maximumFractionDigits:0});
+    } else {
+      document.getElementById('zakat-rp').innerHTML = "";
+    }
+    
+  } else {
+    document.getElementById('status-nisab').innerHTML = "<span style='color: orange;'>Belum Mencapai Nisab (653 kg)</span>";
+    document.getElementById('zakat-kg').innerHTML = "Zakat yang harus dikeluarkan: 0 kg";
+    document.getElementById('zakat-rp').innerHTML = "";
+  }
+  
+  document.getElementById('hasil-pertanian').style.display = 'block';
+}
+</script>
+
+<!-- NAVIGASI ZAKAT DI BAWAH KALKULATOR -->
+<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Selesai Menghitung? Jelajahi Zakat Lainnya:</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a>
+    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a>
+    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a>
+    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a>
+    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a>
+    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a>
+    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a>
+    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #0E7A5F; color: #0E7A5F; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">Zakat Pertanian</a>
+    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a>
+    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a>
+    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a>
+  </div>
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2 style="color: #0E7A5F;">Dalil dan Ketentuan Zakat Pertanian</h2>
+<p>Zakat pertanian adalah salah satu bentuk zakat yang sangat dianjurkan dalam Islam. Hasil bumi yang kita nikmati adalah rezeki dari Allah SWT, dan sebagian darinya adalah hak bagi mereka yang membutuhkan.</p>
+
+<h3>1. Dalil Al-Qur'an</h3>
+<p>Allah SWT berfirman: <em>"Dan Dialah yang menjadikan kebun-kebun yang berjunjung dan yang tidak berjunjung, pohon korma, tanam-tanaman yang bermacam-macam buahnya... Makanlah dari buahnya (yang bermacam-macam itu) bila dia berbuah, dan tunaikanlah haknya di hari memetik hasilnya (dengan disedekahkan kepada fakir miskin)..."</em> (QS. Al-An'am: 141).</p>
+
+<h3>2. Dalil Hadits</h3>
+<p>Rasulullah SAW bersabda: <em>"Tidak ada zakat pada hasil pertanian yang kurang dari 5 wasaq (sekitar 653 kg)."</em> (HR. Bukhari dan Muslim).</p>
+
+<h3>3. Nisab dan Kadar Zakat Pertanian</h3>
+<ul>
+  <li><strong>Nisab:</strong> Batas minimal hasil panen adalah <strong>5 Wasaq</strong>, yang setara dengan <strong>653 kg gabah</strong> (atau sekitar 520 kg beras).</li>
+  <li><strong>Haul:</strong> Tidak ada syarat haul. Zakat dikeluarkan <strong>setiap kali panen</strong>.</li>
+  <li><strong>Kadar Zakat:</strong>
+    <ul>
+      <li><strong>10%</strong> jika tanaman diairi dengan air hujan atau air yang mengalir tanpa biaya (tadah hujan).</li>
+      <li><strong>5%</strong> jika tanaman diairi dengan biaya (menggunakan pompa, irigasi berbayar, dll).</li>
+    </ul>
+  </li>
+</ul>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Hasil perhitungan ini bersifat estimasi. Pastikan Anda menghitung berdasarkan berat bersih hasil panen (setelah dikeringkan jika berupa gabah).
+</div>
