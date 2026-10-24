@@ -121,3 +121,7 @@ enableRobotsTXT = true
     name = "Kalender Islam"
     url = "/kalender-islam/"
     weight = 90
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
