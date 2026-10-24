@@ -1,24 +1,119 @@
---- 
-title: "Kalkulator Zakat perdagangan" 
---- 
-<p>Halaman kalkulator untuk Zakat perdagangan sedang dalam proses pengembangan.</p> 
-<div style="margin: 30px 0; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc; text-align: center; color: #777;"> 
-  <h3>Kalkulator Zakat perdagangan</h3> 
-  <p>Fitur kalkulator akan segera hadir di sini.</p> 
-</div> 
-<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;"> 
-  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Jelajahi Zakat Lainnya:</h3> 
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;"> 
-    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a> 
-    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a> 
-    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a> 
-    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a> 
-    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a> 
-    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a> 
-    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a> 
-    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a> 
-    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a> 
-    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a> 
-    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a> 
-  </div> 
-</div> 
+---
+title: "Kalkulator Zakat Perdagangan"
+description: "Hitung zakat perdagangan (tijarah) dari aset usaha Anda. Pelajari cara menghitung aset bersih, nisab 85 gram emas, dan kadar zakat 2,5%."
+---
+
+<p>Zakat perdagangan adalah zakat yang dikenakan pada aset usaha atau barang dagangan yang telah mencapai nisab (setara 85 gram emas) dan telah berjalan selama satu tahun (haul).</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin: 30px 0;">
+  <h3 style="margin-top:0;">Hitung Zakat Perdagangan Anda</h3>
+  
+  <label>Modal Awal / Nilai Barang Dagangan (Rp):</label>
+  <input type="number" id="modal" placeholder="Contoh: 100000000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Keuntungan Bersih (Rp):</label>
+  <input type="number" id="untung" placeholder="Contoh: 20000000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Piutang Dagang Lancar (Rp):</label>
+  <input type="number" id="piutang" value="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Utang Jangka Pendek (Rp):</label>
+  <input type="number" id="utang" value="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Harga Emas Saat Ini (Rp/gram):</label>
+  <input type="number" id="hargaEmas" value="1400000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungZakatPerdagangan()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Hitung Zakat Perdagangan</button>
+</div>
+
+<div id="hasil-perdagangan" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Perhitungan</h3>
+  <p>Batas Nisab (Setara 85 gram Emas): <strong id="nisab-rp"></strong></p>
+  <p>Total Aset Bersih Dagang: <strong id="aset-bersih"></strong></p>
+  <p>Status: <strong id="status-wajib"></strong></p>
+  <h2 id="nominal-zakat" style="color: #d32f2f; margin-bottom: 0;"></h2>
+</div>
+
+<script>
+function hitungZakatPerdagangan() {
+  var modal = parseFloat(document.getElementById('modal').value) || 0;
+  var untung = parseFloat(document.getElementById('untung').value) || 0;
+  var piutang = parseFloat(document.getElementById('piutang').value) || 0;
+  var utang = parseFloat(document.getElementById('utang').value) || 0;
+  var hargaEmas = parseFloat(document.getElementById('hargaEmas').value) || 0;
+  
+  if (modal <= 0 || hargaEmas <= 0) {
+    alert("Mohon masukkan modal dan harga emas yang valid.");
+    return;
+  }
+  
+  // Aset bersih = (Modal + Untung + Piutang) - Utang
+  var asetBersih = (modal + untung + piutang) - utang;
+  var nisabGram = 85;
+  var nisabRp = nisabGram * hargaEmas;
+  var kadarZakat = 0.025; // 2.5%
+  
+  document.getElementById('nisab-rp').innerHTML = "Rp " + nisabRp.toLocaleString('id-ID');
+  document.getElementById('aset-bersih').innerHTML = "Rp " + asetBersih.toLocaleString('id-ID');
+  
+  if (asetBersih >= nisabRp) {
+    var zakat = asetBersih * kadarZakat;
+    document.getElementById('status-wajib').innerHTML = "<span style='color: green;'>Wajib Zakat</span> (Telah mencapai nisab)";
+    document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp " + zakat.toLocaleString('id-ID', {maximumFractionDigits:0});
+  } else {
+    document.getElementById('status-wajib').innerHTML = "<span style='color: orange;'>Belum Wajib Zakat</span> (Belum mencapai nisab)";
+    document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp 0";
+  }
+  
+  document.getElementById('hasil-perdagangan').style.display = 'block';
+}
+</script>
+
+<!-- NAVIGASI ZAKAT DI BAWAH KALKULATOR -->
+<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Selesai Menghitung? Jelajahi Zakat Lainnya:</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a>
+    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a>
+    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a>
+    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a>
+    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a>
+    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a>
+    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #0E7A5F; color: #0E7A5F; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">Zakat Perdagangan</a>
+    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a>
+    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a>
+    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a>
+    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a>
+  </div>
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2 style="color: #0E7A5F;">Dalil dan Ketentuan Zakat Perdagangan</h2>
+<p>Islam sangat mendorong umatnya untuk berdagang, namun harta yang didapat dari perdagangan juga memiliki kewajiban zakat jika telah memenuhi syarat tertentu. Zakat perdagangan mencakup semua barang yang diperjualbelikan, baik berupa bahan baku, barang setengah jadi, maupun barang jadi.</p>
+
+<h3>1. Dalil Al-Qur'an</h3>
+<p>Allah SWT berfirman: <em>"Hai orang-orang yang beriman, nafkahkanlah (di jalan Allah) sebagian dari hasil usahamu yang baik-baik..."</em> (QS. Al-Baqarah: 267).</p>
+
+<h3>2. Dalil Hadits</h3>
+<p>Rasulullah SAW bersabda: <em>"Tidak ada kewajiban zakat pada harta yang kurang dari 20 dinar (setara 85 gram emas). Jika engkau memiliki 20 dinar dan telah berlalu satu haul (tahun), maka zakatnya adalah setengah dinar (2,5%)."</em> (HR. Abu Dawud).</p>
+
+<h3>3. Aset yang Dihitung dalam Zakat Perdagangan</h3>
+<p>Harta yang wajib dizakati dalam perdagangan adalah <strong>Aset Lancar</strong>, yang terdiri dari:</p>
+<ul>
+  <li><strong>Modal & Barang Dagangan:</strong> Nilai dari semua barang yang siap dijual.</li>
+  <li><strong>Keuntungan:</strong> Laba bersih yang didapatkan dari penjualan.</li>
+  <li><strong>Piutang Lancar:</strong> Uang yang dijanjikan dibayar oleh pembeli (yang kemungkinan besar akan dibayar).</li>
+</ul>
+<p>Aset tersebut kemudian <strong>dikurangi dengan utang jangka pendek</strong> (utang yang harus segera dibayar dalam waktu dekat). Sedangkan aset tetap seperti gedung, tanah, kendaraan operasional, dan mesin <strong>tidak dihitung</strong> dalam zakat perdagangan (kecuali jika memang diperjualbelikan).</p>
+
+<h3>4. Nisab dan Kadar Zakat</h3>
+<ul>
+  <li><strong>Nisab:</strong> Batas minimal aset bersih. Disetarakan dengan <strong>85 gram emas</strong>.</li>
+  <li><strong>Haul:</strong> Aset tersebut harus berjalan selama <strong>1 tahun Hijriah</strong> (sekitar 354 hari).</li>
+  <li><strong>Kadar Zakat:</strong> Besarnya zakat yang dikeluarkan adalah <strong>2,5%</strong>.</li>
+</ul>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Kalkulator ini menggunakan estimasi aset dan harga emas yang Anda masukkan. Untuk perhitungan pembukuan yang lebih kompleks, disarankan berkonsultasi dengan ahli zakat atau akuntan syariah.
+</div>
