@@ -1,24 +1,105 @@
---- 
-title: "Kalkulator Zakat saham" 
---- 
-<p>Halaman kalkulator untuk Zakat saham sedang dalam proses pengembangan.</p> 
-<div style="margin: 30px 0; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc; text-align: center; color: #777;"> 
-  <h3>Kalkulator Zakat saham</h3> 
-  <p>Fitur kalkulator akan segera hadir di sini.</p> 
-</div> 
-<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;"> 
-  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Jelajahi Zakat Lainnya:</h3> 
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;"> 
-    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a> 
-    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a> 
-    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a> 
-    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a> 
-    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a> 
-    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a> 
-    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a> 
-    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a> 
-    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a> 
-    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a> 
-    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a> 
-  </div> 
-</div> 
+---
+title: "Kalkulator Zakat Saham & Reksadana"
+description: "Hitung zakat saham dan reksadana Anda secara akurat. Pelajari cara menghitung nisab setara 85 gram emas dan kadar zakat 2,5% sesuai syariat."
+---
+
+<p>Zakat saham adalah zakat yang dikenakan pada aset investasi berupa saham syariah, reksadana syariah, atau instrumen pasar modal lainnya. Saham diperlakukan layaknya aset perdagangan (barang dagangan) yang wajib dizakati jika telah mencapai nisab dan haul.</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin: 30px 0;">
+  <h3 style="margin-top:0;">Hitung Zakat Saham Anda</h3>
+  
+  <label>Total Nilai Saham/Reksadana Saat Ini (Rp):</label>
+  <input type="number" id="nilaiSaham" placeholder="Contoh: 150000000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Total Dividen Diterima (Rp) - Opsional:</label>
+  <input type="number" id="dividen" value="0" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Harga Emas Saat Ini (Rp/gram):</label>
+  <input type="number" id="hargaEmas" value="1400000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungZakatSaham()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Hitung Zakat Saham</button>
+</div>
+
+<div id="hasil-saham" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Perhitungan</h3>
+  <p>Batas Nisab (Setara 85 gram Emas): <strong id="nisab-rp"></strong></p>
+  <p>Total Aset Saham + Dividen: <strong id="total-harta"></strong></p>
+  <p>Status: <strong id="status-wajib"></strong></p>
+  <h2 id="nominal-zakat" style="color: #d32f2f; margin-bottom: 0;"></h2>
+</div>
+
+<script>
+function hitungZakatSaham() {
+  var nilaiSaham = parseFloat(document.getElementById('nilaiSaham').value) || 0;
+  var dividen = parseFloat(document.getElementById('dividen').value) || 0;
+  var hargaEmas = parseFloat(document.getElementById('hargaEmas').value) || 0;
+  
+  if (nilaiSaham <= 0 || hargaEmas <= 0) {
+    alert("Mohon masukkan nilai saham dan harga emas yang valid.");
+    return;
+  }
+  
+  var totalAset = nilaiSaham + dividen;
+  var nisabGram = 85;
+  var nisabRp = nisabGram * hargaEmas;
+  var kadarZakat = 0.025; // 2.5%
+  
+  document.getElementById('nisab-rp').innerHTML = "Rp " + nisabRp.toLocaleString('id-ID');
+  document.getElementById('total-harta').innerHTML = "Rp " + totalAset.toLocaleString('id-ID');
+  
+  if (totalAset >= nisabRp) {
+    var zakat = totalAset * kadarZakat;
+    document.getElementById('status-wajib').innerHTML = "<span style='color: green;'>Wajib Zakat</span> (Telah mencapai nisab)";
+    document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp " + zakat.toLocaleString('id-ID', {maximumFractionDigits:0});
+  } else {
+    document.getElementById('status-wajib').innerHTML = "<span style='color: orange;'>Belum Wajib Zakat</span> (Belum mencapai nisab)";
+    document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp 0";
+  }
+  
+  document.getElementById('hasil-saham').style.display = 'block';
+}
+</script>
+
+<!-- NAVIGASI ZAKAT DI BAWAH KALKULATOR -->
+<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Selesai Menghitung? Jelajahi Zakat Lainnya:</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a>
+    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a>
+    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a>
+    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a>
+    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a>
+    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a>
+    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a>
+    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a>
+    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a>
+    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #0E7A5F; color: #0E7A5F; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">Zakat Saham</a>
+    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a>
+  </div>
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2 style="color: #0E7A5F;">Dalil dan Ketentuan Zakat Saham</h2>
+<p>Saham adalah bukti kepemilikan atas suatu perusahaan. Jika Anda membeli saham untuk diperdagangkan (trading) atau untuk investasi jangka panjang (termasuk reksadana), maka saham tersebut termasuk harta yang wajib dizakati.</p>
+
+<h3>1. Dalil Al-Qur'an</h3>
+<p>Allah SWT berfirman: <em>"Hai orang-orang yang beriman, nafkahkanlah (di jalan Allah) sebagian dari hasil usahamu yang baik-baik..."</em> (QS. Al-Baqarah: 267).</p>
+
+<h3>2. Dalil Hadits</h3>
+<p>Rasulullah SAW bersabda: <em>"Tidak ada kewajiban zakat pada harta yang kurang dari 20 dinar (setara 85 gram emas). Jika engkau memiliki 20 dinar dan telah berlalu satu haul (tahun), maka zakatnya adalah setengah dinar (2,5%)."</em> (HR. Abu Dawud).</p>
+
+<h3>3. Cara Menghitung Zakat Saham</h3>
+<p>Para ulama kontemporer (seperti dalam Fatwa MUI) menyebutkan bahwa zakat saham dihitung berdasarkan <strong>nilai pasar saham</strong> pada saat jatuh tempo haul (1 tahun), ditambah dengan <strong>dividen</strong> yang telah diterima.</p>
+<ul>
+  <li><strong>Nisab:</strong> Batas minimal harta wajib zakat. Untuk saham, nisabnya disetarakan dengan <strong>85 gram emas</strong>.</li>
+  <li><strong>Haul:</strong> Harta tersebut harus dimiliki secara sempurna selama <strong>1 tahun Hijriah</strong> (sekitar 354 hari).</li>
+  <li><strong>Kadar Zakat:</strong> Besarnya zakat yang dikeluarkan adalah <strong>2,5%</strong> dari total nilai pasar saham + dividen.</li>
+</ul>
+
+<h3>4. Saham untuk Investasi Jangka Panjang</h3>
+<p>Jika saham dibeli untuk investasi jangka panjang (bukan untuk diperjualbelikan dalam waktu dekat), mayoritas ulama tetap mewajibkan zakat atas nilai pasarnya. Namun, ada juga sebagian ulama yang menghitung zakat saham berdasarkan aset bersih (net asset value) perusahaan yang bersangkutan.</p>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Nilai saham dan harga emas sangat fluktuatif. Kalkulator ini menggunakan estimasi nilai saham dan harga emas yang Anda masukkan secara manual. Hasil perhitungan bersifat estimasi.
+</div>
