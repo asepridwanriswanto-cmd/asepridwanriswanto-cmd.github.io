@@ -22,10 +22,59 @@ name = "Beranda"
 url = "/"
 weight = 10
 [[menu.main]]
-name = "Zakat"
-url = "/zakat/"
-weight = 20
-[[menu.main]]
+  name = "Zakat"
+  url = "/zakat/"
+  weight = 30
+  [[menu.main]]
+    name = "Zakat Fitrah"
+    url = "/zakat/fitrah/"
+    parent = "Zakat"
+    weight = 1
+  [[menu.main]]
+    name = "Zakat Emas"
+    url = "/zakat/emas/"
+    parent = "Zakat"
+    weight = 2
+  [[menu.main]]
+    name = "Zakat Perak"
+    url = "/zakat/perak/"
+    parent = "Zakat"
+    weight = 3
+  [[menu.main]]
+    name = "Zakat Uang & Tabungan"
+    url = "/zakat/uang/"
+    parent = "Zakat"
+    weight = 4
+  [[menu.main]]
+    name = "Zakat Penghasilan"
+    url = "/zakat/penghasilan/"
+    parent = "Zakat"
+    weight = 5
+  [[menu.main]]
+    name = "Zakat Perdagangan"
+    url = "/zakat/perdagangan/"
+    parent = "Zakat"
+    weight = 6
+  [[menu.main]]
+    name = "Zakat Pertanian"
+    url = "/zakat/pertanian/"
+    parent = "Zakat"
+    weight = 7
+  [[menu.main]]
+    name = "Zakat Peternakan"
+    url = "/zakat/peternakan/"
+    parent = "Zakat"
+    weight = 8
+  [[menu.main]]
+    name = "Zakat Saham & Reksadana"
+    url = "/zakat/saham/"
+    parent = "Zakat"
+    weight = 9
+  [[menu.main]]
+    name = "Zakat Rikaz (Temuan)"
+    url = "/zakat/rikaz/"
+    parent = "Zakat"
+    weight = 10[[menu.main]]
 name = "Waris"
 url = "/waris/"
 weight = 30
