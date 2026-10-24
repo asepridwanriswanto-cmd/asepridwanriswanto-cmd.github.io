@@ -1,24 +1,86 @@
---- 
-title: "Kalkulator Zakat rikaz" 
---- 
-<p>Halaman kalkulator untuk Zakat rikaz sedang dalam proses pengembangan.</p> 
-<div style="margin: 30px 0; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc; text-align: center; color: #777;"> 
-  <h3>Kalkulator Zakat rikaz</h3> 
-  <p>Fitur kalkulator akan segera hadir di sini.</p> 
-</div> 
-<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;"> 
-  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Jelajahi Zakat Lainnya:</h3> 
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;"> 
-    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a> 
-    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a> 
-    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a> 
-    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a> 
-    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a> 
-    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a> 
-    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a> 
-    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a> 
-    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a> 
-    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a> 
-    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a> 
-  </div> 
-</div> 
+---
+title: "Kalkulator Zakat Rikaz (Harta Karun)"
+description: "Hitung zakat rikaz atau harta karun temuan Anda. Pelajari ketentuan zakat barang temuan tanpa nisab dan haul dengan kadar zakat 20% sesuai syariat."
+---
+
+<p>Zakat Rikaz adalah zakat yang dikenakan pada harta karun atau barang temuan purbakala (harta terpendam dari zaman dahulu). Berbeda dengan zakat mal lainnya, zakat rikaz tidak disyaratkan mencapai nisab dan tidak disyaratkan menunggu haul (1 tahun).</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin: 30px 0;">
+  <h3 style="margin-top:0;">Hitung Zakat Rikaz Anda</h3>
+  
+  <label>Total Nilai Harta Karun Temuan (Rp):</label>
+  <input type="number" id="nilaiRikaz" placeholder="Contoh: 100000000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungZakatRikaz()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Hitung Zakat Rikaz</button>
+</div>
+
+<div id="hasil-rikaz" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Perhitungan</h3>
+  <p>Total Nilai Temuan: <strong id="total-harta"></strong></p>
+  <p>Status: <strong style="color: green;">Wajib Zakat (Tanpa Nisab & Haul)</strong></p>
+  <h2 id="nominal-zakat" style="color: #d32f2f; margin-bottom: 0;"></h2>
+</div>
+
+<script>
+function hitungZakatRikaz() {
+  var nilaiRikaz = parseFloat(document.getElementById('nilaiRikaz').value) || 0;
+  
+  if (nilaiRikaz <= 0) {
+    alert("Mohon masukkan total nilai harta karun yang valid.");
+    return;
+  }
+  
+  // Kadar zakat rikaz adalah 20% (1/5)
+  var kadarZakat = 0.20; 
+  var zakat = nilaiRikaz * kadarZakat;
+  
+  document.getElementById('total-harta').innerHTML = "Rp " + nilaiRikaz.toLocaleString('id-ID');
+  document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp " + zakat.toLocaleString('id-ID', {maximumFractionDigits:0});
+  
+  document.getElementById('hasil-rikaz').style.display = 'block';
+}
+</script>
+
+<!-- NAVIGASI ZAKAT DI BAWAH KALKULATOR -->
+<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Selesai Menghitung? Jelajahi Zakat Lainnya:</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a>
+    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a>
+    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a>
+    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a>
+    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a>
+    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a>
+    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a>
+    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a>
+    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a>
+    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a>
+    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #0E7A5F; color: #0E7A5F; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">Zakat Rikaz</a>
+  </div>
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2 style="color: #0E7A5F;">Dalil dan Ketentuan Zakat Rikaz</h2>
+<p>Rikaz secara bahasa berarti sesuatu yang terpendam. Dalam istilah syariat, rikaz adalah harta terpendam (harta karun) dari masa jahiliyah (sebelum Islam) yang ditemukan oleh seseorang.</p>
+
+<h3>1. Dalil Hadits</h3>
+<p>Rasulullah SAW bersabda: <em>"...Dan pada rikaz (harta karun) wajib dikeluarkan zakatnya sebesar seperlima (20%)."</em> (HR. Bukhari dan Muslim).</p>
+
+<h3>2. Syarat dan Ketentuan Zakat Rikaz</h3>
+<ul>
+  <li><strong>Tanpa Nisab:</strong> Berapa pun jumlah harta karun yang ditemukan, jika sudah mencapai kadar yang bisa disebut harta, maka wajib dizakati.</li>
+  <li><strong>Tanpa Haul:</strong> Zakat rikaz wajib ditunaikan segera pada saat harta tersebut ditemukan, tidak perlu menunggu satu tahun.</li>
+  <li><strong>Kadar Zakat:</strong> Besarnya zakat yang dikeluarkan adalah <strong>20% (seperlima)</strong> dari total harta temuan.</li>
+</ul>
+
+<h3>3. Perbedaan Rikaz dan Luqathah</h3>
+<p>Penting untuk membedakan antara <strong>Rikaz</strong> dan <strong>Luqathah</strong> (barang temuan zaman modern):</p>
+<ul>
+  <li><strong>Rikaz:</strong> Harta terpendam dari zaman dahulu yang tidak diketahui pemiliknya (misal: koin emas kuno di dalam tanah). Zakatnya 20%.</li>
+  <li><strong>Luqathah:</strong> Barang hilang milik seseorang di zaman modern (misal: menemukan dompet berisi uang di jalan). Hukumnya adalah diumumkan selama 1 tahun. Jika tidak ada yang mengklaim, maka barang tersebut menjadi milik penemu, dan jika ingin dizakati, maka mengikuti ketentuan zakat mal biasa (2,5% jika mencapai nisab dan haul).</li>
+</ul>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Kalkulator ini khusus untuk Zakat Rikaz (harta karun terpendam). Untuk barang temuan biasa (luqathah), silakan gunakan kalkulator Zakat Uang.
+</div>
