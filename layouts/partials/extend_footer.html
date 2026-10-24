@@ -1,23 +1,33 @@
-<!-- KODE TOMBOL SHARE MURNI JAVASCRIPT -->
+<style>
+  .share-btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; 
+    background: #ffffff; color: #555555; text-decoration: none; 
+    border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; 
+    font-weight: 600; transition: all 0.3s ease; cursor: pointer;
+  }
+  .share-btn:hover {
+    background: #f8f9fa; border-color: #0E7A5F; color: #0E7A5F;
+    transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+</style>
+
 <div id="custom-share-container" style="display: none; max-width: 800px; margin: 50px auto 20px auto; padding: 20px; border-top: 1px solid #eee; text-align: center;">
   <p style="font-size: 0.9em; color: #666; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Halaman Ini:</p>
   <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-    <!-- Tambahan data-no-instant agar tidak dicegat oleh tema -->
-    <a id="share-wa" href="#" data-no-instant target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">💬 WhatsApp</a>
     
-    <a id="share-fb" href="#" data-no-instant target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🔵 Facebook</a>
-    
-    <a id="share-x" href="#" data-no-instant target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">𝕏 X / Twitter</a>
-    
-    <a id="share-tg" href="#" data-no-instant target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">✈️ Telegram</a>
-    
-    <a id="share-th" href="#" data-no-instant target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🧵 Threads</a>
+    <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener noreferrer" data-no-instant>💬 WhatsApp</a>
+    <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener noreferrer" data-no-instant>🔵 Facebook</a>
+    <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener noreferrer" data-no-instant>𝕏 X / Twitter</a>
+    <a class="share-btn" id="share-tg" href="#" target="_blank" rel="noopener noreferrer" data-no-instant>✈️ Telegram</a>
+    <a class="share-btn" id="share-th" href="#" target="_blank" rel="noopener noreferrer" data-no-instant>🧵 Threads</a>
+
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const path = window.location.pathname;
+    // Daftar halaman yang dipasangi tombol share
     const targetPages = ["/jadwal-sholat/", "/waris/", "/hadits/", "/dzikir/", "/doa/", "/kiblat/", "/kalender-islam/"];
     const isTargetPage = targetPages.some(page => path.includes(page));
 
@@ -28,17 +38,28 @@
       const pUrl = encodeURIComponent(window.location.href);
       const pTitle = encodeURIComponent(document.title);
       
+      // Mengisi link URL ke masing-masing tombol
       document.getElementById("share-wa").href = "https://wa.me/?text=" + pTitle + "%20" + pUrl;
       document.getElementById("share-fb").href = "https://www.facebook.com/sharer/sharer.php?u=" + pUrl;
       document.getElementById("share-x").href = "https://twitter.com/intent/tweet?text=" + pTitle + "&url=" + pUrl;
       document.getElementById("share-tg").href = "https://t.me/share/url?url=" + pUrl + "&text=" + pTitle;
       document.getElementById("share-th").href = "https://threads.net/intent/post?text=" + pTitle + "%20" + pUrl;
 
-      // Memindahkan posisi ke atas footer (Opsional, tapi ini memperbaikinya)
+      // Pindahkan tombol ke atas footer
       const footer = document.querySelector(".footer");
       if (footer && container) {
         footer.parentNode.insertBefore(container, footer);
       }
+
+      // TRIK PEMAKSA: Buka tab baru secara manual agar tidak dicegat InstantClick
+      const shareBtns = document.querySelectorAll(".share-btn");
+      shareBtns.forEach(btn => {
+        btn.addEventListener("click", function(e) {
+          e.preventDefault(); 
+          e.stopPropagation(); // Hentikan penyebaran event ke InstantClick
+          window.open(this.href, '_blank'); // Buka paksa di tab baru
+        });
+      });
     }
   });
 </script>
