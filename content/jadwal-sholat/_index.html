@@ -19,87 +19,92 @@ description: "Jadwal waktu sholat lima waktu hari ini untuk seluruh kota di Indo
   <p id="error-msg" style="color: #d32f2f; display: none; font-weight: bold;">Kota tidak ditemukan. Pastikan ejaan nama kota benar (Gunakan bahasa Indonesia).</p>
 </div>
 
-<script>
-async function cariJadwal() {
-  var kota = document.getElementById("kota").value;
-  if (!kota) { alert("Masukkan nama kota terlebih dahulu!"); return; }
-
-  var hasilDiv = document.getElementById("hasil-sholat");
-  var listSholat = document.getElementById("list-sholat");
-  var judulKota = document.getElementById("judul-kota");
-  var tanggalSholat = document.getElementById("tanggal-sholat");
-  var errorMsg = document.getElementById("error-msg");
-
-  listSholat.innerHTML = "Memuat data...";
-  hasilDiv.style.display = "block";
-  errorMsg.style.display = "none";
-
-  try {
-    var response = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${kota}&country=Indonesia&method=20`);
-    var data = await response.json();
-
-    if (data.code === 200) {
-      var timings = data.data.timings;
-      var date = data.data.date.readable;
-      
-      judulKota.innerHTML = "Jadwal Sholat " + kota;
-      tanggalSholat.innerHTML = date;
-      
-      listSholat.innerHTML = `
-        <li><strong>Imsak:</strong> ${timings.Imsak}</li>
-        <li><strong>Subuh:</strong> ${timings.Fajr}</li>
-        <li><strong>Terbit:</strong> ${timings.Sunrise}</li>
-        <li><strong>Dzuhur:</strong> ${timings.Dhuhr}</li>
-        <li><strong>Ashar:</strong> ${timings.Asr}</li>
-        <li><strong>Maghrib:</strong> ${timings.Maghrib}</li>
-        <li><strong>Isya:</strong> ${timings.Isha}</li>
-      `;
-    } else {
-      throw new Error("Kota tidak ditemukan");
-    }
-  } catch (error) {
-    listSholat.innerHTML = "";
-    tanggalSholat.innerHTML = "";
-    errorMsg.style.display = "block";
-  }
-}
-
-window.onload = function() { cariJadwal(); };
-</script>
-
-<!-- BAGIAN TOMBOL SHARE START -->
+<!-- ========================================== -->
+<!-- KODE TOMBOL SHARE LANGSUNG (TANPA JS RUMIT) -->
+<!-- ========================================== -->
 <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #eee; text-align: center;">
-  <p style="font-size: 0.9em; color: #666; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Jadwal Ini:</p>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;" id="share-buttons-container">
-    <!-- Tombol akan dibuat otomatis oleh JavaScript -->
+  <p style="font-size: 0.9em; color: #666; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Halaman Ini:</p>
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+    
+    <a id="share-wa" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">
+      💬 WhatsApp
+    </a>
+    
+    <a id="share-fb" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">
+      🔵 Facebook
+    </a>
+
+    <a id="share-x" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">
+      𝕏 X / Twitter
+    </a>
+    
+    <a id="share-tg" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">
+      ✈️ Telegram
+    </a>
+
+    <a id="share-th" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">
+      🧵 Threads
+    </a>
+
   </div>
 </div>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    var pageTitle = encodeURIComponent(document.title);
-    var pageUrl = encodeURIComponent(window.location.href);
-    var container = document.getElementById("share-buttons-container");
+  // 1. Script untuk Jadwal Sholat
+  async function cariJadwal() {
+    var kota = document.getElementById("kota").value;
+    if (!kota) { alert("Masukkan nama kota terlebih dahulu!"); return; }
+
+    var hasilDiv = document.getElementById("hasil-sholat");
+    var listSholat = document.getElementById("list-sholat");
+    var judulKota = document.getElementById("judul-kota");
+    var tanggalSholat = document.getElementById("tanggal-sholat");
+    var errorMsg = document.getElementById("error-msg");
+
+    listSholat.innerHTML = "Memuat data...";
+    hasilDiv.style.display = "block";
+    errorMsg.style.display = "none";
+
+    try {
+      var response = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${kota}&country=Indonesia&method=20`);
+      var data = await response.json();
+
+      if (data.code === 200) {
+        var timings = data.data.timings;
+        var date = data.data.date.readable;
+        judulKota.innerHTML = "Jadwal Sholat " + kota;
+        tanggalSholat.innerHTML = date;
+        
+        listSholat.innerHTML = `
+          <li><strong>Imsak:</strong> ${timings.Imsak}</li>
+          <li><strong>Subuh:</strong> ${timings.Fajr}</li>
+          <li><strong>Terbit:</strong> ${timings.Sunrise}</li>
+          <li><strong>Dzuhur:</strong> ${timings.Dhuhr}</li>
+          <li><strong>Ashar:</strong> ${timings.Asr}</li>
+          <li><strong>Maghrib:</strong> ${timings.Maghrib}</li>
+          <li><strong>Isya:</strong> ${timings.Isha}</li>
+        `;
+      } else {
+        throw new Error("Kota tidak ditemukan");
+      }
+    } catch (error) {
+      listSholat.innerHTML = "";
+      tanggalSholat.innerHTML = "";
+      errorMsg.style.display = "block";
+    }
+  }
+
+  window.onload = function() { 
+    cariJadwal(); 
     
-    if (!container) return; 
-
-    var links = [
-      { name: "WhatsApp", icon: "💬", url: "https://wa.me/?text=" + pageTitle + "%20" + pageUrl },
-      { name: "Facebook", icon: "🔵", url: "https://www.facebook.com/sharer/sharer.php?u=" + pageUrl },
-      { name: "X", icon: "𝕏", url: "https://twitter.com/intent/tweet?text=" + pageTitle + "&url=" + pageUrl },
-      { name: "Telegram", icon: "✈️", url: "https://t.me/share/url?url=" + pageUrl + "&text=" + pageTitle }
-    ];
-
-    links.forEach(function(link) {
-      var a = document.createElement("a");
-      a.href = link.url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      a.style.cssText = "display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: #ffffff; color: #555555; text-decoration: none; border: 1px solid #dddddd; border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.02);";
-      a.onmouseover = function() { this.style.transform = 'translateY(-2px)'; this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)'; this.style.borderColor = '#0E7A5F'; this.style.color = '#0E7A5F'; };
-      a.onmouseout = function() { this.style.transform = 'translateY(0)'; this.style.boxShadow = '0 2px 4px rgba(0,0,0,0.02)'; this.style.borderColor = '#dddddd'; this.style.color = '#555555'; };
-      a.innerHTML = "<span style='font-size: 1.1em;'>" + link.icon + "</span> " + link.name;
-      container.appendChild(a);
-    });
-  });
+    // 2. Script untuk Mengisi Link Share
+    var pUrl = encodeURIComponent(window.location.href);
+    var pTitle = encodeURIComponent(document.title);
+    
+    document.getElementById('share-wa').href = 'https://wa.me/?text=' + pTitle + '%20' + pUrl;
+    document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + pUrl;
+    document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + pTitle + '&url=' + pUrl;
+    document.getElementById('share-tg').href = 'https://t.me/share/url?url=' + pUrl + '&text=' + pTitle;
+    document.getElementById('share-th').href = 'https://threads.net/intent/post?text=' + pTitle + '%20' + pUrl;
+  };
 </script>
-<!-- BAGIAN TOMBOL SHARE END -->
