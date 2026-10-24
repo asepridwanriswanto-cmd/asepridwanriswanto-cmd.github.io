@@ -5,12 +5,16 @@ theme = "papermod"
 enableRobotsTXT = true
 
 [params]
-author = "SahabatMuslim"
-description = "Sahabat harian Muslim Indonesia: berita Islam, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
-defaultTheme = "auto"
-ShowReadingTime = true
-ShowShareButtons = true
-mainWidth = "1000px"
+  author = "SahabatMuslim"
+  description = "Sahabat harian Muslim Indonesia: berita Islam, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  mainWidth = "1000px"
+
+# Perbaikan Security agar file HTML bisa dibaca
+[security]
+  allowContent = ['text/html', 'text/markdown']
 
 [menu]
   [[menu.main]]
