@@ -1,24 +1,100 @@
---- 
-title: "Kalkulator Zakat emas" 
---- 
-<p>Halaman kalkulator untuk Zakat emas sedang dalam proses pengembangan.</p> 
-<div style="margin: 30px 0; padding: 30px; background: #f9f9f9; border-radius: 8px; border: 1px dashed #ccc; text-align: center; color: #777;"> 
-  <h3>Kalkulator Zakat emas</h3> 
-  <p>Fitur kalkulator akan segera hadir di sini.</p> 
-</div> 
-<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;"> 
-  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Jelajahi Zakat Lainnya:</h3> 
-  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;"> 
-    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a> 
-    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a> 
-    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Emas</a> 
-    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a> 
-    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a> 
-    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a> 
-    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a> 
-    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a> 
-    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a> 
-    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a> 
-    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a> 
-  </div> 
-</div> 
+---
+title: "Kalkulator Zakat Emas"
+description: "Hitung zakat emas Anda secara akurat. Pelajari nisab 85 gram, kadar zakat 2,5%, dan dalil kewajiban zakat emas dalam Islam."
+---
+
+<p>Zakat emas adalah zakat yang dikenakan atas kepemilikan emas (baik dalam bentuk perhiasan yang disimpan, batangan, maupun koin) yang telah mencapai batas minimal (nisab) dan telah dimiliki selama satu tahun (haul).</p>
+
+<div style="background:#f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin: 30px 0;">
+  <h3 style="margin-top:0;">Hitung Zakat Emas Anda</h3>
+  
+  <label>Berat Emas yang Disimpan (gram):</label>
+  <input type="number" id="beratEmas" placeholder="Contoh: 100" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <label>Harga Emas Saat Ini (Rp/gram):</label>
+  <input type="number" id="hargaEmas" value="1400000" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px;">
+  
+  <button onclick="hitungEmas()" style="background: #0E7A5F; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 10px;">Hitung Zakat Emas</button>
+</div>
+
+<div id="hasil-emas" style="display:none; background:#e8f5e9; padding: 20px; border-radius: 8px; border-left: 5px solid #0E7A5F; margin-bottom: 30px;">
+  <h3 style="margin-top:0; color:#0E7A5F;">Hasil Perhitungan</h3>
+  <p>Batas Nisab (85 gram): <strong id="nisab-rp"></strong></p>
+  <p>Total Nilai Emas Anda: <strong id="total-harta"></strong></p>
+  <p>Status: <strong id="status-wajib"></strong></p>
+  <h2 id="nominal-zakat" style="color: #d32f2f; margin-bottom: 0;"></h2>
+</div>
+
+<script>
+function hitungEmas() {
+  var berat = parseFloat(document.getElementById('beratEmas').value) || 0;
+  var harga = parseFloat(document.getElementById('hargaEmas').value) || 0;
+  
+  if (berat <= 0 || harga <= 0) {
+    alert("Mohon masukkan berat emas dan harga emas yang valid.");
+    return;
+  }
+  
+  var nisabGram = 85;
+  var nisabRp = nisabGram * harga;
+  var totalNilai = berat * harga;
+  var kadarZakat = 0.025; // 2.5%
+  
+  document.getElementById('nisab-rp').innerHTML = "Rp " + nisabRp.toLocaleString('id-ID');
+  document.getElementById('total-harta').innerHTML = "Rp " + totalNilai.toLocaleString('id-ID');
+  
+  if (totalNilai >= nisabRp) {
+    var zakat = totalNilai * kadarZakat;
+    document.getElementById('status-wajib').innerHTML = "<span style='color: green;'>Wajib Zakat</span> (Telah mencapai nisab)";
+    document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp " + zakat.toLocaleString('id-ID', {maximumFractionDigits:0});
+  } else {
+    document.getElementById('status-wajib').innerHTML = "<span style='color: orange;'>Belum Wajib Zakat</span> (Belum mencapai nisab)";
+    document.getElementById('nominal-zakat').innerHTML = "Zakat yang harus dibayar: Rp 0";
+  }
+  
+  document.getElementById('hasil-emas').style.display = 'block';
+}
+</script>
+
+<!-- NAVIGASI ZAKAT DI BAWAH KALKULATOR -->
+<div style="margin: 40px 0; padding: 20px; background: #f1f8e9; border-radius: 8px; border: 1px solid #c8e6c9;">
+  <h3 style="color: #0E7A5F; margin-top: 0; font-size: 1.1em;">Selesai Menghitung? Jelajahi Zakat Lainnya:</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
+    <a href="/zakat/" style="padding: 8px 12px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">&larr; Menu Utama</a>
+    <a href="/zakat/fitrah/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Fitrah</a>
+    <a href="/zakat/emas/" style="padding: 8px 12px; background: #fff; border: 1px solid #0E7A5F; color: #0E7A5F; text-decoration: none; border-radius: 4px; font-size: 0.9em; font-weight: bold;">Zakat Emas</a>
+    <a href="/zakat/perak/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perak</a>
+    <a href="/zakat/uang/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Uang</a>
+    <a href="/zakat/penghasilan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Penghasilan</a>
+    <a href="/zakat/perdagangan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Perdagangan</a>
+    <a href="/zakat/pertanian/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Pertanian</a>
+    <a href="/zakat/peternakan/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Peternakan</a>
+    <a href="/zakat/saham/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Saham</a>
+    <a href="/zakat/rikaz/" style="padding: 8px 12px; background: #fff; border: 1px solid #ccc; color: #333; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Zakat Rikaz</a>
+  </div>
+</div>
+
+<hr style="margin: 40px 0; border: 0; border-top: 1px solid #ddd;">
+
+<h2 style="color: #0E7A5F;">Dalil dan Ketentuan Zakat Emas</h2>
+<p>Emas adalah salah satu bentuk harta (mal) yang wajib dizakati jika telah memenuhi syaratnya. Baik emas tersebut berbentuk perhiasan yang disimpan (bukan dipakai sehari-hari), logam mulia, batangan, maupun koin.</p>
+
+<h3>1. Dalil Al-Qur'an</h3>
+<p>Allah SWT berfirman: <em>"Dan orang-orang yang menyimpan emas dan perak dan tidak menafkahkannya pada jalan Allah, maka beritahukanlah kepada mereka (bahwa mereka akan mendapat) siksa yang pedih."</em> (QS. At-Taubah: 34).</p>
+
+<h3>2. Dalil Hadits</h3>
+<p>Rasulullah SAW bersabda: <em>"Tidak ada kewajiban zakat pada harta yang kurang dari 20 dinar (setara 85 gram emas). Jika engkau memiliki 20 dinar dan telah berlalu satu haul (tahun), maka zakatnya adalah setengah dinar (2,5%)."</em> (HR. Abu Dawud).</p>
+
+<h3>3. Nisab dan Kadar Zakat Emas</h3>
+<ul>
+  <li><strong>Nisab:</strong> Batas minimal harta wajib zakat. Untuk emas, nisabnya adalah <strong>85 gram</strong>.</li>
+  <li><strong>Haul:</strong> Harta tersebut harus dimiliki secara sempurna selama <strong>1 tahun Hijriah</strong> (sekitar 354 hari).</li>
+  <li><strong>Kadar Zakat:</strong> Besarnya zakat yang dikeluarkan adalah <strong>2,5%</strong> dari total nilai emas.</li>
+</ul>
+
+<h3>4. Emas Perhiasan yang Dipakai</h3>
+<p>Menurut mayoritas ulama (madzhab Syafi'i), emas perhiasan yang murni dipakai untuk berhias oleh perempuan dan tidak berlebihan, tidak wajib dizakati. Namun, jika perhiasan tersebut disimpan untuk investasi atau jumlahnya berlebihan (melebihi kebiasaan wajar), maka wajib dizakati.</p>
+
+<div style="background: #fff3cd; padding: 15px; border-left: 5px solid #ffc107; margin-top: 20px;">
+  <strong>Disclaimer:</strong> Harga emas sangat fluktuatif setiap hari. Kalkulator ini menggunakan harga emas yang Anda masukkan secara manual. Hasil perhitungan bersifat estimasi.
+</div>
