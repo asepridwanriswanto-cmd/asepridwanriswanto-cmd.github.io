@@ -129,3 +129,20 @@ enableRobotsTXT = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+[menu]
+  [[menu.footer]]
+    name = "Tentang"
+    url = "/tentang/"
+    weight = 10
+  [[menu.footer]]
+    name = "Kontak"
+    url = "/kontak/"
+    weight = 20
+  [[menu.footer]]
+    name = "Disclaimer"
+    url = "/disclaimer/"
+    weight = 30
+  [[menu.footer]]
+    name = "Kebijakan Privasi"
+    url = "/privacy-policy/"
+    weight = 40
