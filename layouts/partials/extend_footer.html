@@ -64,64 +64,53 @@
   });
 </script>
 
+<!-- MENU MOBILE KUSTOM (100% Kendali Kita) -->
+<div id="custom-mobile-menu" style="display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background: var(--theme); z-index: 9999; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 10px 0;">
+  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center;">
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Beranda</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/berita/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Berita</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/zakat/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Zakat</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/waris/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Waris</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/hadits/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Hadits</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/dzikir/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Dzikir</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/doa/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Doa</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/jadwal-sholat/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Jadwal Sholat</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/kiblat/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Kiblat</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/kalender-islam/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Kalender Islam</a></li>
+  </ul>
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Hanya jalankan di layar HP
     if (window.innerWidth <= 768) {
-      // Cari elemen menu (bisa berupa id="menu" atau class="menu")
-      const menu = document.getElementById("menu") || document.querySelector(".menu");
-      const header = document.querySelector(".header");
-      
-      if (menu && header) {
-        // Sembunyikan menu asli secara paksa
-        menu.style.display = "none";
+      // Sembunyikan menu bawaan PaperMod
+      const defaultMenu = document.querySelector("#menu");
+      if (defaultMenu) defaultMenu.style.display = "none";
 
-        // Buat tombol garis tiga
+      // Tambahkan tombol Hamburger (Garis Tiga)
+      const header = document.querySelector(".header");
+      if (header && !document.querySelector(".custom-hamburger-btn")) {
         const btn = document.createElement("button");
         btn.innerHTML = "☰";
-        btn.style.cssText = "font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; padding: 0 10px;";
-
-        // Taruh tombol di header
+        btn.className = "custom-hamburger-btn";
+        btn.style.cssText = "font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; padding: 0 10px; z-index: 10000;";
+        
         header.style.display = "flex";
         header.style.alignItems = "center";
         header.appendChild(btn);
 
-        // Logika saat tombol diklik
+        const customMenu = document.getElementById("custom-mobile-menu");
+        
+        // Logika buka/tutup menu
         btn.addEventListener("click", function(e) {
           e.preventDefault();
-          // Jika menu sedang tersembunyi, tampilkan dengan gaya paksa
-          if (menu.style.display === "none" || menu.style.display === "") {
-            menu.style.display = "flex";
-            menu.style.flexDirection = "column";
-            menu.style.position = "absolute";
-            menu.style.top = "60px";
-            menu.style.left = "0";
-            menu.style.width = "100%";
-            // Gunakan warna background solid
-            menu.style.backgroundColor = "var(--theme, #fff)"; 
-            menu.style.zIndex = "9999";
-            menu.style.padding = "10px 0";
-            menu.style.boxShadow = "0 10px 15px rgba(0,0,0,0.1)";
-            menu.style.margin = "0";
-            
-            // Rapikan list di dalamnya
-            Array.from(menu.children).forEach(li => {
-              li.style.width = "100%";
-              li.style.margin = "0";
-              li.style.padding = "12px 20px";
-              li.style.textAlign = "center";
-              li.style.borderBottom = "1px solid var(--border, #eee)";
-              // Pastikan link di dalamnya juga terlihat
-              const a = li.querySelector("a");
-              if(a) {
-                a.style.color = "var(--content, #333)";
-                a.style.fontWeight = "600";
-                a.style.display = "block";
-              }
-            });
+          if (customMenu.style.display === "none") {
+            customMenu.style.display = "block";
+            btn.innerHTML = "✕"; // Ikon silang saat terbuka
           } else {
-            // Sembunyikan kembali jika diklik lagi
-            menu.style.display = "none";
+            customMenu.style.display = "none";
+            btn.innerHTML = "☰";
           }
         });
       }
