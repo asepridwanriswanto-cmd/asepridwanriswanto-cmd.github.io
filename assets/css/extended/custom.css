@@ -13,20 +13,7 @@
     margin: 0 !important;
 }
 
-/* 3. Perbaikan untuk Layar HP (Mobile) */
-@media screen and (max-width: 768px) {
-    /* Memaksa menu menjadi tombol Hamburger (garis 3) */
-    .header {
-        padding: 10px 15px !important;
-    }
-    
-    /* Menyembunyikan menu panjang di HP */
-    .menu {
-        display: none !important; 
-    }
-    
-    /* Menampilkan tombol garis tiga */
-    #menu-trigger {
-        display: block !important;
-    }
+/* 3. Memberi jarak pada header */
+.header {
+    padding: 10px 15px !important;
 }

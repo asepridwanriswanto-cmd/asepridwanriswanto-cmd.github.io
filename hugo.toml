@@ -10,7 +10,7 @@ enableRobotsTXT = true
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = false
-  mainWidth = "1000px"
+  # mainWidth = "1000px"
 
 # Perbaikan Security agar file HTML bisa dibaca
 [security]
