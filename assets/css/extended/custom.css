@@ -1,9 +1,2 @@
-/* Hanya menyembunyikan ikon bulan dan mewarnai logo */
-#theme-toggle, .theme-toggle {
-    display: none !important;
-}
-.logo a {
-    color: #0E7A5F !important;
-    font-weight: 800 !important;
-    font-size: 1.5rem !important;
-}
+#theme-toggle, .theme-toggle { display: none !important; }
+.logo a { color: #0E7A5F !important; font-weight: 800 !important; font-size: 1.5rem !important; }

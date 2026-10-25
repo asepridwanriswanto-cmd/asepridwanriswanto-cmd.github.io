@@ -63,3 +63,58 @@
     }
   });
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Cek apakah pengunjung menggunakan HP
+    if (window.innerWidth <= 768) {
+      const menu = document.querySelector("#menu");
+      const header = document.querySelector(".header");
+      const logo = document.querySelector(".logo");
+
+      if (menu && header && logo) {
+        // 1. Sembunyikan menu meluber bawaan
+        menu.style.display = "none";
+
+        // 2. Buat tombol Garis Tiga (Hamburger)
+        const btn = document.createElement("button");
+        btn.innerHTML = "☰"; 
+        btn.style.cssText = "font-size: 2rem; background: none; border: none; color: #0E7A5F; cursor: pointer; margin-left: auto; padding: 0 10px;";
+
+        // 3. Taruh tombol di sebelah kanan logo
+        header.style.display = "flex";
+        header.style.alignItems = "center";
+        header.appendChild(btn);
+
+        // 4. Logika saat tombol diklik
+        btn.addEventListener("click", function() {
+          if (menu.style.display === "none") {
+            // Tampilkan menu ke bawah dengan rapi
+            menu.style.display = "flex";
+            menu.style.flexDirection = "column";
+            menu.style.position = "absolute";
+            menu.style.top = "60px";
+            menu.style.left = "0";
+            menu.style.width = "100%";
+            menu.style.background = "#ffffff";
+            menu.style.padding = "15px 0";
+            menu.style.boxShadow = "0 10px 15px rgba(0,0,0,0.1)";
+            menu.style.zIndex = "9999";
+            menu.style.margin = "0";
+            
+            // Rapikan item menu
+            Array.from(menu.children).forEach(li => {
+              li.style.width = "100%";
+              li.style.margin = "0";
+              li.style.textAlign = "center";
+              li.style.padding = "10px 0";
+              li.style.borderBottom = "1px solid #f0f0f0";
+            });
+          } else {
+            menu.style.display = "none";
+          }
+        });
+      }
+    }
+  });
+</script>
