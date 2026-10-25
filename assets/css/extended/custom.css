@@ -1,64 +1,9 @@
-/* 1. Sembunyikan Ikon Tema Bawaan */
+/* Hanya menyembunyikan ikon bulan dan mewarnai logo */
 #theme-toggle, .theme-toggle {
     display: none !important;
 }
-
-/* 2. Merapikan Judul */
 .logo a {
-    font-size: 1.6rem !important; 
-    font-weight: 800 !important; 
-    letter-spacing: -0.5px;      
-    color: #0E7A5F !important;   
-    text-decoration: none;
-    margin: 0 !important;
-}
-
-/* 3. MEMAKSA MENU HP (HAMBURGER) BEKERJA */
-@media screen and (max-width: 768px) {
-    /* Sembunyikan total menu meluber yang ada di screenshot Anda */
-    #menu, .menu {
-        display: none !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background: #ffffff;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        z-index: 999;
-        padding: 10px 0;
-    }
-
-    /* Tampilkan menu turun ke bawah JIKA tombol garis tiga diklik */
-    #menu-toggle:checked ~ #menu,
-    #menu-toggle:checked ~ .menu {
-        display: flex !important;
-    }
-
-    /* PAKSA ikon garis tiga (Hamburger) untuk muncul di pojok kanan */
-    #menu-toggle, .menu-toggle {
-        display: flex !important;
-        cursor: pointer;
-        padding: 10px;
-    }
-
-    /* Pastikan gambar ikon garis tiga dari tema terlihat jelas */
-    .menu-toggle svg {
-        display: block !important;
-        width: 28px;
-        height: 28px;
-        stroke: #0E7A5F !important;
-    }
-
-    /* Rapikan daftar menu agar menumpuk ke bawah (vertikal) */
-    #menu li, .menu li {
-        width: 100% !important;
-        margin: 0 !important;
-    }
-    #menu li a, .menu li a {
-        display: block !important;
-        padding: 12px 20px !important;
-        border-bottom: 1px solid #f0f0f0;
-        color: #333;
-    }
+    color: #0E7A5F !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
 }
