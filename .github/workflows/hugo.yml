@@ -39,17 +39,6 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install Dependencies
-        run: npm install @extractus/feed-extractor
-
-      - name: Fetch News
-        run: node fetch-news.js
-
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache

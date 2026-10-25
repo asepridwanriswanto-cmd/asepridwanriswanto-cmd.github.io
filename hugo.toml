@@ -26,8 +26,8 @@ enableRobotsTXT = true
     url = "/"
     weight = 10
   [[menu.main]]
-    name = "Berita"
-    url = "/berita/"
+    name = "Artikel"
+    url = "/artikel/"
     weight = 20
   [[menu.main]]
     name = "Zakat"
