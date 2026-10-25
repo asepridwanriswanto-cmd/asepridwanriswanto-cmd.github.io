@@ -45,11 +45,11 @@
       document.getElementById("share-tg").href = "https://t.me/share/url?url=" + pUrl + "&text=" + pTitle;
       document.getElementById("share-th").href = "https://threads.net/intent/post?text=" + pTitle + "%20" + pUrl;
 
-      // Pindahkan tombol ke atas footer
-      const footer = document.querySelector(".footer");
-      if (footer && container) {
-        footer.parentNode.insertBefore(container, footer);
-      }
+      // Pindahkan tombol ke tepat di bawah konten utama
+      const postContent = document.querySelector(".post-content");
+      if (postContent && container) {
+                postContent.appendChild(container); // Menempelkan di dalam kotak konten, di bagian paling bawah
+                 }
 
       // TRIK PEMAKSA: Buka tab baru secara manual agar tidak dicegat InstantClick
       const shareBtns = document.querySelectorAll(".share-btn");
