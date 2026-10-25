@@ -68,14 +68,17 @@
   document.addEventListener("DOMContentLoaded", function() {
     // Hanya jalankan di layar HP
     if (window.innerWidth <= 768) {
-      const menu = document.querySelector("#menu");
+      // Cari elemen menu (bisa berupa id="menu" atau class="menu")
+      const menu = document.getElementById("menu") || document.querySelector(".menu");
       const header = document.querySelector(".header");
       
-      if (menu && header && !document.querySelector(".custom-hamburger")) {
+      if (menu && header) {
+        // Sembunyikan menu asli secara paksa
+        menu.style.display = "none";
+
         // Buat tombol garis tiga
         const btn = document.createElement("button");
         btn.innerHTML = "☰";
-        btn.className = "custom-hamburger";
         btn.style.cssText = "font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; padding: 0 10px;";
 
         // Taruh tombol di header
@@ -83,10 +86,43 @@
         header.style.alignItems = "center";
         header.appendChild(btn);
 
-        // Logika buka/tutup menu saat tombol diklik
+        // Logika saat tombol diklik
         btn.addEventListener("click", function(e) {
           e.preventDefault();
-          menu.classList.toggle("show-menu");
+          // Jika menu sedang tersembunyi, tampilkan dengan gaya paksa
+          if (menu.style.display === "none" || menu.style.display === "") {
+            menu.style.display = "flex";
+            menu.style.flexDirection = "column";
+            menu.style.position = "absolute";
+            menu.style.top = "60px";
+            menu.style.left = "0";
+            menu.style.width = "100%";
+            // Gunakan warna background solid
+            menu.style.backgroundColor = "var(--theme, #fff)"; 
+            menu.style.zIndex = "9999";
+            menu.style.padding = "10px 0";
+            menu.style.boxShadow = "0 10px 15px rgba(0,0,0,0.1)";
+            menu.style.margin = "0";
+            
+            // Rapikan list di dalamnya
+            Array.from(menu.children).forEach(li => {
+              li.style.width = "100%";
+              li.style.margin = "0";
+              li.style.padding = "12px 20px";
+              li.style.textAlign = "center";
+              li.style.borderBottom = "1px solid var(--border, #eee)";
+              // Pastikan link di dalamnya juga terlihat
+              const a = li.querySelector("a");
+              if(a) {
+                a.style.color = "var(--content, #333)";
+                a.style.fontWeight = "600";
+                a.style.display = "block";
+              }
+            });
+          } else {
+            // Sembunyikan kembali jika diklik lagi
+            menu.style.display = "none";
+          }
         });
       }
     }
