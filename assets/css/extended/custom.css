@@ -1,24 +1,87 @@
-/* 1. Sembunyikan Ikon Tema Bawaan */
-#theme-toggle, .theme-toggle { 
-    display: none !important; 
+/* =========================================
+   BRANDING OVERHAUL: SAHABATMUSLIM
+   ========================================= */
+
+/* 1. Import Font dari Google (Lora untuk Judul, Nunito untuk Teks) */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap');
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230E7A5F' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* 2. Merapikan dan Memperbesar Judul */
-.logo a { 
-    color: #0E7A5F !important; 
-    font-weight: 900 !important;  /* Lebih tebal */
-    font-size: 2rem !important;   /* Lebih besar */
-    letter-spacing: -0.5px;       /* Jarak huruf sedikit dirapatkan agar modern */
+/* 2. Terapkan Font Lora ke semua Judul */
+h1, h2, h3, h4, h5, h6, .logo a, .post-title, .entry-header h2 {
+    font-family: 'Lora', serif !important;
+    letter-spacing: -0.5px;
 }
 
-/* 3. Penyesuaian Khusus di Layar HP */
-@media screen and (max-width: 768px) {
-    .logo a {
-        font-size: 1.7rem !important; /* Sedikit disesuaikan di HP agar tidak mendorong tombol menu */
-    }
+/* 3. Override Variabel Warna Tema (Light Mode) */
+:root {
+    --theme: #F9F6F0; /* Latar belakang putih gading (cream) */
+    --entry: #FFFFFF; /* Latar belakang kartu tetap putih bersih */
+    --primary: #0E7A5F; /* Hijau Zamrud Utama */
+    --secondary: #C9A24B; /* Warna Emas untuk aksen */
+    --tertiary: #E8E2D5; /* Garis border */
+    --content: #2C3E50; /* Warna teks (abu-abu kebiruan gelap) */
+    --border: #E8E2D5;
 }
 
-/* Menyembunyikan tanda pagar (#) pada judul */
-.anchor {
+/* 4. Override Variabel Warna Tema (Dark Mode) */
+[data-theme="dark"] {
+    --theme: #121212; 
+    --entry: #1E1E1E;
+    --primary: #4DB6AC; /* Hijau lebih terang di dark mode */
+    --secondary: #D4AF37; /* Emas */
+    --tertiary: #2A2A2A;
+    --content: #E0E0E0;
+    --border: #333333;
+    background-image: none; /* Hilangkan pattern di dark mode */
+}
+
+/* 5. Merapikan Header & Logo */
+.header {
+    background: rgba(249, 246, 240, 0.95) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+[data-theme="dark"] .header {
+    background: rgba(18, 18, 18, 0.95) !important;
+}
+
+.logo a {
+    color: var(--primary) !important;
+    font-weight: 800 !important;
+    font-size: 1.6rem !important;
+    text-decoration: none;
+}
+
+/* 6. Sembunyikan Ikon Bawaan & Anchor Link */
+#theme-toggle, .theme-toggle, .anchor {
     display: none !important;
+}
+
+/* 7. Mempercantik Kotak Input & Tombol */
+input[type="text"], input[type="number"], select, textarea {
+    background: var(--entry) !important;
+    color: var(--content) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px !important;
+    transition: border-color 0.3s;
+}
+input:focus, select:focus {
+    border-color: var(--primary) !important;
+    outline: none;
+}
+
+/* 8. Mempercantik Kartu (Card) agar lebih lembut */
+.post-entry, .kartu-doa, .kartu-dzikir {
+    border-radius: 12px !important;
+    border: 1px solid var(--border) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.post-entry:hover, .kartu-doa:hover, .kartu-dzikir:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(14, 122, 95, 0.1) !important;
 }
