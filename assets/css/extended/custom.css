@@ -1,21 +1,32 @@
-/* 1. Menghilangkan Total Tombol Ikon (Bulan/Matahari) */
+/* 1. Sembunyikan Ikon Tema Bawaan */
 #theme-toggle, .theme-toggle {
     display: none !important;
 }
 
-/* 2. Merapikan Header dan Membuat Teks Lebih Elegan */
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px !important;
-}
-
+/* 2. Merapikan Judul */
 .logo a {
-    font-size: 1.8rem !important; /* Ukuran font sedikit lebih besar */
-    font-weight: 800 !important; /* Membuat teks lebih tebal */
-    letter-spacing: -0.5px;      /* Merapatkan sedikit jarak antar huruf */
-    color: #0E7A5F !important;   /* Warna hijau khas SahabatMuslim */
+    font-size: 1.6rem !important; 
+    font-weight: 800 !important; 
+    letter-spacing: -0.5px;      
+    color: #0E7A5F !important;   
     text-decoration: none;
     margin: 0 !important;
+}
+
+/* 3. Perbaikan untuk Layar HP (Mobile) */
+@media screen and (max-width: 768px) {
+    /* Memaksa menu menjadi tombol Hamburger (garis 3) */
+    .header {
+        padding: 10px 15px !important;
+    }
+    
+    /* Menyembunyikan menu panjang di HP */
+    .menu {
+        display: none !important; 
+    }
+    
+    /* Menampilkan tombol garis tiga */
+    #menu-trigger {
+        display: block !important;
+    }
 }
