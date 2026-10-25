@@ -17,3 +17,8 @@
         font-size: 1.7rem !important; /* Sedikit disesuaikan di HP agar tidak mendorong tombol menu */
     }
 }
+
+/* Menyembunyikan tanda pagar (#) pada judul */
+.anchor {
+    display: none !important;
+}
