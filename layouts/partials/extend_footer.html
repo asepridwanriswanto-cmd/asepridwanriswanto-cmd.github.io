@@ -64,50 +64,64 @@
   });
 </script>
 
-<!-- MENU MOBILE KUSTOM (100% Kendali Kita) -->
-<div id="custom-mobile-menu" style="display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background: var(--theme); z-index: 9999; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 10px 0;">
+<!-- MENU MOBILE KUSTOM (Bebas dari Penjara Container) -->
+<div id="custom-mobile-menu" style="display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: #F9F6F0; z-index: 99999; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 10px 0;">
   <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center;">
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Beranda</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/berita/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Berita</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/zakat/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Zakat</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/waris/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Waris</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/hadits/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Hadits</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/dzikir/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Dzikir</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/doa/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Doa</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/jadwal-sholat/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Jadwal Sholat</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/kiblat/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Kiblat</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/kalender-islam/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Kalender Islam</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Beranda</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/berita/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Berita</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/zakat/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Zakat</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/waris/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Waris</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/hadits/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Hadits</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/dzikir/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Dzikir</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/doa/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Doa</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/jadwal-sholat/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Jadwal Sholat</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/kiblat/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Kiblat</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid #E8E2D5;"><a href="/kalender-islam/" style="display: block; padding: 15px; color: #2C3E50; text-decoration: none; font-weight: bold;">Kalender Islam</a></li>
   </ul>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Hanya jalankan di layar HP
     if (window.innerWidth <= 768) {
-      // Sembunyikan menu bawaan PaperMod
       const defaultMenu = document.querySelector("#menu");
       if (defaultMenu) defaultMenu.style.display = "none";
 
-      // Tambahkan tombol Hamburger (Garis Tiga)
       const header = document.querySelector(".header");
-      if (header && !document.querySelector(".custom-hamburger-btn")) {
+      const customMenu = document.getElementById("custom-mobile-menu");
+
+      if (header && customMenu && !document.querySelector(".custom-hamburger-btn")) {
+        // TRIK PENTING: Pindahkan menu keluar dari container penjara ke <body> langsung
+        document.body.appendChild(customMenu);
+
         const btn = document.createElement("button");
         btn.innerHTML = "☰";
         btn.className = "custom-hamburger-btn";
-        btn.style.cssText = "font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; padding: 0 10px; z-index: 10000;";
+        btn.style.cssText = "font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; padding: 0 10px; z-index: 100000;";
         
         header.style.display = "flex";
         header.style.alignItems = "center";
         header.appendChild(btn);
 
-        const customMenu = document.getElementById("custom-mobile-menu");
-        
-        // Logika buka/tutup menu
         btn.addEventListener("click", function(e) {
           e.preventDefault();
           if (customMenu.style.display === "none") {
             customMenu.style.display = "block";
-            btn.innerHTML = "✕"; // Ikon silang saat terbuka
+            btn.innerHTML = "✕";
+            
+            // Deteksi Dark Mode agar background menu ikut gelap
+            if (document.body.getAttribute("data-theme") === "dark") {
+              customMenu.style.backgroundColor = "#1E1E1E";
+              customMenu.querySelectorAll("li").forEach(li => {
+                li.style.borderBottom = "1px solid #333";
+                li.querySelector("a").style.color = "#E0E0E0";
+              });
+            } else {
+              customMenu.style.backgroundColor = "#F9F6F0";
+              customMenu.querySelectorAll("li").forEach(li => {
+                li.style.borderBottom = "1px solid #E8E2D5";
+                li.querySelector("a").style.color = "#2C3E50";
+              });
+            }
           } else {
             customMenu.style.display = "none";
             btn.innerHTML = "☰";
