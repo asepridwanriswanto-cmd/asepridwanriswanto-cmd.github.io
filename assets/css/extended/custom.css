@@ -1,4 +1,4 @@
-/* 1. Sembunyikan Ikon Tema Bawaan */
+/* 1. Sembunyikan Ikon Tema Bawaan (Bulan/Matahari) */
 #theme-toggle, .theme-toggle {
     display: none !important;
 }
@@ -16,4 +16,36 @@
 /* 3. Memberi jarak pada header */
 .header {
     padding: 10px 15px !important;
+}
+
+/* 4. PERBAIKAN MENU DI HP (MOBILE) */
+@media screen and (max-width: 768px) {
+    /* Sembunyikan menu horizontal yang meluber */
+    .menu {
+        display: none !important;
+    }
+    
+    /* Tampilkan menu vertikal jika tombol garis tiga diklik */
+    #menu-toggle:checked ~ .menu {
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        margin-top: 10px;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 100;
+    }
+
+    /* Pastikan ikon garis tiga (hamburger) muncul */
+    .menu-toggle, #menu-trigger {
+        display: block !important;
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: #0E7A5F;
+    }
 }
