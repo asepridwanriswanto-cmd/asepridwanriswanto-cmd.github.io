@@ -85,3 +85,48 @@ input:focus, select:focus {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(14, 122, 95, 0.1) !important;
 }
+
+/* =========================================
+   PERBAIKAN MENU MOBILE (HAMBURGER)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* Sembunyikan menu bawaan */
+    #menu {
+        display: none; 
+    }
+    
+    /* Tampilan saat menu dibuka */
+    #menu.show-menu {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 65px; /* Menempel di bawah header */
+        left: 0;
+        width: 100%;
+        background: var(--theme); /* Menggunakan warna background tema (cream/gelap) */
+        z-index: 9999;
+        padding: 10px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* Merapikan jarak antar menu */
+    #menu.show-menu li {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+        border-bottom: 1px solid var(--border);
+    }
+    
+    #menu.show-menu li:last-child {
+        border-bottom: none;
+    }
+
+    #menu.show-menu li a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 1.1rem;
+        color: var(--content);
+        font-weight: 600;
+    }
+}
