@@ -1,2 +1,19 @@
-#theme-toggle, .theme-toggle { display: none !important; }
-.logo a { color: #0E7A5F !important; font-weight: 800 !important; font-size: 1.5rem !important; }
+/* 1. Sembunyikan Ikon Tema Bawaan */
+#theme-toggle, .theme-toggle { 
+    display: none !important; 
+}
+
+/* 2. Merapikan dan Memperbesar Judul */
+.logo a { 
+    color: #0E7A5F !important; 
+    font-weight: 900 !important;  /* Lebih tebal */
+    font-size: 2rem !important;   /* Lebih besar */
+    letter-spacing: -0.5px;       /* Jarak huruf sedikit dirapatkan agar modern */
+}
+
+/* 3. Penyesuaian Khusus di Layar HP */
+@media screen and (max-width: 768px) {
+    .logo a {
+        font-size: 1.7rem !important; /* Sedikit disesuaikan di HP agar tidak mendorong tombol menu */
+    }
+}
