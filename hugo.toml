@@ -20,7 +20,6 @@ enableRobotsTXT = true
       unsafe = true
 
 [menu]
-  # --- MENU UTAMA (ATAS) ---
   [[menu.main]]
     name = "Beranda"
     url = "/"
@@ -30,39 +29,11 @@ enableRobotsTXT = true
     url = "/artikel/"
     weight = 20
   [[menu.main]]
-    name = "Zakat"
-    url = "/zakat/"
+    name = "Fitur"
+    url = "/fitur/"
     weight = 30
-  [[menu.main]]
-    name = "Waris"
-    url = "/waris/"
-    weight = 40
-  [[menu.main]]
-    name = "Hadits"
-    url = "/hadits/"
-    weight = 50
-  [[menu.main]]
-    name = "Dzikir"
-    url = "/dzikir/"
-    weight = 55
-  [[menu.main]]
-    name = "Doa"
-    url = "/doa/"
-    weight = 60
-  [[menu.main]]
-    name = "Jadwal Sholat"
-    url = "/jadwal-sholat/"
-    weight = 70
-  [[menu.main]]
-    name = "Kiblat"
-    url = "/kiblat/"
-    weight = 80
-  [[menu.main]]
-    name = "Kalender Islam"
-    url = "/kalender-islam/"
-    weight = 90
-
-  # --- MENU FOOTER (BAWAH) ---
+    
+  # MENU FOOTER
   [[menu.footer]]
     name = "Tentang"
     url = "/tentang/"

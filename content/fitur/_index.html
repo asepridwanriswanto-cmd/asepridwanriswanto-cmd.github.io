@@ -1,0 +1,62 @@
+---
+title: "Fitur & Layanan Islami"
+description: "Kumpulan alat bantu ibadah dan literasi Islam: Kalkulator Zakat, Waris, Jadwal Sholat, Arah Kiblat, Hadits, Doa, dan lainnya."
+hideMeta: true
+---
+
+<div style="text-align: center; margin-bottom: 30px;">
+  <h1 style="color: var(--primary); font-size: 2rem;">Fitur & Layanan</h1>
+  <p>Pilih alat bantu ibadah atau literasi yang Anda butuhkan di bawah ini.</p>
+</div>
+
+<style>
+  .fitur-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+  .fitur-card { background: var(--entry); border: 1px solid var(--border); border-radius: 12px; padding: 20px 15px; text-align: center; text-decoration: none; color: var(--content); transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; }
+  .fitur-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(14, 122, 95, 0.15); border-color: var(--primary); }
+  .fitur-icon { font-size: 2.5em; margin-bottom: 10px; display: block; }
+  .fitur-title { font-size: 1.1em; font-weight: bold; color: var(--primary); margin-bottom: 5px; display: block; font-family: 'Lora', serif;}
+  .fitur-desc { font-size: 0.85em; color: var(--content); opacity: 0.8; line-height: 1.4; }
+</style>
+
+<div class="fitur-grid">
+  <a href="/zakat/" class="fitur-card">
+    <span class="fitur-icon">💰</span>
+    <span class="fitur-title">Kalkulator Zakat</span>
+    <span class="fitur-desc">Hitung zakat fitrah, emas, penghasilan, dan lainnya.</span>
+  </a>
+  <a href="/waris/" class="fitur-card">
+    <span class="fitur-icon">⚖️</span>
+    <span class="fitur-title">Kalkulator Waris</span>
+    <span class="fitur-desc">Hitung pembagian harta warisan (Faraidh).</span>
+  </a>
+  <a href="/jadwal-sholat/" class="fitur-card">
+    <span class="fitur-icon">🕌</span>
+    <span class="fitur-title">Jadwal Sholat</span>
+    <span class="fitur-desc">Jadwal sholat lima waktu untuk seluruh Indonesia.</span>
+  </a>
+  <a href="/hadits/" class="fitur-card">
+    <span class="fitur-icon">📖</span>
+    <span class="fitur-title">Pencarian Hadits</span>
+    <span class="fitur-desc">Cari hadits shahih beserta teks Arab dan terjemahannya.</span>
+  </a>
+  <a href="/dzikir/" class="fitur-card">
+    <span class="fitur-icon">📿</span>
+    <span class="fitur-title">Dzikir Harian</span>
+    <span class="fitur-desc">Dzikir pagi, petang, dan setelah shalat fardhu.</span>
+  </a>
+  <a href="/doa/" class="fitur-card">
+    <span class="fitur-icon">🤲</span>
+    <span class="fitur-title">Doa Harian</span>
+    <span class="fitur-desc">Kumpulan doa sehari-hari sesuai sunnah.</span>
+  </a>
+  <a href="/kiblat/" class="fitur-card">
+    <span class="fitur-icon">🧭</span>
+    <span class="fitur-title">Arah Kiblat</span>
+    <span class="fitur-desc">Deteksi arah kiblat secara akurat dari lokasi Anda.</span>
+  </a>
+  <a href="/kalender-islam/" class="fitur-card">
+    <span class="fitur-icon">📅</span>
+    <span class="fitur-title">Kalender Islam</span>
+    <span class="fitur-desc">Kalender Hijriah dan Masehi berdampingan.</span>
+  </a>
+</div>
