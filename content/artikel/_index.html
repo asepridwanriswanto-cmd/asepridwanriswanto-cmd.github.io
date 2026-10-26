@@ -1,0 +1,42 @@
+---
+title: "Kumpulan Artikel Islami"
+description: "Bacaan bermanfaat seputar aqidah, fiqih, akhlak, dan sirah Nabi Muhammad SAW."
+hideMeta: true
+---
+
+<div style="text-align: center; margin-bottom: 30px;">
+  <h1 style="color: var(--primary); font-size: 2rem;">Kategori Artikel</h1>
+  <p>Pilih topik bacaan yang ingin Anda pelajari.</p>
+</div>
+
+<style>
+  .kategori-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+  .kategori-card { background: var(--entry); border: 1px solid var(--border); border-radius: 12px; padding: 25px 20px; text-align: center; text-decoration: none; color: var(--content); transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.02); display: flex; flex-direction: column; align-items: center; }
+  .kategori-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(14, 122, 95, 0.15); border-color: var(--primary); }
+  .kategori-icon { font-size: 3em; margin-bottom: 15px; display: block; }
+  .kategori-title { font-size: 1.2em; font-weight: bold; color: var(--primary); margin-bottom: 8px; display: block; font-family: 'Lora', serif;}
+  .kategori-desc { font-size: 0.9em; color: var(--content); opacity: 0.8; line-height: 1.5; }
+</style>
+
+<div class="kategori-grid">
+  <a href="/artikel/aqidah/" class="kategori-card">
+    <span class="kategori-icon">🕋</span>
+    <span class="kategori-title">Aqidah</span>
+    <span class="kategori-desc">Mempelajari dasar-dasar keimanan, tauhid, dan rukun iman.</span>
+  </a>
+  <a href="/artikel/fiqih/" class="kategori-card">
+    <span class="kategori-icon">📚</span>
+    <span class="kategori-title">Fiqih</span>
+    <span class="kategori-desc">Panduan hukum ibadah, muamalah, dan tata cara sesuai syariat.</span>
+  </a>
+  <a href="/artikel/akhlak/" class="kategori-card">
+    <span class="kategori-icon">❤️</span>
+    <span class="kategori-title">Akhlak</span>
+    <span class="kategori-desc">Pembinaan karakter, adab, dan perilaku islami sehari-hari.</span>
+  </a>
+  <a href="/artikel/sirah/" class="kategori-card">
+    <span class="kategori-icon">🕌</span>
+    <span class="kategori-title">Sirah Nabi</span>
+    <span class="kategori-desc">Meneladani kisah perjalanan hidup Rasulullah SAW.</span>
+  </a>
+</div>
