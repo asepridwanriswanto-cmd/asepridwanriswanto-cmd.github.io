@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <!-- Gradasi Warna Latar (Hijau Zamrud) -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E7A5F" />
+      <stop offset="100%" stop-color="#043D2F" />
+    </linearGradient>
+    <!-- Gradasi Warna Emas -->
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#C9A24B" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Latar Belakang -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  
+  <!-- Pola Geometris Islami -->
+  <g stroke="url(#gold)" stroke-width="3" fill="none" opacity="0.4">
+    <!-- Bintang 8 (Rub el Hizb) -->
+    <rect x="400" y="115" width="400" height="400" transform="rotate(0 600 315)" />
+    <rect x="400" y="115" width="400" height="400" transform="rotate(45 600 315)" />
+    <!-- Lingkaran Dalam -->
+    <circle cx="600" cy="315" r="160" />
+    <circle cx="600" cy="315" r="140" />
+    <!-- Ornamen Samping -->
+    <path d="M 150 315 L 400 65 L 650 315 L 400 565 Z" opacity="0.15"/>
+    <path d="M 1050 315 L 800 65 L 550 315 L 800 565 Z" opacity="0.15"/>
+  </g>
+  
+  <!-- Teks Kaligrafi Arab -->
+  <text x="600" y="360" font-family="'Traditional Arabic', 'Scheherazade New', 'Amiri', serif" font-size="160" fill="url(#gold)" text-anchor="middle" font-weight="bold">تَوْحِيد</text>
+  
+  <!-- Teks Bawah -->
+  <text x="600" y="460" font-family="'Nunito', Arial, sans-serif" font-size="36" fill="#E8F5E9" text-anchor="middle" letter-spacing="8" font-weight="bold">MENGENAL TAUHID</text>
+</svg>
