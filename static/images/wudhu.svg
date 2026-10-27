@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F766E" />
+      <stop offset="100%" stop-color="#115E59" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#C9A24B" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g stroke="url(#gold)" stroke-width="3" fill="none" opacity="0.4">
+    <!-- Ornamen Geometris Air/Thaharah -->
+    <circle cx="600" cy="315" r="200" />
+    <circle cx="600" cy="315" r="180" stroke-dasharray="10 10" />
+    <path d="M 400 315 Q 500 215 600 315 T 800 315" stroke-width="5" />
+    <path d="M 400 365 Q 500 265 600 365 T 800 365" stroke-width="3" opacity="0.6"/>
+    <path d="M 400 415 Q 500 315 600 415 T 800 415" stroke-width="2" opacity="0.4"/>
+  </g>
+  <text x="600" y="360" font-family="'Traditional Arabic', 'Scheherazade New', 'Amiri', serif" font-size="150" fill="url(#gold)" text-anchor="middle" font-weight="bold">الوضوء</text>
+  <text x="600" y="460" font-family="'Nunito', Arial, sans-serif" font-size="36" fill="#E8F5E9" text-anchor="middle" letter-spacing="8" font-weight="bold">TATA CARA WUDHU</text>
+</svg>
