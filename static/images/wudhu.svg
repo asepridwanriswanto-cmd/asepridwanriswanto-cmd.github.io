@@ -20,6 +20,6 @@
   <text x="600" y="360" font-family="'Traditional Arabic', 'Scheherazade New', 'Amiri', serif" font-size="150" fill="url(#gold)" text-anchor="middle" font-weight="bold">الوضوء</text>
   <text x="600" y="460" font-family="'Nunito', Arial, sans-serif" font-size="36" fill="#E8F5E9" text-anchor="middle" letter-spacing="8" font-weight="bold">TATA CARA WUDHU</text>
   
-  <!-- WATERMARK -->
-  <text x="1150" y="600" font-family="'Nunito', Arial, sans-serif" font-size="20" fill="#FFFFFF" opacity="0.4" text-anchor="end">© SahabatMuslims</text>
+  <!-- WATERMARK BARU -->
+  <text x="1130" y="590" font-family="'Nunito', Arial, sans-serif" font-size="24" fill="url(#gold)" opacity="0.8" text-anchor="end" font-weight="bold">© SahabatMuslim</text>
 </svg>
