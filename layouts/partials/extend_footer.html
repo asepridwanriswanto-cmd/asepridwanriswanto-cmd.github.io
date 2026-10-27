@@ -135,11 +135,50 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    // Memindahkan tautan ke atas tulisan Copyright (ke dalam tag <footer> tema)
-    var customLinks = document.getElementById("custom-footer-links");
-    var themeFooter = document.querySelector(".footer");
-    if (customLinks && themeFooter) {
-      themeFooter.insertBefore(customLinks, themeFooter.firstChild);
+    // 1. Dapatkan path URL dan pecah menjadi bagian-bagian
+    const path = window.location.pathname;
+    const parts = path.split('/').filter(p => p !== ''); // Menghapus slash kosong di awal/akhir
+    
+    let isTargetPage = false;
+
+    // 2. Cek Jadwal Sholat (Hanya 1 bagian: /jadwal-sholat/)
+    if (parts.length === 1 && parts[0] === 'jadwal-sholat') {
+      isTargetPage = true;
+    }
+    
+    // 3. Cek Zakat (Halaman utama /zakat/ atau sub-zakat /zakat/fitrah/)
+    if (parts.length >= 1 && parts[0] === 'zakat') {
+      isTargetPage = true;
+    }
+
+    // 4. Cek Artikel (HANYA halaman baca artikel, misal: /artikel/aqidah/mengenal-tauhid/)
+    // URL artikel memiliki 3 bagian: artikel, kategori, dan judul. Halaman kategori hanya 2 bagian.
+    if (parts.length === 3 && parts[0] === 'artikel') {
+      isTargetPage = true;
+    }
+
+    // Jika memenuhi syarat, tampilkan tombol share
+    if (isTargetPage) {
+      const container = document.getElementById("custom-share-container");
+      const postContent = document.querySelector(".post-content");
+      
+      if (container) {
+        container.style.display = "block";
+        
+        const pUrl = encodeURIComponent(window.location.href);
+        const pTitle = encodeURIComponent(document.title);
+        
+        document.getElementById("share-wa").href = "https://wa.me/?text=" + pTitle + "%20" + pUrl;
+        document.getElementById("share-fb").href = "https://www.facebook.com/sharer/sharer.php?u=" + pUrl;
+        document.getElementById("share-x").href = "https://twitter.com/intent/tweet?text=" + pTitle + "&url=" + pUrl;
+        document.getElementById("share-tg").href = "https://t.me/share/url?url=" + pUrl + "&text=" + pTitle;
+        document.getElementById("share-th").href = "https://threads.net/intent/post?text=" + pTitle + "%20" + pUrl;
+
+        // Pindahkan tombol ke dalam kotak konten utama
+        if (postContent) {
+          postContent.appendChild(container);
+        }
+      }
     }
   });
 </script>
