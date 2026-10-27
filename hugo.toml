@@ -5,7 +5,7 @@ theme = "papermod"
 enableRobotsTXT = true
 
 [params]
-  author = "SahabatMuslim"
+  author = "Abdul Manan"
   description = "Sahabat harian Muslim Indonesia: berita Islam, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
   defaultTheme = "auto"
   ShowReadingTime = true

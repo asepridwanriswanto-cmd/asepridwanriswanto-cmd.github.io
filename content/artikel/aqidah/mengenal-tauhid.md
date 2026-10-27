@@ -2,7 +2,8 @@
 title: "Mengenal Tauhid: Pengertian, Macam-Macam, dan Keutamaannya" 
 description: "Pelajari pengertian tauhid, pembagiannya menjadi Rububiyah, Uluhiyah, Asma wa Sifat, beserta dalil Al-Quran dan keutamaannya." 
 date: 2026-10-26 
-draft: false 
+draft: false
+author: "Abdul Manan" 
 categories: ["Aqidah"] 
 tags: ["Tauhid", "Aqidah", "Tauhid Rububiyah", "Tauhid Uluhiyah"] 
 --- 
