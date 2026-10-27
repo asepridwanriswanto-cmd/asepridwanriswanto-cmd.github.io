@@ -45,7 +45,6 @@
       postContent.appendChild(container);
     }
 
-    // Memaksa link terbuka di tab baru tanpa dicegat InstantClick
     const shareBtns = document.querySelectorAll(".share-btn");
     shareBtns.forEach(btn => {
         btn.addEventListener("click", function(e) {
@@ -66,12 +65,55 @@
   <a href="/privacy-policy/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Kebijakan Privasi</a>
 </div>
 
+<!-- MENU MOBILE KUSTOM (HAMBURGER) -->
+<div id="custom-mobile-menu" style="display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: var(--theme); z-index: 99999; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 10px 0;">
+  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center;">
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Beranda</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/artikel/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Artikel</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/fitur/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Fitur</a></li>
+  </ul>
+</div>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    // 1. Logika untuk Tautan Footer
     var customLinks = document.getElementById("custom-footer-links");
     var themeFooter = document.querySelector(".footer");
     if (customLinks && themeFooter) {
       themeFooter.insertBefore(customLinks, themeFooter.firstChild);
+    }
+
+    // 2. Logika untuk Menu Hamburger HP
+    if (window.innerWidth <= 768) {
+      const defaultMenu = document.querySelector("#menu");
+      if (defaultMenu) defaultMenu.style.display = "none";
+
+      const header = document.querySelector(".header");
+      const customMenu = document.getElementById("custom-mobile-menu");
+
+      if (header && customMenu && !document.querySelector(".custom-hamburger-btn")) {
+        document.body.appendChild(customMenu);
+
+        const btn = document.createElement("button");
+        btn.innerHTML = "☰";
+        btn.className = "custom-hamburger-btn";
+        btn.style.cssText = "font-size: 2rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; padding: 0 10px; z-index: 100000;";
+        
+        header.style.display = "flex";
+        header.style.alignItems = "center";
+        header.appendChild(btn);
+
+        btn.addEventListener("click", function(e) {
+          e.preventDefault();
+          if (customMenu.style.display === "none" || customMenu.style.display === "") {
+            customMenu.style.display = "block";
+            btn.innerHTML = "✕";
+          } else {
+            customMenu.style.display = "none";
+            btn.innerHTML = "☰";
+          }
+        });
+      }
     }
   });
 </script>
