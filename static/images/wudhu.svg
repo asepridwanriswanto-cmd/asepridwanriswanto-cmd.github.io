@@ -11,7 +11,6 @@
   </defs>
   <rect width="1200" height="630" fill="url(#bg)" />
   <g stroke="url(#gold)" stroke-width="3" fill="none" opacity="0.4">
-    <!-- Ornamen Geometris Air/Thaharah -->
     <circle cx="600" cy="315" r="200" />
     <circle cx="600" cy="315" r="180" stroke-dasharray="10 10" />
     <path d="M 400 315 Q 500 215 600 315 T 800 315" stroke-width="5" />
@@ -20,4 +19,7 @@
   </g>
   <text x="600" y="360" font-family="'Traditional Arabic', 'Scheherazade New', 'Amiri', serif" font-size="150" fill="url(#gold)" text-anchor="middle" font-weight="bold">الوضوء</text>
   <text x="600" y="460" font-family="'Nunito', Arial, sans-serif" font-size="36" fill="#E8F5E9" text-anchor="middle" letter-spacing="8" font-weight="bold">TATA CARA WUDHU</text>
+  
+  <!-- WATERMARK -->
+  <text x="1150" y="600" font-family="'Nunito', Arial, sans-serif" font-size="20" fill="#FFFFFF" opacity="0.4" text-anchor="end">© SahabatMuslims</text>
 </svg>
