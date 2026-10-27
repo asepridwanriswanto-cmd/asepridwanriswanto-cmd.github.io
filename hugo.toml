@@ -1,5 +1,5 @@
 baseURL = "https://asepridwanriswanto-cmd.github.io/"
-languageCode = "id"
+locale = "id"
 title = "SahabatMuslim"
 theme = "papermod"
 enableRobotsTXT = true
