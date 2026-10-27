@@ -1,12 +1,16 @@
---- 
-title: "Mengenal Tauhid: Pengertian, Macam-Macam, dan Keutamaannya" 
-description: "Pelajari pengertian tauhid, pembagiannya menjadi Rububiyah, Uluhiyah, Asma wa Sifat, beserta dalil Al-Quran dan keutamaannya." 
-date: 2026-10-26 
+---
+title: "Mengenal Tauhid: Pengertian, Macam-Macam, dan Keutamaannya"
+description: "Pelajari pengertian tauhid, pembagiannya menjadi Rububiyah, Uluhiyah, Asma wa Sifat, beserta dalil Al-Quran dan keutamaannya."
+date: 2026-10-26
 draft: false
-author: "Abdul Manan" 
-categories: ["Aqidah"] 
-tags: ["Tauhid", "Aqidah", "Tauhid Rububiyah", "Tauhid Uluhiyah"] 
---- 
+author: "Abdul Manan"
+categories: ["Aqidah"]
+tags: ["Tauhid", "Aqidah", "Tauhid Rububiyah", "Tauhid Uluhiyah"]
+cover:
+    image: "/images/tauhid.svg"
+    alt: "Ilustrasi Tauhid"
+    caption: "Ilustrasi: Mengenal Tauhid"
+---
 
 Tauhid adalah fondasi utama dalam ajaran Islam. Tanpa tauhid yang benar, amal ibadah seseorang tidak akan diterima oleh Allah SWT. Kata "Tauhid" berasal dari bahasa Arab *Wahhada-Yuwahhidu-Tauhiidan* yang berarti mengesakan atau menyatukan. 
 
