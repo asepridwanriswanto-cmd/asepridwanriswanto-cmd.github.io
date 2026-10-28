@@ -1,18 +1,18 @@
 --- 
-title: "Tentang SahabatMuslim" 
+title: "Tentang Mujahadah" 
 hideMeta: true 
 --- 
 
-**SahabatMuslim** adalah platform digital yang didedikasikan untuk menjadi teman harian umat Muslim di Indonesia dalam menjalankan ibadah dan menuntut ilmu.
+**Mujahadah** adalah platform digital yang didedikasikan untuk menjadi teman harian umat Muslim di Indonesia dalam menjalankan ibadah dan menuntut ilmu.
 
-Kami menyadari bahwa di era digital ini, akses terhadap informasi yang akurat dan sesuai dengan tuntunan Al-Qur'an dan Sunnah sangatlah penting. Oleh karena itu, SahabatMuslim hadir dengan berbagai fitur praktis:
+Kami menyadari bahwa di era digital ini, akses terhadap informasi yang akurat dan sesuai dengan tuntunan Al-Qur'an dan Sunnah sangatlah penting. Oleh karena itu, Mujahadah hadir dengan berbagai fitur praktis:
 
 - **Kalkulator Ibadah:** Membantu Anda menghitung Zakat dan Waris (Faraidh) secara akurat.
 - **Panduan Ibadah:** Jadwal Sholat seluruh Indonesia, Arah Kiblat, serta Kalender Islam (Hijriah).
 - **Literasi Islam:** Pencarian Hadits Shahih, Kumpulan Doa, dan Dzikir harian.
 - **Informasi Terkini:** Berita seputar dunia Islam dari portal terpercaya.
 
-Semua fitur ini dikembangkan agar dapat diakses secara **gratis, cepat, dan aman**. Kami berkomitmen untuk terus memperbarui konten agar SahabatMuslim dapat menjadi ladang amal jariyah yang bermanfaat bagi banyak orang.
+Semua fitur ini dikembangkan agar dapat diakses secara **gratis, cepat, dan aman**. Kami berkomitmen untuk terus memperbarui konten agar Mujahadah dapat menjadi ladang amal jariyah yang bermanfaat bagi banyak orang.
 
 ---
 
