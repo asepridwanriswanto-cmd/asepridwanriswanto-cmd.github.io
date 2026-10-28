@@ -1,12 +1,12 @@
 baseURL = "https://asepridwanriswanto-cmd.github.io/"
 locale = "id"
-title = "SahabatMuslim"
+title = "Mujahadah"
 theme = "papermod"
 enableRobotsTXT = true
 
 [params]
   author = "Abdul Manan"
-  description = "Sahabat harian Muslim Indonesia: berita Islam, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
+  description = "Sahabat harian Muslim Indonesia: artikel, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = false
