@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#C9A24B" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g stroke="url(#gold)" stroke-width="2" fill="none" opacity="0.3">
+    <circle cx="600" cy="315" r="250" stroke-dasharray="5 15"/>
+    <!-- Bintang-bintang kecil -->
+    <path d="M 200 150 L 210 170 L 230 175 L 210 180 L 200 200 L 190 180 L 170 175 L 190 170 Z" fill="url(#gold)"/>
+    <path d="M 1000 100 L 1008 115 L 1023 118 L 1008 121 L 1000 136 L 992 121 L 977 118 L 992 115 Z" fill="url(#gold)"/>
+  </g>
+  <text x="600" y="340" font-family="'Traditional Arabic', serif" font-size="90" fill="url(#gold)" text-anchor="middle" font-weight="bold">عَامُ الْفِيلِ</text>
+  <text x="600" y="450" font-family="'Nunito', Arial, sans-serif" font-size="36" fill="#E0E7FF" text-anchor="middle" letter-spacing="8" font-weight="bold">TAHUN GAJAH</text>
+  <text x="1130" y="590" font-family="'Nunito', Arial, sans-serif" font-size="24" fill="url(#gold)" opacity="0.8" text-anchor="end" font-weight="bold">© Mujahadah</text>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B21A8" />
+      <stop offset="100%" stop-color="#4C1D95" />
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#C9A24B" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g stroke="url(#gold)" stroke-width="3" fill="none" opacity="0.3">
+    <path d="M 0 315 Q 300 115 600 315 T 1200 315" stroke-width="4"/>
+    <path d="M 0 365 Q 300 165 600 365 T 1200 365" stroke-width="2"/>
+    <circle cx="600" cy="315" r="180" />
+  </g>
+  <text x="600" y="340" font-family="'Traditional Arabic', serif" font-size="100" fill="url(#gold)" text-anchor="middle" font-weight="bold">بِرُّ الْوَالِدَيْنِ</text>
+  <text x="600" y="450" font-family="'Nunito', Arial, sans-serif" font-size="36" fill="#F3E8FF" text-anchor="middle" letter-spacing="8" font-weight="bold">BIRRUL WALIDAIN</text>
+  <text x="1130" y="590" font-family="'Nunito', Arial, sans-serif" font-size="24" fill="url(#gold)" opacity="0.8" text-anchor="end" font-weight="bold">© Mujahadah</text>
+</svg>
