@@ -1,5 +1,4 @@
-baseURL = "https://asepridwanriswanto-cmd.github.io/"
-locale = "id"
+baseURL = "https://syahida.web.id/"
 title = "Syahida"
 theme = "papermod"
 enableRobotsTXT = true
