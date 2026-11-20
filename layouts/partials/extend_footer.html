@@ -5,7 +5,7 @@
     {{ $showShare = true }}
 {{ end }}
 
-{{ if in $url "/artikel/" }}
+{{ if and (in $url "/artikel/") .IsPage }}
     {{ $showShare = true }}
 {{ end }}
 {{ if $showShare }}
