@@ -1,85 +1,87 @@
-{{ $showShare := false }}
-{{ $url := .RelPermalink }}
-
-{{ if or (in $url "/jadwal-sholat/") (in $url "/waris/") (in $url "/hadits/") (in $url "/dzikir/") (in $url "/doa/") (in $url "/kiblat/") (in $url "/kalender-islam/") (in $url "/zakat/") }}
-    {{ $showShare = true }}
-{{ end }}
-
-{{ if and (in $url "/artikel/") .IsPage }}
-    {{ $showShare = true }}
-{{ end }}
-{{ if $showShare }}
-<div id="custom-share-container" style="display: block;max-width: 800px; margin: 40px auto 20px auto; padding: 20px; border-top: 1px solid var(--border); text-align: center;">
+<!-- BAGIAN SHARE (Disembunyikan dulu, nanti dimunculkan oleh JavaScript) -->
+<div id="custom-share-container" style="display: none; max-width: 800px; margin: 40px auto 20px auto; padding: 20px; border-top: 1px solid var(--border); text-align: center;">
   <p style="font-size: 0.9em; color: var(--content); opacity: 0.7; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Halaman Ini:</p>
   <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-    <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener noreferrer" data-no-instant style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">💬 WhatsApp</a>
-    <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener noreferrer" data-no-instant style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🔵 Facebook</a>
-    <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener noreferrer" data-no-instant style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">𝕏 X / Twitter</a>
-    <a class="share-btn" id="share-tg" href="#" target="_blank" rel="noopener noreferrer" data-no-instant style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">✈️ Telegram</a>
-    <a class="share-btn" id="share-th" href="#" target="_blank" rel="noopener noreferrer" data-no-instant style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🧵 Threads</a>
+    <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">💬 WhatsApp</a>
+    <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🔵 Facebook</a>
+    <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">𝕏 X / Twitter</a>
+    <a class="share-btn" id="share-tg" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">✈️ Telegram</a>
+    <a class="share-btn" id="share-th" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🧵 Threads</a>
   </div>
 </div>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById("custom-share-container");
-    if (!container) return;
-    
-    container.style.display = "block";
-    
-    const pUrl = encodeURIComponent(window.location.href);
-    const pTitle = encodeURIComponent(document.title);
-    
-    document.getElementById("share-wa").href = "https://wa.me/?text=" + pTitle + "%20" + pUrl;
-    document.getElementById("share-fb").href = "https://www.facebook.com/sharer/sharer.php?u=" + pUrl;
-    document.getElementById("share-x").href = "https://twitter.com/intent/tweet?text=" + pTitle + "&url=" + pUrl;
-    document.getElementById("share-tg").href = "https://t.me/share/url?url=" + pUrl + "&text=" + pTitle;
-    document.getElementById("share-th").href = "https://threads.net/intent/post?text=" + pTitle + "%20" + pUrl;
+    // ==========================================
+    // 1. LOGIKA TOMBOL SHARE (BERBASIS URL)
+    // ==========================================
+    var path = window.location.pathname;
+    var showShare = false;
 
-    const postContent = document.querySelector(".post-content");
-    if (postContent) {
-      postContent.appendChild(container);
+    // Daftar fitur yang WAJIB muncul tombol share-nya
+    var features = ['/jadwal-sholat/', '/waris/', '/hadits/', '/dzikir/', '/doa/', '/kiblat/', '/kalender-islam/', '/zakat/'];
+    
+    for (var i = 0; i < features.length; i++) {
+        if (path.indexOf(features[i]) !== -1) {
+            showShare = true;
+            break;
+        }
     }
 
-    const shareBtns = document.querySelectorAll(".share-btn");
-    shareBtns.forEach(btn => {
-        btn.addEventListener("click", function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            window.open(this.href, '_blank');
-        });
-    });
-  });
-</script>
-{{ end }}
+    // Cek halaman artikel tunggal (bukan halaman kategori)
+    if (path.indexOf('/artikel/') !== -1) {
+        var parts = path.split('/').filter(function(p) { return p.length > 0; });
+        // Jika URL-nya /artikel/fiqih/ (2 bagian), jangan tampilkan.
+        // Jika URL-nya /artikel/fiqih/tata-cara/ (3 bagian), tampilkan.
+        if (parts.length >= 3) {
+            showShare = true;
+        }
+    }
 
-<!-- KODE FOOTER TAUTAN MANUAL -->
-<div id="custom-footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 15px; font-size: 0.85em; font-family: sans-serif;">
-  <a href="/tentang/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Tentang</a>
-  <a href="/kontak/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Kontak</a>
-  <a href="/disclaimer/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Disclaimer</a>
-  <a href="/privacy-policy/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Kebijakan Privasi</a>
-</div>
+    // Jika memenuhi syarat, munculkan tombolnya
+    if (showShare) {
+        var container = document.getElementById('custom-share-container');
+        if (container) {
+            container.style.display = 'block';
+            
+            var pUrl = encodeURIComponent(window.location.href);
+            var pTitle = encodeURIComponent(document.title);
+            
+            document.getElementById("share-wa").href = "https://wa.me/?text=" + pTitle + "%20" + pUrl;
+            document.getElementById("share-fb").href = "https://www.facebook.com/sharer/sharer.php?u=" + pUrl;
+            document.getElementById("share-x").href = "https://twitter.com/intent/tweet?text=" + pTitle + "&url=" + pUrl;
+            document.getElementById("share-tg").href = "https://t.me/share/url?url=" + pUrl + "&text=" + pTitle;
+            document.getElementById("share-th").href = "https://threads.net/intent/post?text=" + pTitle + "%20" + pUrl;
 
-<!-- MENU MOBILE KUSTOM (HAMBURGER) -->
-<div id="custom-mobile-menu" style="display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: var(--theme); z-index: 99999; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 10px 0;">
-  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center;">
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Beranda</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/artikel/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Artikel</a></li>
-    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/fitur/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Fitur</a></li>
-  </ul>
-</div>
+            // Pindahkan posisi tombol ke bawah artikel
+            var postContent = document.querySelector(".post-content");
+            if (postContent) {
+                postContent.appendChild(container);
+            }
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // 1. Logika untuk Tautan Footer
+            // Atur klik tombol
+            document.querySelectorAll(".share-btn").forEach(function(btn) {
+                btn.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    window.open(this.href, '_blank');
+                });
+            });
+        }
+    }
+
+    // ==========================================
+    // 2. LOGIKA FOOTER TAUTAN MANUAL
+    // ==========================================
     var customLinks = document.getElementById("custom-footer-links");
     var themeFooter = document.querySelector(".footer");
     if (customLinks && themeFooter) {
       themeFooter.insertBefore(customLinks, themeFooter.firstChild);
     }
 
-    // 2. Logika untuk Menu Hamburger HP
+    // ==========================================
+    // 3. LOGIKA MENU MOBILE (HAMBURGER)
+    // ==========================================
     if (window.innerWidth <= 768) {
       const defaultMenu = document.querySelector("#menu");
       if (defaultMenu) defaultMenu.style.display = "none";
@@ -113,3 +115,20 @@
     }
   });
 </script>
+
+<!-- FOOTER TAUTAN MANUAL (Tampilannya) -->
+<div id="custom-footer-links" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-bottom: 15px; font-size: 0.85em; font-family: sans-serif;">
+  <a href="/tentang/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Tentang</a>
+  <a href="/kontak/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Kontak</a>
+  <a href="/disclaimer/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Disclaimer</a>
+  <a href="/privacy-policy/" style="color: #666; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#0E7A5F'" onmouseout="this.style.color='#666'">Kebijakan Privasi</a>
+</div>
+
+<!-- MENU MOBILE KUSTOM (Tampilannya) -->
+<div id="custom-mobile-menu" style="display: none; position: fixed; top: 60px; left: 0; width: 100%; height: calc(100vh - 60px); background-color: var(--theme); z-index: 99999; overflow-y: auto; box-shadow: 0 10px 15px rgba(0,0,0,0.1); padding: 10px 0;">
+  <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; align-items: center;">
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Beranda</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/artikel/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Artikel</a></li>
+    <li style="width: 100%; text-align: center; border-bottom: 1px solid var(--border);"><a href="/fitur/" style="display: block; padding: 15px; color: var(--content); text-decoration: none; font-weight: bold;">Fitur</a></li>
+  </ul>
+</div>
