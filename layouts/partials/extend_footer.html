@@ -1,17 +1,12 @@
 {{ $showShare := false }}
 
-{{ if eq .Section "jadwal-sholat" }}
-    {{ $showShare = true }}
-{{ end }}
-
-{{ if eq .Section "zakat" }}
+{{ if or (eq .Section "jadwal-sholat") (eq .Section "waris") (eq .Section "hadits") (eq .Section "dzikir") (eq .Section "doa") (eq .Section "kiblat") (eq .Section "kalender-islam") (eq .Section "zakat") }}
     {{ $showShare = true }}
 {{ end }}
 
 {{ if and (eq .Section "artikel") .IsPage }}
     {{ $showShare = true }}
 {{ end }}
-
 {{ if $showShare }}
 <div id="custom-share-container" style="display: none; max-width: 800px; margin: 40px auto 20px auto; padding: 20px; border-top: 1px solid var(--border); text-align: center;">
   <p style="font-size: 0.9em; color: var(--content); opacity: 0.7; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Halaman Ini:</p>
