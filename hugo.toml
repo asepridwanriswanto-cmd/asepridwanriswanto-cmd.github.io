@@ -34,6 +34,10 @@ enableRobotsTXT = true
     url = "/artikel/"
     weight = 20
   [[menu.main]]
+    name = "Informasi"
+    url = "/informasi/"
+    weight = 25
+  [[menu.main]]
     name = "Fitur"
     url = "/fitur/"
     weight = 30
