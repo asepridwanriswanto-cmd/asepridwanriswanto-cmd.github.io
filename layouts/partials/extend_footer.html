@@ -1,11 +1,34 @@
 <!-- BAGIAN SHARE (Disembunyikan dulu, nanti dimunculkan oleh JavaScript) -->
 <div id="custom-share-container" style="display: none; max-width: 800px; margin: 40px auto 20px auto; padding: 20px; border-top: 1px solid var(--border); text-align: center;">
   <p style="font-size: 0.9em; color: var(--content); opacity: 0.7; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Bagikan Halaman Ini:</p>
-  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+  
+  <style>
+    .share-buttons-wrapper {
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+      gap: 10px;
+    }
+    /* Tampilan Khusus Layar HP (Mobile) */
+    @media (max-width: 600px) {
+      .share-btn {
+        width: calc(50% - 5px) !important; /* Membagi dua kolom secara otomatis */
+        justify-content: center !important; 
+        padding: 10px 5px !important; 
+        font-size: 0.75em !important; 
+      }
+    }
+  </style>
+
+  <div class="share-buttons-wrapper">
     <a class="share-btn" id="share-wa" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">💬 WhatsApp</a>
+    
     <a class="share-btn" id="share-fb" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🔵 Facebook</a>
+    
     <a class="share-btn" id="share-x" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">𝕏 X / Twitter</a>
+    
     <a class="share-btn" id="share-tg" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">✈️ Telegram</a>
+    
     <a class="share-btn" id="share-th" href="#" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--entry); color: var(--content); text-decoration: none; border: 1px solid var(--border); border-radius: 20px; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease;">🧵 Threads</a>
   </div>
 </div>
