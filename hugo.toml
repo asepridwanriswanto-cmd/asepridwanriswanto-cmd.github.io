@@ -4,11 +4,17 @@ theme = "papermod"
 enableRobotsTXT = true
 
 [params]
+  favicon = "favicon.svg"
   author = "Abdul Manan"
   description = "Sahabat harian Muslim Indonesia: artikel, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = false
+
+  [params.label]
+    text = "Syahida"
+    icon = "images/logo-syahida.svg"
+    iconHeight = 32
 
 [security]
   allowContent = ['text/html', 'text/markdown']
