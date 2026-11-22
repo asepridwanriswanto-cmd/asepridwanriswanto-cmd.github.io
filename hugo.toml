@@ -30,23 +30,45 @@ enableRobotsTXT = true
     url = "/"
     weight = 10
   [[menu.main]]
-    name = "Artikel"
-    url = "/artikel/"
-    weight = 20
+    name = "Zakat"
+    url = "/zakat/"
+    weight = 40
   [[menu.main]]
-    name = "Informasi"
-    url = "/informasi/"
-    weight = 25
+    name = "Waris"
+    url = "/waris/"
+    weight = 50
   [[menu.main]]
-    name = "Fitur"
-    url = "/fitur/"
-    weight = 30
+    name = "Jadwal Sholat"
+    url = "/jadwal-sholat/"
+    weight = 60
+  [[menu.main]]
+    name = "Kiblat"
+    url = "/kiblat/"
+    weight = 70
+  [[menu.main]]
+    name = "Hadits"
+    url = "/hadits/"
+    weight = 80
+  [[menu.main]]
+    name = "Doa"
+    url = "/doa/"
+    weight = 90
+  [[menu.main]]
+    name = "Kalender"
+    url = "/kalender-islam/"
+    weight = 100
+    
+  # MENU FOOTER (Biarkan tetap seperti aslinya di bawah sini)
     
   # MENU FOOTER
   [[menu.footer]]
     name = "Tentang"
     url = "/tentang/"
     weight = 10
+  [[menu.footer]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 5
   [[menu.footer]]
     name = "Kontak"
     url = "/kontak/"
