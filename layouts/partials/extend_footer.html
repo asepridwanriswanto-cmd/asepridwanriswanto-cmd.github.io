@@ -51,12 +51,12 @@
         }
     }
 
-    // Cek halaman artikel tunggal (bukan halaman kategori)
-    if (path.indexOf('/artikel/') !== -1) {
+        // Cek halaman Blog (tampilkan share di artikel blog, tapi sembunyikan di halaman depan blog)
+    if (path.indexOf('/blog/') !== -1) {
         var parts = path.split('/').filter(function(p) { return p.length > 0; });
-        // Jika URL-nya /artikel/fiqih/ (2 bagian), jangan tampilkan.
-        // Jika URL-nya /artikel/fiqih/tata-cara/ (3 bagian), tampilkan.
-        if (parts.length >= 3) {
+        // URL /blog/ (halaman depan blog) = 1 bagian.
+        // URL /blog/zakat-penghasilan/ (artikel) = 2 bagian.
+        if (parts.length >= 2) {
             showShare = true;
         }
     }
