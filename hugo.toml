@@ -54,6 +54,10 @@ enableRobotsTXT = true
     url = "/doa/"
     weight = 90
   [[menu.main]]
+    name = "Dzikir"
+    url = "/dzikir/"
+    weight = 95
+  [[menu.main]]
     name = "Kalender"
     url = "/kalender-islam/"
     weight = 100
