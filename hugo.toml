@@ -50,6 +50,10 @@ enableRobotsTXT = true
     url = "/hadits/"
     weight = 80
   [[menu.main]]
+    name = "Al-Qur'an"
+    url = "/quran/"
+    weight = 85
+  [[menu.main]]
     name = "Doa"
     url = "/doa/"
     weight = 90
