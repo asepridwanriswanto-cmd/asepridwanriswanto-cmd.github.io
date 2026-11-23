@@ -1,12 +1,13 @@
---- 
-title: "Disclaimer (Penafian)" 
-hideMeta: true 
---- 
+---
+title: "Disclaimer"
+description: "Penafian mengenai konten dan alat yang ada di Syahida."
+layout: "single"
+hideMeta: true
+---
 
-Seluruh informasi dan alat (tools) yang disediakan di situs **Syahida** bersifat **edukatif dan informatif**. 
+Seluruh informasi dan alat (tools) yang disediakan di situs **Syahida** (syahida.web.id) disajikan hanya untuk tujuan **edukasi dan informasi** umum.
 
-1. **Kalkulator Zakat & Waris:** Hasil perhitungan dari kalkulator adalah estimasi berdasarkan kaidah dasar yang umum. Kasus-kasus khusus dalam Faraidh (seperti Radd, Aul, Hijab) dan Zakat sangat kompleks. Untuk keputusan hukum yang sah, mengikat, dan final, silakan konsultasikan langsung kepada ahli fikih, ustadz, atau Pengadilan Agama setempat.
-2. **Jadwal Sholat & Kiblat:** Data diambil dari API terpercaya (Kemenag/Aladhan). Namun, perbedaan metode perhitungan dan kondisi geografis ekstrem bisa menyebabkan selisih beberapa menit. Mohon gunakan ini sebagai referensi dan tetap berpedoman pada jadwal masjid setempat.
-3. **Konten Hadits & Berita:** Sumber diambil dari portal terpercaya, namun Syahida tidak bertanggung jawab atas perubahan konten di situs sumber asli.
+1. **Kalkulator Zakat & Waris:** Hasil perhitungan bersifat estimasi. Untuk keputusan hukum yang sah dan mengikat, selalu konsultasikan dengan ahli faraidh atau lembaga berwenang.
+2. **Jadwal Sholat & Kiblat:** Jadwal dan arah kiblat bergantung pada koordinat dan metode perhitungan. Gunakan sebagai panduan, dan utamakan pengamatan langsung di lokasi Anda.
 
-Dengan menggunakan situs ini, Anda menyetujui bahwa Syahida tidak bertanggung jawab atas segala kerugian atau penyalahgunaan yang timbul dari penggunaan informasi di situs ini.
+Kami tidak bertanggung jawab atas segala kerugian atau kesalahan yang timbul akibat penggunaan informasi dari situs ini.

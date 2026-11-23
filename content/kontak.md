@@ -8,4 +8,4 @@ Kami sangat senang mendengar masukan, saran, atau pertanyaan dari Anda. Jika And
 - **Email:** [asepridwanriswanto@gmail.com](mailto:asepridwanriswanto@gmail.com)
 - **WhatsApp:** [0823-1131-2697](https://wa.me/6282311312697)
 
-Kami akan berusaha membalas pesan Anda secepat mungkin. Terima kasih telah menjadi bagian dari SahabatMuslim!
+Kami akan berusaha membalas pesan Anda secepat mungkin. Terima kasih telah menjadi bagian dari Syahida!
