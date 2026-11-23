@@ -18,6 +18,6 @@ Semua fitur ini dikembangkan agar dapat diakses secara **gratis, cepat, dan aman
 ### 👨‍💻 Di Balik Layar
 Situs ini dirancang, dibangun, dan dikelola secara mandiri oleh **Asep Ridwan Rismanto**. 
 
-Sebagai seorang individu yang memiliki ketertarikan besar pada dunia teknologi digital, proyek SahabatMuslim ini dibuat sebagai wujud keinginan untuk terus belajar dan berbagi manfaat. Tujuannya tidak lain adalah untuk memudahkan umat Muslim dalam beribadah serta mengakses literasi Islam yang shahih secara gratis.
+Sebagai seorang individu yang memiliki ketertarikan besar pada dunia teknologi digital, proyek Syahida ini dibuat sebagai wujud keinginan untuk terus belajar dan berbagi manfaat. Tujuannya tidak lain adalah untuk memudahkan umat Muslim dalam beribadah serta mengakses literasi Islam yang shahih secara gratis.
 
 *Terima kasih telah berkunjung dan menggunakan layanan kami.*
