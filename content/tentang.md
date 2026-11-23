@@ -9,8 +9,7 @@ Kami menyadari bahwa di era digital ini, akses terhadap informasi yang akurat da
 
 - **Kalkulator Ibadah:** Membantu Anda menghitung Zakat dan Waris (Faraidh) secara akurat.
 - **Panduan Ibadah:** Jadwal Sholat seluruh Indonesia, Arah Kiblat, serta Kalender Islam (Hijriah).
-- **Literasi Islam:** Pencarian Hadits Shahih, Kumpulan Doa, dan Dzikir harian.
-- **Informasi Terkini:** Berita seputar dunia Islam dari portal terpercaya.
+- **Literasi Islam:** Pencarian ayat Al-Quran, Pencarian Hadits Shahih, Kumpulan Doa, dan Dzikir harian.
 
 Semua fitur ini dikembangkan agar dapat diakses secara **gratis, cepat, dan aman**. Kami berkomitmen untuk terus memperbarui konten agar Syahida dapat menjadi ladang amal jariyah yang bermanfaat bagi banyak orang.
 
