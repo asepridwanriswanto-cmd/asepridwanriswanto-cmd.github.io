@@ -6,7 +6,7 @@ enableRobotsTXT = true
 [params]
   favicon = "favicon.svg"
   author = "Abdul Manan"
-  description = "Sahabat harian Muslim Indonesia: artikel, kalkulator zakat & waris, artikel, hadits shahih, doa harian, arah kiblat, jadwal sholat, dan kalender Islam."
+  description = "Syahida adalah platform alat bantu Islami untuk umat Muslim Indonesia. Menyediakan kalkulator zakat dan waris, jadwal salat, arah kiblat, Al-Qur'an digital, hadis, doa, dzikir, dan kalender Hijriah"
   defaultTheme = "auto"
   ShowReadingTime = true
   ShowShareButtons = false
