@@ -7,8 +7,10 @@ categories: ["Fikih", "Zakat"]
 tags: ["Zakat Penghasilan", "Zakat Gaji", "Nisab", "Kalkulator Zakat"]
 cover:
     image: "images/caraMenghitungzakatpenghasilan.jpg"
-    alt: "Ilustrasi Menghitung Zakat Penghasilan"
+    alt: "Ilustrasi koin emas dan perak untuk zakat"
     relative: true
+    width: 1200
+    height: 630
 ---
 
 Bekerja mencari nafkah adalah bagian dari ibadah. Namun, sebagai seorang Muslim, kita juga memiliki kewajiban untuk membersihkan harta yang kita dapatkan melalui zakat. Salah satu zakat yang paling relevan untuk pekerja zaman sekarang adalah **Zakat Penghasilan** atau Zakat Profesi.

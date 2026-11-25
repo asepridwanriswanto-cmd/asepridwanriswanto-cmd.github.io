@@ -7,8 +7,10 @@ categories: ["Fikih", "Zakat"]
 tags: ["Zakat Emas", "Zakat Perak", "Zakat Perhiasan", "Nisab Emas", "Kalkulator Zakat"]
 cover:
     image: "images/zakat-emas-cover.jpg"
-    alt: "Ilustrasi Emas dan Perak untuk Zakat"
+    alt: "Ilustrasi koin emas dan perak untuk zakat"
     relative: true
+    width: 1200
+    height: 630
 ---
 
 Siapa sih yang tidak kenal emas? Logam mulia yang satu ini memang sudah jadi incaran banyak orang sejak dulu. Ada yang membelinya untuk investasi jangka panjang, ada juga yang memakainya sebagai perhiasan agar tampil lebih cantik, terutama para muslimah.
