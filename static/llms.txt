@@ -1,0 +1,13 @@
+# Syahida
+> Situs alat (tools) Islami dan artikel harian.
+
+## Alat Utama
+- [Kalkulator Zakat](https://syahida.web.id/zakat/)
+- [Kalkulator Waris](https://syahida.web.id/waris/)
+- [Jadwal Sholat](https://syahida.web.id/jadwal-sholat/)
+- [Pencarian Al-Qur'an](https://syahida.web.id/quran/)
+- [Pencarian Hadits](https://syahida.web.id/hadits/)
+
+## Artikel Blog
+- [Panduan Zakat Penghasilan](https://syahida.web.id/blog/zakat-penghasilan/)
+- [Panduan Zakat Emas](https://syahida.web.id/blog/zakat-emas/)

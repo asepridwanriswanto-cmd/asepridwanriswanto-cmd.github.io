@@ -1,5 +1,5 @@
 ---
-title: "Bingung Cara Menghitung Zakat Emas? Begini Aturan dan Hukum Perhiasan Menurut Islam"
+title: "Cara Menghitung Zakat Emas dan Hukum Perhiasan"
 description: "Punya emas tapi bingung apakah wajib dizakati? Simak penjelasan santai tentang nisab, hukum emas perhiasan yang dipakai sehari-hari, dan cara menghitung zakat emas."
 date: 2026-11-24
 draft: false

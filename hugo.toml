@@ -4,6 +4,7 @@ theme = "papermod"
 enableRobotsTXT = true
 
 [params]
+  env = "production"
   favicon = "favicon.svg"
   author = "Abdul Manan"
   description = "Syahida adalah platform alat bantu Islami untuk umat Muslim Indonesia. Menyediakan kalkulator zakat dan waris, jadwal salat, arah kiblat, Al-Qur'an digital, hadis, doa, dzikir, dan kalender Hijriah"
