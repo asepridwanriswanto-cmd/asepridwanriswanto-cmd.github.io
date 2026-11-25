@@ -1,6 +1,6 @@
 ---
-title: "Panduan Lengkap Cara Menghitung Zakat Penghasilan (Gaji) Beserta Nisabnya"
-description: "Bingung cara menghitung zakat dari gaji bulanan? Simak panduan lengkap nisab, syarat, dan cara menghitung zakat penghasilan sesuai Al-Qur'an dan Sunnah."
+title: "Cara Menghitung Zakat Penghasilan dan Nisabnya"
+description: "Panduan praktis menghitung zakat dari gaji bulanan. Lengkap dengan syarat nisab dan simulasi perhitungannya sesuai syariat Islam."
 date: 2026-11-23
 draft: false
 categories: ["Fikih", "Zakat"]
