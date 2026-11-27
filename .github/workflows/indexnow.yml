@@ -1,0 +1,26 @@
+name: Ping IndexNow
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send URLs to IndexNow
+        run: |
+          curl -X POST "https://api.indexnow.org/indexnow" \
+          -H "Content-Type: application/json; charset=utf-8" \
+          -d '{
+            "host": "syahida.web.id",
+            "key": "68c0b494e0444349ad2c6f14cc8c9e14",
+            "keyLocation": "https://syahida.web.id/KUNCI_API_ANDA.txt",
+            "urlList": [
+              "https://syahida.web.id/",
+              "https://syahida.web.id/blog/zakat-penghasilan/",
+              "https://syahida.web.id/blog/zakat-emas/",
+              "https://syahida.web.id/blog/golongan-penerima-zakat/",
+              "https://syahida.web.id/blog/tata-cara-sholat-dhuha/"
+            ]
+          }'
