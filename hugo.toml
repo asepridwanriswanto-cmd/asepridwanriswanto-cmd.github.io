@@ -90,3 +90,7 @@ enableRobotsTXT = true
     name = "Kebijakan Privasi"
     url = "/privacy-policy/"
     weight = 40
+	
+[services]
+  [services.googleAnalytics]
+    ID = "G-GEVG2Y6K97"
