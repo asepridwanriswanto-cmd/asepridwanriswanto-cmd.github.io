@@ -136,7 +136,7 @@
         });
       }
     }
-	            // --- CTA & BACA JUGA DINAMIS (PINTAR & CANTIK) ---
+	                // --- CTA & BACA JUGA DINAMIS (PINTAR & CANTIK) ---
     if (window.location.pathname.indexOf('/blog/') !== -1 && window.location.pathname !== '/blog/') {
       var postContent = document.querySelector('.post-content');
       if (postContent) {
@@ -159,22 +159,18 @@
           <div style="margin-bottom: 40px;">
             <h3 style="border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; color: var(--primary); font-size: 1.1em;">Baca Juga Artikel Zakat</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-              
               <a href="/blog/zakat-penghasilan/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
                 <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Zakat Penghasilan</h4>
                 <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Panduan menghitung zakat dari gaji bulanan Anda.</p>
               </a>
-
               <a href="/blog/zakat-emas/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
                 <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Zakat Emas</h4>
                 <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Apakah perhiasan yang dipakai wajib dizakati?</p>
               </a>
-
               <a href="/blog/golongan-penerima-zakat/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
                 <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">8 Golongan Penerima Zakat</h4>
                 <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Siapa saja yang berhak menerima zakat Anda?</p>
               </a>
-
             </div>
           </div>`;
         } 
@@ -193,21 +189,44 @@
           <div style="margin-bottom: 40px;">
             <h3 style="border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; color: var(--primary); font-size: 1.1em;">Baca Juga Artikel Waris</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-              
               <a href="/blog/panduan-waris-islam/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
                 <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Panduan Dasar Ilmu Faraidh</h4>
                 <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Memahami dasar pembagian waris dalam Islam.</p>
               </a>
-
-              <a href="/blog/penghalang-waris/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
-                <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Siapa yang Terhalang Waris?</h4>
-                <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Golongan yang tidak berhak mendapatkan harta warisan.</p>
-              </a>
-
             </div>
           </div>`;
         }
-        // 3. JIKA ARTIKEL UMUM
+        // 3. JIKA ARTIKEL TENTANG IBADAH/SHOLAT
+        else if (url.includes('sholat') || url.includes('dhuha')) {
+          ctaHTML = `
+          <div style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%); border: 1px solid #c8e6c9; border-radius: 12px; padding: 30px 20px; text-align: center; margin-bottom: 40px;">
+            <h3 style="margin-top: 0; color: #0E7A5F; font-size: 1.3em;">Cek Jadwal Sholat Hari Ini</h3>
+            <p style="color: #555; margin-bottom: 20px; font-size: 0.95em;">Pastikan Anda tidak melewatkan waktu sholat wajib maupun sunnah di kota Anda.</p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <a href="/jadwal-sholat/" style="display: inline-block; padding: 12px 25px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 0.95em; box-shadow: 0 4px 6px rgba(14,122,95,0.2);">Lihat Jadwal Sholat 🕌</a>
+            </div>
+          </div>`;
+          
+          relatedHTML = `
+          <div style="margin-bottom: 40px;">
+            <h3 style="border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; color: var(--primary); font-size: 1.1em;">Baca Juga Artikel Lainnya</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+              <a href="/blog/zakat-penghasilan/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+                <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Zakat Penghasilan</h4>
+                <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Panduan menghitung zakat dari gaji bulanan.</p>
+              </a>
+              <a href="/blog/zakat-emas/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+                <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Zakat Emas</h4>
+                <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Apakah perhiasan yang dipakai wajib dizakati?</p>
+              </a>
+              <a href="/blog/golongan-penerima-zakat/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+                <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">8 Golongan Penerima Zakat</h4>
+                <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Siapa saja yang berhak menerima zakat?</p>
+              </a>
+            </div>
+          </div>`;
+        }
+        // 4. JIKA ARTIKEL UMUM LAINNYA
         else {
           ctaHTML = `
           <div style="background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%); border: 1px solid #c8e6c9; border-radius: 12px; padding: 30px 20px; text-align: center; margin-bottom: 40px;">
@@ -217,11 +236,26 @@
               <a href="/" style="display: inline-block; padding: 12px 25px; background: #0E7A5F; color: white; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 0.95em; box-shadow: 0 4px 6px rgba(14,122,95,0.2);">Lihat Semua Fitur 🛠️</a>
             </div>
           </div>`;
-          relatedHTML = ''; 
+          
+          // Memberikan rekomendasi artikel default untuk artikel umum
+          relatedHTML = `
+          <div style="margin-bottom: 40px;">
+            <h3 style="border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; color: var(--primary); font-size: 1.1em;">Artikel Pilihan</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+              <a href="/blog/zakat-penghasilan/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+                <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Zakat Penghasilan</h4>
+                <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Panduan menghitung zakat dari gaji.</p>
+              </a>
+              <a href="/blog/tata-cara-sholat-dhuha/" style="display: block; border: 1px solid var(--border); padding: 15px; border-radius: 8px; text-decoration: none; background: var(--entry); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+                <h4 style="margin: 0 0 5px 0; color: #0E7A5F; font-size: 0.95em;">Tata Cara Sholat Dhuha</h4>
+                <p style="margin: 0; font-size: 0.8em; color: var(--secondary);">Panduan lengkap niat dan waktu dhuha.</p>
+              </a>
+            </div>
+          </div>`;
         }
 
         var extraHTML = `
-          <hr style="margin: 5px 0; border: 0; border-top: 2px dashed var(--border);">
+          <hr style="margin: 5px 0 20px 0; border: 0; border-top: 2px dashed var(--border);">
           ${ctaHTML}
           ${relatedHTML}
         `;
