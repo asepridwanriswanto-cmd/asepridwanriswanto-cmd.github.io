@@ -1,6 +1,7 @@
 baseURL = "https://syahida.web.id/"
 title = "Syahida"
 theme = "papermod"
+paginate = 6
 enableRobotsTXT = true
 
 [params]

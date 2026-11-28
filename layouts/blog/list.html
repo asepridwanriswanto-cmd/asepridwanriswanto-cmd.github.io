@@ -1,0 +1,52 @@
+{{ define "main" }}
+<main class="main" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <header class="page-header" style="margin-bottom: 40px; text-align: center;">
+        <h1 style="color: var(--primary); font-size: 2.2em; margin-bottom: 10px;">{{ .Title }}</h1>
+        {{- if .Description }}
+        <div class="post-description" style="color: var(--secondary); font-size: 1.1em;">{{ .Description }}</div>
+        {{- end }}
+    </header>
+
+    <!-- GRID ARTIKEL -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+        {{ range .Paginator.Pages }}
+            <article style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--entry); display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
+                
+                <!-- GAMBAR COVER -->
+                {{ if .Params.cover.image }}
+                    <a href="{{ .RelPermalink }}" style="display: block; overflow: hidden;">
+                        <img src="{{ .Params.cover.image | absURL }}" alt="{{ .Params.cover.alt }}" style="width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                    </a>
+                {{ end }}
+                
+                <!-- KONTEN KARTU -->
+                <div style="padding: 25px; flex-grow: 1; display: flex; flex-direction: column;">
+                    <h2 style="margin-top: 0; font-size: 1.25em; line-height: 1.4; margin-bottom: 15px;">
+                        <a href="{{ .RelPermalink }}" style="color: var(--primary); text-decoration: none;">{{ .Title }}</a>
+                    </h2>
+                    <p style="font-size: 0.95em; color: var(--secondary); flex-grow: 1; margin-bottom: 20px; line-height: 1.6;">{{ .Summary | plainify | htmlUnescape | truncate 120 }}</p>
+                    
+                    <!-- FOOTER KARTU -->
+                    <div style="font-size: 0.85em; color: var(--secondary); border-top: 1px dashed var(--border); padding-top: 15px; display: flex; justify-content: space-between;">
+                        <span>{{ .Date.Format "02 Jan 2006" }}</span>
+                        <span>{{ .ReadingTime }} min read</span>
+                    </div>
+                </div>
+            </article>
+        {{ end }}
+    </div>
+    
+    <!-- NAVIGASI HALAMAN -->
+    {{- $paginator := .Paginator }}
+    {{- if gt $paginator.TotalPages 1 }}
+    <div style="display: flex; justify-content: center; gap: 10px; margin-top: 50px; margin-bottom: 50px;">
+        {{- if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" style="padding: 10px 20px; background: var(--primary); color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">&larr; Sebelumnya</a>
+        {{- end }}
+        {{- if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" style="padding: 10px 20px; background: var(--primary); color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">Berikutnya &rarr;</a>
+        {{- end }}
+    </div>
+    {{- end }}
+</main>
+{{ end }}
