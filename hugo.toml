@@ -1,5 +1,6 @@
 baseURL = "https://syahida.web.id/"
 title = "Syahida | Alat Ibadah & Panduan Islami"
+copyright = "© 2026 Syahida"
 theme = "papermod"
 paginate = 6
 enableRobotsTXT = true
