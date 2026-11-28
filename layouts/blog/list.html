@@ -1,5 +1,31 @@
 {{ define "main" }}
-<main class="main" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+<style>
+    .blog-custom-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px; /* Jarak aman di kiri dan kanan */
+    }
+    
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 30px;
+    }
+
+    /* Khusus untuk layar HP */
+    @media (max-width: 768px) {
+        .blog-custom-container {
+            padding: 0 15px; /* Sedikit dilebarkan di HP agar tidak mepet */
+        }
+        .blog-grid {
+            /* Di HP, paksa jadi 1 kolom penuh yang simetris */
+            grid-template-columns: 1fr; 
+            gap: 20px;
+        }
+    }
+</style>
+
+<main class="main blog-custom-container" style="margin-top: 40px;">
     <header class="page-header" style="margin-bottom: 40px; text-align: center;">
         <h1 style="color: var(--primary); font-size: 2.2em; margin-bottom: 10px;">{{ .Title }}</h1>
         {{- if .Description }}
@@ -8,7 +34,7 @@
     </header>
 
     <!-- GRID ARTIKEL -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px;">
+    <div class="blog-grid">
         {{ range .Paginator.Pages }}
             <article style="border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--entry); display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='none'; this.style.boxShadow='none'">
                 
