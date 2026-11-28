@@ -262,6 +262,15 @@
         postContent.insertAdjacentHTML('afterend', extraHTML);
       }
     }
+	    // --- TAMBAHAN: Memastikan semua gambar punya ALT ---
+    document.addEventListener("DOMContentLoaded", function() {
+      var images = document.querySelectorAll('img');
+      images.forEach(function(img) {
+        if (!img.hasAttribute('alt') || img.getAttribute('alt').trim() === '') {
+          img.setAttribute('alt', 'Syahida - Alat Ibadah & Panduan Islami');
+        }
+      });
+    });
   });
 </script>
 
